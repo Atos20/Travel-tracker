@@ -1,3 +1,18 @@
+const agentsSampleData = {
+  "Agents": [
+    {
+      "id": 1,
+      "name": "Juan Perez",
+      "pwd": 12345
+      },
+      {
+      "id": 2,
+      "name": "Daniel Galindo",
+      "pwd": 12345
+      }
+  ]
+}
+
 const userSampleData = {
     "travelers": [
     {
@@ -383,6 +398,7 @@ const destinationsSampleData = {
 }
     
 export default {
+  agentsSampleData,
   userSampleData,
   tripsSampleData,
   destinationsSampleData

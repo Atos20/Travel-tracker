@@ -14,11 +14,11 @@ describe('User', () => {
     user2 = new User(userData2);
   });
   it('Should be able to be a function', () => {
-    expect(User).to.be.a('function');
+      expect(User).to.be.a('function');
   });
 
   it('Should be an instance of User', () => {
-    expect(user).to.be.an.instanceof(User);
+      expect(user).to.be.an.instanceof(User);
   });
 
   it('Should be able to have an id', () => {

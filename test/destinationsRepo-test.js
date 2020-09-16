@@ -1,0 +1,22 @@
+import chai from 'chai';
+const expect = chai.expect;
+
+import DestinationsRepo from '../src/destinationsRepo.js';
+import testData from '../test-data/sample-data.js'
+
+let destinations, newDestinationsRepo;
+
+describe('DestinationsRepo', () => {
+  beforeEach(() => {
+    destinations = testData.destinationsSampleData
+    newDestinationsRepo = new DestinationsRepo(destinations);
+    // console.log(destinationsData)
+  });
+  it('Should be able to be a function', () => {
+    expect(DestinationsRepo).to.be.a('function');
+  });
+
+  it('Should be able to be an instance of DestinationsRepo class', () => {
+    expect(newDestinationsRepo).to.be.an.instanceOf(DestinationsRepo);
+  });
+});

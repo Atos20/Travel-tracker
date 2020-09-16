@@ -27,7 +27,6 @@ describe('User', () => {
 
   it('Should be able to have an different id', () => {
       expect(user2.id).to.equal(2)
-});
-
+  });
 
 });

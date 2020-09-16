@@ -1,4 +1,4 @@
-const userSampeData = {
+const userSampleData = {
     "travelers": [
     {
     "id": 1,
@@ -382,8 +382,8 @@ const destinationsSampleData = {
   ]
 }
     
-export {
-    userSampeData,
-    tripsSampleData,
-    destinationsSampleData
-  }
+export default {
+  userSampleData,
+  tripsSampleData,
+  destinationsSampleData
+}

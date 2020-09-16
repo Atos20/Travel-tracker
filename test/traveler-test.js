@@ -22,8 +22,28 @@ describe('Traveler', () => {
   it('Should be able to have an id', () => {
       expect(traveler.id).to.equal(1)
   });
+
   it('should be able to have a name', () => {
       expect(traveler.name).to.equal('Rosalind Hite')
-  })
+  });
 
+  it.skip('Should be able to keep track of the all thre trips taken so far', () => {
+
+    });
+
+  it.skip('Should be able to know what is the current trip if any', () => {
+
+  });
+
+  it.skip('Should be able to keep track of the future trips', () => {
+
+  });
+
+  it.skip('Should be able to keep track of pending trips', () => {
+
+  });
+
+  it.skip('Should be able to kknow how much the traveler has spent over the year', () => {
+
+  });
 });

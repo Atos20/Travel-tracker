@@ -1,3 +1,6 @@
+
+//helper class that will be able to calculate the cost of the trip
+//it will be able to find destinations by 
 import chai from 'chai';
 const expect = chai.expect;
 

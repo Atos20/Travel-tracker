@@ -1,8 +1,14 @@
 class DestinationsRepo {
     constructor(destinationsData) {
-        console.log(destinationsData)
       this.destinationsData = destinationsData;
     }
+
+    //get destinations by id
+    
+
+    // get destination cost
+
+
   }
 
   export default DestinationsRepo ;

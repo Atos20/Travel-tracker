@@ -2,13 +2,14 @@ import chai from 'chai';
 const expect = chai.expect;
 
 import Trip from '../src/trip.js';
-import tripsData from '../test-data/sample-data.js';
+import testData from '../test-data/sample-data.js';
+
 
 let tripObj, newTrip;
 
-describe('TripsRepo', () => {
+describe('Trip', () => {
   beforeEach(() => {
-    tripObj = tripsData.tripsSampleData.trips[0]
+    tripObj = testData.tripsSampleData.trips[0]
     newTrip = new Trip(tripObj);
   });
   it('Should be able to be a function', () => {
@@ -30,32 +31,32 @@ describe('TripsRepo', () => {
     expect(newTrip.userID).to.equal(1);
   });
 
-  it('Should be able to have a userID as property', () => {
+  it('Should be able to have a destinationID as property', () => {
     expect(newTrip).to.have.a.property('destinationID');
     expect(newTrip.destinationID).to.equal(1);
   });
 
-  it('Should be able to have a userID as property', () => {
+  it('Should be able to have a travelers as property', () => {
     expect(newTrip).to.have.a.property('travelers');
     expect(newTrip.travelers).to.equal(5);
   });
 
-  it('Should be able to have a userID as property', () => {
+  it('Should be able to have a date as property', () => {
     expect(newTrip).to.have.a.property('date');
     expect(newTrip.date).to.equal('2019/09/16');
   });
 
-  it('Should be able to have a userID as property', () => {
+  it('Should be able to have a duration as property', () => {
     expect(newTrip).to.have.a.property('duration');
     expect(newTrip.duration).to.equal(8);
   });
 
-  it('Should be able to have a userID as property', () => {
+  it('Should be able to have a status as property', () => {
     expect(newTrip).to.have.a.property('status');
     expect(newTrip.status).to.equal('approved');
   });
 
-  it('Should be able to have a userID as property', () => {
+  it('Should be able to have a suggestedActivities as property', () => {
     expect(newTrip).to.have.a.property('suggestedActivities');
     expect(newTrip.suggestedActivities.length).to.equal(0);
   });

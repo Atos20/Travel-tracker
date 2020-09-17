@@ -14,6 +14,9 @@ describe('fetchHandler', () => {
     newFetch = new FecthHandler()
     query = 'https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/'
   });
+  afterEach(() => {
+    chai.spy.restore(newFetch);
+  });
 
   it('Should be a function', () => {
       expect(FecthHandler).to.be.a('function')

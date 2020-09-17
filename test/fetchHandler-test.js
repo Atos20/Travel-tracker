@@ -4,13 +4,13 @@ import { expect } from 'chai';
 chai.use(spies)
 
 import FecthHandler from '../src/fetchHandler.js'
-import Trip from '../src/trip.js';
-import tripsData from '../test-data/sample-data.js';
-
-let newFetch, query;
+let newFetch, query
 
 describe('fetchHandler', () => {
   beforeEach(() => {
+
+    global.fetch = {}
+    chai.spy.on(fetch, '', () => {})
     newFetch = new FecthHandler()
     query = 'https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/'
   });
@@ -25,19 +25,27 @@ describe('fetchHandler', () => {
   });
 
   it.skip('Should be able to Get all travelers data', () => {
-    expect(newFetch.getAllTravelersData()).to.equal([])
+    newFetch.getAllTravelersData()
+    expect(newFetch.getAllTravelersData).to.have.been.called(1);
+    expect(newFetch.getAllTravelersData).to.have.been.called.with();
   });
   
   it.skip('Should be able to Get a single traveler data', () => {
-    expect(newFetch.getSingleTravelerData(1)).to.equal([])
+    newFetch. getSingleTravelerData()
+    expect(newFetch.getSingleTravelerData).to.have.been.called(1);
+    expect(newFetch.getSingleTravelerData).to.have.been.called.with();
   });
 
   it.skip('Should be able to Get all trips data', () => {
-    expect(newFetch.getAllTripsData()).to.equal([])
+    newFetch.getAllTripsData()
+    expect(newFetch.getAllTripsData).to.have.been.called(1);
+    expect(newFetch.getAllTripsData).to.have.been.called.with();
   });
 
   it.skip('Should be able to Get all destinations', () => {
-    expect(newFetch.getAllDestinationsData()).to.equal([])
+    newFetch.getAllDestinationsData()
+    expect(newFetch.getAllDestinationsData).to.have.been.called(1);
+    expect(newFetch.getAllDestinationsData).to.have.been.called.with();
   });
 
   it.skip('Should be able to Add a new trip', () => {
@@ -45,14 +53,20 @@ describe('fetchHandler', () => {
   });
 
   it.skip('Should be able to Add new destination', () => {
-    expect(newFetch.addNewDestination()).to.equal([])
+    newFetch.addNewDestination()
+    expect(newFetch.addNewDestination).to.have.been.called(1);
+    expect(newFetch.addNewDestination).to.have.been.called.with();
   });
 
   it.skip('Should be able to Modify a single trip', () => {
-    expect(newFetch.modifySingleTrip()).to.equal([])
+    newFetch.modifySingleTrip()
+    expect(newFetch.modifySingleTrip).to.have.been.called(1);
+    expect(newFetch.modifySingleTrip).to.have.been.called.with();
   });
 
-  it.skip('Should be able to Delete a single trip', () => {
-    expect(newFetch.deletTrip()).to.equal([])
+  it('Should be able to Delete a single trip', () => {
+    newFetch.deletTrip()
+    expect(newFetch.deletTrip).to.have.been.called(1);
+    // expect(newFetch.deletTrip).to.have.been.called.with();
   });
 });

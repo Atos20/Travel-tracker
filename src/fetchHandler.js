@@ -105,7 +105,6 @@ class FecthHandler {
   //Sample Successful Response👇🏽
   //Trip # has been deleted
   deletTrip(){
-
   }
 }
     

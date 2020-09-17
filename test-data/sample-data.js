@@ -1,4 +1,21 @@
-const userSampeData = {
+const agentsSampleData = {
+  "agents": [
+    {
+      "id": 1,
+      "name": "Juan Perez",
+      "userName": "agency",
+      "pwd": "travel2020"
+      },
+      {
+      "id": 2,
+      "name": "Daniel Galindo",
+      "userName": "user2",
+      "pwd": "travel2020"
+      }
+  ]
+}
+
+const userSampleData = {
     "travelers": [
     {
     "id": 1,
@@ -59,7 +76,7 @@ const tripsSampleData = {
     "id": 1,
     "userID": 1,
     "destinationID": 1,
-    "travelers": 1,
+    "travelers": 5,
     "date": "2019/09/16",
     "duration": 8,
     "status": "approved",
@@ -382,8 +399,9 @@ const destinationsSampleData = {
   ]
 }
     
-export {
-    userSampeData,
-    tripsSampleData,
-    destinationsSampleData
-  }
+export default {
+  agentsSampleData,
+  userSampleData,
+  tripsSampleData,
+  destinationsSampleData
+}

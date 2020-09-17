@@ -15,11 +15,11 @@ describe('DestinationsRepo', () => {
     newDestinationsRepo = new DestinationsRepo(destinations);
     // console.log(destinationsData)
   });
-  it('Should be able to be a function', () => {
+  it.skip('Should be able to be a function', () => {
     expect(DestinationsRepo).to.be.a('function');
   });
 
-  it('Should be able to be an instance of DestinationsRepo class', () => {
+  it.skip('Should be able to be an instance of DestinationsRepo class', () => {
     expect(newDestinationsRepo).to.be.an.instanceOf(DestinationsRepo);
   });
 });

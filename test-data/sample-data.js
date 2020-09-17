@@ -15,7 +15,7 @@ const agentsSampleData = {
   ]
 }
 
-const userSampleData = {
+const travelersSampleData = {
     "travelers": [
     {
     "id": 1,
@@ -401,7 +401,7 @@ const destinationsSampleData = {
     
 export default {
   agentsSampleData,
-  userSampleData,
+  travelersSampleData,
   tripsSampleData,
   destinationsSampleData
 }

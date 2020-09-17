@@ -5,7 +5,7 @@ import Agent from '../src/agent.js';
 import testData from '../test-data/sample-data.js'
 let agent, agentData;
 
-describe('Traveler', () => {
+describe('Agent', () => {
   beforeEach(() => {
     agentData = testData.agentsSampleData.agents[0]
     agent = new Agent(agentData);

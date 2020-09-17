@@ -11,6 +11,6 @@ class Trip {
     this.suggestedActivities = tripObj.suggestedActivities;
   }
 
-  }
+}
   
   export default Trip; 

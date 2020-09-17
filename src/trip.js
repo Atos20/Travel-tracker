@@ -10,7 +10,6 @@ class Trip {
     this.status = tripObj.status || 'pending';
     this.suggestedActivities = tripObj.suggestedActivities;
   }
-
 }
   
   export default Trip; 

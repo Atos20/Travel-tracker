@@ -1,5 +1,5 @@
 import User from './User'
-import TripsRepo from '../src/TripsRepo.js';
+// import TripsRepo from '../src/TripsRepo.js';
 import moment from 'moment';
 class Traveler extends User {
   constructor(userInfo, tripHistory) {
@@ -16,17 +16,19 @@ class Traveler extends User {
     this.spentOverYear = 0;
     // console.log(this.travelHistory)
   }
+   //what format makes more sense? //myabe having and array of 
+   /*[ "2020/10/04":{data},  "2020/10/04":{data},  "2020/10/04":{data}, date:{data}]*/
 
-
-   //what format makes more sense?
-  //get trip history
-  getTripHistory() {
-  //  console.log(this.travelHistory)
+  restructuredTripHistoryByDate() {
+    return this.travelHistory.reduce((newData, entry) => {
+      newData.push({[entry.date] : entry})
+      return newData
+    }, [])
   }
 
   //get currentTrip
   getCurrentTrip() {
-
+    
   }
   //get furtureTrips
   getFutureTrips() {

@@ -13,6 +13,7 @@ class Traveler extends User {
     this.currentTrip  = this.getCurrentTrip() || []; // || [] probably it will be just an object
     this.upcomingTrips = this.getFutureTrips() || [];
     this.pendingTrips = this. getPastTrips() || [];
+    this.tripsThisYear = getTripByYears() //for 2020
     this.spentOverYear = 0;
     // console.log(this.travelHistory)
   }

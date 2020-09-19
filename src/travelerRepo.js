@@ -1,6 +1,6 @@
 class TravelerRepo {
     constructor(tripHistory) {
-      this.userTripHistory = tripHistory
+      this.userTripHistory = tripHistory;
     }
   }
   

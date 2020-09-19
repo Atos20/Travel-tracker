@@ -1,23 +1,26 @@
 import chai from 'chai';
 const expect = chai.expect;
 
-import moment from 'moment';
 import Traveler from '../src/traveler.js';
 import testData from '../test-data/sample-data.js'
 import TripsRepo from '../src/tripsRepo.js';
 import TravelerRepo from '../src/travelerRepo.js';
-let traveler, travelerData, tripRepo, travelerRepo, tripsDataSample;
+// import DestinationsRepo from '../src/travelerRepo.js';
+let traveler, travelerData, tripRepo, travelerRepo, tripsDataSample, destinationsRepo, destinationsData;
 
 describe('Traveler', () => {
   beforeEach(() => {
-    travelerData = testData.travelersSampleData.travelers[0]
-    tripsDataSample = testData.tripsSampleData
-    tripRepo = new TripsRepo(tripsDataSample)
+
+    travelerData = testData.travelersSampleData.travelers[0];
+    destinationsData = testData.destinationsSampleData;
+    tripsDataSample = testData.tripsSampleData;
+    // destinationsRepo = new DestinationsRepo(destinationsData);
+    tripRepo = new TripsRepo(tripsDataSample);//all the trips
     travelerRepo = new TravelerRepo(tripRepo.historyByUserId(1));
-    traveler = new Traveler(travelerData, travelerRepo)
+    traveler = new Traveler(travelerData, travelerRepo, destinationsData);
   });
 
-  it.skip('Should be able to be a function', () => {
+  it('Should be able to be a function', () => {
     expect(Traveler).to.be.a('function');
   });
 
@@ -38,7 +41,7 @@ describe('Traveler', () => {
     expect(traveler.travelHistory.length).to.equal(5);
   });
 
-  it('Should be able to keep track of the all thre trips taken so far', () => {
+  it.skip('Should be able to keep track of the all thre trips taken so far', () => {
     const restructureData = traveler.restructuredTripHistoryByDate();
     expect(traveler.travelHistory.length).to.equal(5);
     expect(restructureData['2020/9/20'].date).to.eql('2020/9/20')
@@ -82,17 +85,18 @@ describe('Traveler', () => {
     expect(pendingTrips.length).to.eql(3);
   });
 
-  it('Should be able to list all trips from the current year', () => {
+  it.skip('Should be able to list all trips from the current year', () => {
     const currentYearTrips = traveler.getTripByYears();
     expect(currentYearTrips.length).to.eql(3);
   });
-  it.skip('Should be able to kknow how much the traveler has spent over the year', () => {
-
+  it.only('Should be able to know how much the traveler has spent over the year', () => {
+    const spentOverYear = traveler.spentOverTheYear();
+    expect(spentOverYear).to.equal(10681)
   });
 });
 
 /*
- {
+{
     "id": 1,
     "userID": 1,
     "destinationID": 1,

@@ -8,7 +8,8 @@ import TripsRepo from '../src/tripsRepo.js';
 import TravelerRepo from '../src/travelerRepo.js';
 
 let tripsData, tripRepo, traveler, travelerData, tripsDataSample, travelerRepo;
-
+//intantiate the destinations repo that contains all the information about destinations, inside
+//destination there ia a methods that retireves 
 describe('TravelerRepo', () => {
   beforeEach(() => {
     travelerData = testData.travelersSampleData.travelers[0]
@@ -29,4 +30,5 @@ describe('TravelerRepo', () => {
   // it('Should be able to filter trips by id number', () =>{
   //   expect(travelerRepo.userTripHistory.length).to.eql(5)
   // });
+
 });  

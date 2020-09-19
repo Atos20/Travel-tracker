@@ -15,21 +15,19 @@ import DestinationsRepo from '../src/destinationsRepo.js';
 import FecthHandler from '../src/fetchHandler.js'
 import DomUpdates from '../src/DomUpdates.js';
 
-const getData = () => {
+const onStart = () => {
   let userId = (Math.floor(Math.random() * 49) + 1)
-  const allTravelersData = FecthHandler.getAllTravelersData()
-  const allDestinationsData = FecthHandler.getAllDestinationsData()
-  const allTripsData = FecthHandler.getAllTripsData()
-  const userData = Travaler
-  Promise.all([allTravelersData,allDestinationsData, allTripsData])
-  .then(response => response.json())
-  .then(data => console.log(data))
-//   console.log(allTravelersData)
+  const allTravelersData = FecthHandler.getAllTravelersData();
+  const allDestinationsData = FecthHandler.getAllDestinationsData();
+  const allTripsData = FecthHandler.getAllTripsData();
+  const travelerData = FecthHandler.getSingleTravelerData(userId);
+  Promise.all([allTravelersData, allDestinationsData, allTripsData, travelerData])
+  .then(values => {
+    console.log(values)
+  })
+
 }
 
-const onStart = () => {
-  getData()
-}
 
 
 window.onload = onStart()

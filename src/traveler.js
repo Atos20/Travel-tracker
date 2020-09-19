@@ -4,8 +4,8 @@ import moment from 'moment';
 
 class Traveler extends User {
   constructor(userInfo, tripHistory, destinationsData) {
-    // console.log(destinationsData)//object
     super(userInfo);
+    // console.log(destinationsData)//object
     // this.id = userInfo.id;
     // this.name = userInfo.name;
     this.travelerType = userInfo.travelerType;
@@ -15,9 +15,9 @@ class Traveler extends User {
     this.tripsHistory = this. getPastTrips(); //past trips
     this.currentTrip  = this.getCurrentTrip() || []; // || [] probably it will be just an object
     this.upcomingTrips = this.getFutureTrips() || [];
-    // this.pendingTrips =  [];// i might not need this since the method is dynamic enough to get pending and aporved trips
+    this.pendingTrips =  this.getTripsByStatus('pending');// i might not need this since the method is dynamic enough to get pending and approved trips
     this.tripsThisYear = this.getTripByYears() || []; //for 2020
-    this.spentOverYear = 0;
+    this.spentOverYearPlusFees = this.spentOverTheYear();
   }
    //what format makes more sense? //myabe having and array of 
    /*data : { "2020/10/04":{data},  "2020/10/04":{data},  "2020/10/04":{data}, date:{data}}*/
@@ -89,11 +89,10 @@ class Traveler extends User {
     // console.log(this.currentTrip)
     return currentTrips
   }
-  //Total amount I have spent on trips this year
-  //claculate how much as a travler I have spent over the year
-  //This should be calculated from the trips data and include a travel agent’s 10% fee
+
   spentOverTheYear() {
     const destinationsClass = new DestinationsRepo(this.destinationsData);
+    console.log(destinationsClass)
     const totalSpentOnCurrentYear = this.tripsThisYear.reduce((total, trip) => {
       total += destinationsClass.getDestinationCost(trip.destinationID, trip.duration, trip.travelers)
       return total

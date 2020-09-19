@@ -7,4 +7,10 @@ import './css/base.scss';
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 
+import Traveler from '../src/traveler.js';
+import testData from '../test-data/sample-data.js'
+import TripsRepo from '../src/tripsRepo.js';
+import TravelerRepo from '../src/travelerRepo.js';
+import DestinationsRepo from '../src/destinationsRepo.js';
+
 console.log('This is the JavaScript entry file - your code begins here.');

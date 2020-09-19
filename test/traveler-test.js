@@ -4,9 +4,9 @@ const expect = chai.expect;
 import Traveler from '../src/traveler.js';
 import testData from '../test-data/sample-data.js'
 import TripsRepo from '../src/tripsRepo.js';
-import TravelerRepo from '../src/travelerRepo.js';
+import TravelersRepo from '../src/travelerRepo.js';
 // import DestinationsRepo from '../src/travelerRepo.js';
-let traveler, travelerData, tripRepo, travelerRepo, tripsDataSample, destinationsRepo, destinationsData;
+let traveler, travelerData, tripsRepo, travelersRepo, tripsDataSample, destinationsRepo, destinationsData;
 
 describe('Traveler', () => {
   beforeEach(() => {
@@ -15,9 +15,9 @@ describe('Traveler', () => {
     destinationsData = testData.destinationsSampleData;
     tripsDataSample = testData.tripsSampleData;
     // destinationsRepo = new DestinationsRepo(destinationsData);
-    tripRepo = new TripsRepo(tripsDataSample);//all the trips
-    travelerRepo = new TravelerRepo(tripRepo.historyByUserId(1));
-    traveler = new Traveler(travelerData, travelerRepo, destinationsData);
+    tripsRepo = new TripsRepo(tripsDataSample);//all the trips
+    travelerRepo = new TravelersRepo(tripRepo.historyByUserId(1));
+    traveler = new Traveler(travelerData, travelersRepo, destinationsData);
   });
 
   it('Should be able to be a function', () => {

@@ -1,6 +1,6 @@
 class FecthHandler {
   constructor(name) {
-    this.root = `https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/`
+    this.root = 'https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/'
     this.requestOptions = {
       method: 'GET',
       redirect: 'follow'
@@ -14,40 +14,44 @@ class FecthHandler {
   static getAllTravelersData() {
     const promise = fetch(`https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/travelers/travelers`, this.requestOptions)
       .then(response => response.json())
-      .then(result => console.log(result))
+      // .then(result => console.log(result))
       .catch(error => console.log('error', error));
     return promise;
-  }
-
-  //Get single traveler
-  //https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/travelers/travelers/<id> where<id> will be a number of a traveler’s id
-  //GET
-  //require properties => none
-  static getSingleTravelerData(id){
-  
-  }
-  
-  static getAllDestinationsData() { 
-    const promise = fetch("https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/destinations/destinations", this.requestOptions)
-      .then(response => response.json())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error));
-    return promise
-  }
-
-  //Get all trips
-  //https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/trips/trips
-  //GET
-   //require properties => none
-   static getAllTripsData() {
-
   }
 
   //Get all destinations
   //https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/destinations/destinations
   //GET
   //require properties => none
-
+  
+  static getAllDestinationsData() { 
+    const promise = fetch("https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/destinations/destinations", this.requestOptions)
+    .then(response => response.json())
+    // .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+    return promise
+  }
+  
+  //Get all trips
+  //https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/trips/trips
+  //GET
+  //require properties => none
+  static getAllTripsData() {
+    const promise = fetch("https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/trips/trips", this.requestOptions)
+      .then(response => response.json())
+      // .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+    return promise
+  }
+  
+  //Get single traveler
+  //https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/travelers/travelers/<id> where<id> will be a number of a traveler’s id
+  //GET
+  //require properties => none
+  static getSingleTravelerData(id){
+   
+  }
+  
   //Add new trip
   //https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/trips/trips
   //POST

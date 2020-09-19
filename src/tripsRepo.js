@@ -4,8 +4,8 @@ class TripsRepo {
   }
   
    //get trip history by id
-  historyByUserId(id) {
-    const filteredTrips = this.tripsData.trips.filter(trip => trip.userID === id)
+  historyByUserId(userId) {
+    const filteredTrips = this.tripsData.trips.filter(trip => trip.userID === userId)
     // console.log(filteredTrips)
     return filteredTrips
   }

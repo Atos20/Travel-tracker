@@ -1,24 +1,26 @@
 import chai from 'chai';
 const expect = chai.expect;
 
-import moment from 'moment';
 import Traveler from '../src/traveler.js';
 import testData from '../test-data/sample-data.js'
 import TripsRepo from '../src/tripsRepo.js';
 import TravelerRepo from '../src/travelerRepo.js';
-let traveler, travelerData, today, tripRepo, travelerRepo, tripsDataSample;
+// import DestinationsRepo from '../src/travelerRepo.js';
+let traveler, travelerData, tripRepo, travelerRepo, tripsDataSample, destinationsRepo, destinationsData;
 
 describe('Traveler', () => {
   beforeEach(() => {
-    today = moment().format("YYYY/MM/DD");
-    travelerData = testData.travelersSampleData.travelers[0]
-    tripsDataSample = testData.tripsSampleData
-    tripRepo = new TripsRepo(tripsDataSample)
+
+    travelerData = testData.travelersSampleData.travelers[0];
+    destinationsData = testData.destinationsSampleData;
+    tripsDataSample = testData.tripsSampleData;
+    // destinationsRepo = new DestinationsRepo(destinationsData);
+    tripRepo = new TripsRepo(tripsDataSample);//all the trips
     travelerRepo = new TravelerRepo(tripRepo.historyByUserId(1));
-    traveler = new Traveler(travelerData, travelerRepo)
+    traveler = new Traveler(travelerData, travelerRepo, destinationsData);
   });
 
-  it.skip('Should be able to be a function', () => {
+  it('Should be able to be a function', () => {
     expect(Traveler).to.be.a('function');
   });
 
@@ -39,80 +41,69 @@ describe('Traveler', () => {
     expect(traveler.travelHistory.length).to.equal(5);
   });
 
-  it.only('Should be able to keep track of the all thre trips taken so far', () => {
+  it.skip('Should be able to keep track of the all thre trips taken so far', () => {
     const restructureData = traveler.restructuredTripHistoryByDate();
     expect(traveler.travelHistory.length).to.equal(5);
-    expect(restructureData[0]['2020/10/04'].date).to.eql('2020/10/04')
+    expect(restructureData['2020/9/20'].date).to.eql('2020/9/20')
   });
 
   it.skip('Should be able to know what is the current trip if any', () => {
-
+    const currentTrip = traveler.getCurrentTrip();
+    expect(currentTrip).to.eql(
+      [
+        {
+          id: 4,
+          userID: 1,
+          destinationID: 4,
+          travelers: 2,
+          date: '2020/09/17',
+          duration: 10,
+          status: 'approved',
+          suggestedActivities: []
+        }
+      ]
+    )
   });
 
   it.skip('Should be able to keep track of the future trips', () => {
+    const futureTrips = traveler.getFutureTrips();
+    expect(futureTrips.length).to.eql(2)
+  });
 
+  it.skip('Should be able to keep track of past trips', () => {
+    const pastTrips = traveler.getPastTrips();
+    expect(pastTrips.length).to.eql(3)
   });
 
   it.skip('Should be able to keep track of pending trips', () => {
-
+    const pendingTrips = traveler.getTripsByStatus('pending');
+    expect(pendingTrips.length).to.eql(2);
   });
 
-  it.skip('Should be able to kknow how much the traveler has spent over the year', () => {
+  it.skip('Should be able to keep track of approved trips', () => {
+    const pendingTrips = traveler.getTripsByStatus('approved');
+    expect(pendingTrips.length).to.eql(3);
+  });
 
+  it.skip('Should be able to list all trips from the current year', () => {
+    const currentYearTrips = traveler.getTripByYears();
+    expect(currentYearTrips.length).to.eql(3);
+  });
+  it.only('Should be able to know how much the traveler has spent over the year', () => {
+    const spentOverYear = traveler.spentOverTheYear();
+    expect(spentOverYear).to.equal(10681)
   });
 });
 
 /*
-[
-  {
-    id: 1,
-    userID: 1,
-    destinationID: 1,
-    travelers: 5,
-    date: '2019/09/16',
-    duration: 8,
-    status: 'approved',
-    suggestedActivities: []
-  },
-  {
-    id: 2,
-    userID: 1,
-    destinationID: 2,
-    travelers: 5,
-    date: '2020/10/04',
-    duration: 18,
-    status: 'pending',
-    suggestedActivities: []
-  },
-  {
-    id: 3,
-    userID: 1,
-    destinationID: 3,
-    travelers: 4,
-    date: '2020/05/22',
-    duration: 17,
-    status: 'pending',
-    suggestedActivities: []
-  },
-  {
-    id: 4,
-    userID: 1,
-    destinationID: 4,
-    travelers: 2,
-    date: '2020/02/25',
-    duration: 10,
-    status: 'approved',
-    suggestedActivities: []
-  },
-  {
-    id: 5,
-    userID: 1,
-    destinationID: 5,
-    travelers: 3,
-    date: '2021/10/30',
-    duration: 18,
-    status: 'approved',
-    suggestedActivities: []
-  }
-]
+{
+    "id": 1,
+    "userID": 1,
+    "destinationID": 1,
+    "travelers": 5,
+    "date": "2020/9/20",
+    "duration": 5,
+    "status": "approved",
+    "suggestedActivities": []
+    }
 */

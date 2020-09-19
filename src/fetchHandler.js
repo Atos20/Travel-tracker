@@ -8,7 +8,15 @@ class FecthHandler {
   //GET
    //require properties => none
   getAllTravelersData() {
-
+    const requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+    
+    fetch(`${this.URL}travelers/travelers`, requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
   }
 
   //Get single traveler

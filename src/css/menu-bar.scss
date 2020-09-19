@@ -1,0 +1,44 @@
+$gradient: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+$light: #fff;
+$dark: #95a5a6;
+
+@mixin transform($translate, $rotate) {
+  transform: translateY($translate) rotateZ($rotate);
+}
+
+.hamburger {
+  background-image: $gradient;
+  &:hover {
+    cursor: pointer;
+    
+    .hamburger-line {
+      background-color: $dark;
+    }
+  }  
+}
+
+.hide {
+  opacity: 0; 
+}
+
+.hamburger-line {
+  display: block;
+  height: 5px;
+  width: 50px;
+  background-color: $light;
+  border-radius: 5px;
+  margin: 10px auto;
+  transition: all ease 300ms;
+}
+
+.rotate1 {
+  @include transform(15px, 45deg);
+}
+
+.rotate2 {
+  @include transform(-15px, -45deg);
+}
+
+.hidden{
+  display: none;
+}

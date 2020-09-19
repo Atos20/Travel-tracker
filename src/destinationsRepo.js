@@ -1,11 +1,11 @@
 class DestinationsRepo {
     constructor(destinationsData) {
-      this.destinationsData = destinationsData.destinations;
+      this.destinationsData = destinationsData;
     }
 
-    //get destinations by id
+    // get destinations by id
     getDestinationById(tripId) {
-      const destination = this.destinationsData.find( destination => destination.id === tripId);
+      const destination = this.destinationsData.destinations.find( destination => destination.id === tripId);
       // console.log(destination)
       return destination
     }
@@ -19,7 +19,6 @@ class DestinationsRepo {
         total = totalPerDay + totalTripFlight;
         return total;
       }, 0)
-      // console.log( totalCost)
       return  totalCost
     }
 

@@ -1,21 +1,23 @@
 import User from './User'
+import DestinationsRepo from '../src/destinationsRepo.js';
 import moment from 'moment';
+
 class Traveler extends User {
-  constructor(userInfo, tripHistory) {
-    // console.log('I am in user=>',tripHistory)
+  constructor(userInfo, tripHistory, destinationsData) {
+    // console.log(destinationsData)//object
     super(userInfo);
-    this.id = userInfo.id;
-    this.name = userInfo.name;
+    // this.id = userInfo.id;
+    // this.name = userInfo.name;
     this.travelerType = userInfo.travelerType;
     this.today = moment().format('YYYY-MM-DD');
     this.travelHistory = tripHistory.userTripHistory || [];
-    this.tripsHistory = []; //past trips
+    this.destinationsData = destinationsData;
+    this.tripsHistory = this. getPastTrips(); //past trips
     this.currentTrip  = this.getCurrentTrip() || []; // || [] probably it will be just an object
     this.upcomingTrips = this.getFutureTrips() || [];
-    this.pendingTrips = this. getPastTrips() || [];
-    this.tripsThisYear = getTripByYears() //for 2020
+    // this.pendingTrips =  [];// i might not need this since the method is dynamic enough to get pending and aporved trips
+    this.tripsThisYear = this.getTripByYears() || []; //for 2020
     this.spentOverYear = 0;
-    // console.log(this.travelHistory)
   }
    //what format makes more sense? //myabe having and array of 
    /*data : { "2020/10/04":{data},  "2020/10/04":{data},  "2020/10/04":{data}, date:{data}}*/
@@ -25,7 +27,7 @@ class Traveler extends User {
       newData[entry.date] = entry
       return newData
     }, {})
-    // console.log(data)
+
     return data
   }
   //get currentTrip
@@ -43,11 +45,10 @@ class Traveler extends User {
     }
     return theTrip
    },[])
-    console.log(currentTrip)
     return currentTrip
   }
 
-   //get furtureTrips
+   //get futureTrips
    getFutureTrips() {
      const trips = this.travelHistory.reduce((tripsList, trip) => {
       //  let startDate = moment(trip.date, 'YYYY-MM-DD').format('YYYY-MM-DD');
@@ -56,7 +57,7 @@ class Traveler extends User {
        }
        return tripsList
       },[])
-      //  console.log(trips)
+
        return trips
      }
    
@@ -68,7 +69,6 @@ class Traveler extends User {
       }
       return tripsList
      },[])
-      // console.log(trips)
       return trips
   }
 
@@ -77,7 +77,6 @@ class Traveler extends User {
     const trips = this.travelHistory.filter(trip => {
       return trip.status === status
     })
-    // console.log(trips)
     return trips
   }
 
@@ -85,17 +84,23 @@ class Traveler extends User {
   getTripByYears() {
     const currentYear = moment().year();
     const currentTrips = this.travelHistory.filter(trip => {
-      return trip.date.split('/')[0] === currentYear.toString()
+      return trip.date.split('/')[0] === currentYear.toString();
     }) 
-    // console.log(currentTrips)
+    // console.log(this.currentTrip)
     return currentTrips
   }
   //Total amount I have spent on trips this year
   //claculate how much as a travler I have spent over the year
   //This should be calculated from the trips data and include a travel agent’s 10% fee
   spentOverTheYear() {
-    
-  }
+    const destinationsClass = new DestinationsRepo(this.destinationsData);
+    const totalSpentOnCurrentYear = this.tripsThisYear.reduce((total, trip) => {
+      total += destinationsClass.getDestinationCost(trip.destinationID, trip.duration, trip.travelers)
+      return total
+    }, 0);
+    const totalPlusFee = (10/ 100) * totalSpentOnCurrentYear + totalSpentOnCurrentYear 
+    return totalPlusFee
+  } 
 }
 
 export default Traveler;

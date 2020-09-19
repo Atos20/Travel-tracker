@@ -7,31 +7,32 @@ class FecthHandler {
   //https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/travelers/travelers
   //GET
    //require properties => none
-  getAllTravelersData() {
+  static getAllTravelersData() {
     const requestOptions = {
       method: 'GET',
       redirect: 'follow'
     };
     
-    fetch(`${this.URL}travelers/travelers`, requestOptions)
-      .then(response => response.text())
-      .then(result => console.log(result))
+    const promise = fetch(`https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/travelers/travelers`, requestOptions)
+      .then(response => response.json())
+      // .then(result => console.log(result))
       .catch(error => console.log('error', error));
+    return promise;
   }
 
   //Get single traveler
   //https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/travelers/travelers/<id> where<id> will be a number of a traveler’s id
   //GET
   //require properties => none
-  getSingleTravelerData(id){
-
+  static getSingleTravelerData(id){
+  
   }
 
   //Get all trips
   //https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/trips/trips
   //GET
    //require properties => none
-  getAllTripsData() {
+   static getAllTripsData() {
 
   }
 
@@ -39,7 +40,7 @@ class FecthHandler {
   //https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/destinations/destinations
   //GET
   //require properties => none
-  getAllDestinationsData() {
+  static getAllDestinationsData() {
 
   }
 
@@ -62,7 +63,7 @@ class FecthHandler {
     newResource: <Object with trip info just posted>
    }
   */
-   addNewTrip(){
+  static addNewTrip(){
 
    }
 

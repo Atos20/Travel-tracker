@@ -48,8 +48,12 @@ class FecthHandler {
   //https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/travelers/travelers/<id> where<id> will be a number of a traveler’s id
   //GET
   //require properties => none
-  static getSingleTravelerData(id){
-   
+  static getSingleTravelerData(userId){
+    const promise = fetch(`https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/travelers/travelers/${userId}`, this.requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+    return promise
   }
   
   //Add new trip

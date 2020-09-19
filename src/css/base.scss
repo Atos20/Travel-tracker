@@ -1,7 +1,164 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-;
+@import 'menu-bar';
+@import 'nav-bar';
+
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #133b5c;
+  height: 100vh;
+}
 
 body {
-  background: $primary-background;
+
+  .salutation{
+    
+    .welcome{
+      background-color:  #fcdab7;
+      height: 10vh;
+      margin: 0;
+      padding: 5% 0% 0% 5%;
+    }
+  }
+  .main-destination-container{
+    display: grid;
+    grid-template-columns: 1fr, 1fr, 1fr;
+    grid-template-rows: 1fr, 1fr, 1fr;
+    filter: brightness(80%);
+
+    .main-info-container{
+      
+      background-image: url("https://images.unsplash.com/photo-1502301197179-65228ab57f78?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
+      background-repeat: repeat-y;
+      background-repeat: no-repeat;
+      background-position: center;
+      display: flex;
+      align-items: flex-end;
+      flex-direction: row;
+      justify-content: center;
+      clip-path: polygon(50% 0, 100% 57%, 100% 100%, 0 100%, 0 0);
+      height: 100vh;
+      width: 100%;
+      z-index: -1;
+
+      .box{
+        text-align: center;
+        margin: 2%;
+
+        .title{
+          color:#382933;
+        }
+
+        .constumer-info{
+          color:#519872;
+        }
+      }
+      
+
+      .name{
+      
+      }
+      .trip-name{
+        
+      }
+      
+    }
+}
+
+  .all-images-container{
+    // filter: brightness(80%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(118, 169, 199);
+    height: 80vh;
+    width: 100%;
+    scroll-behavior: auto;
+    overflow: auto;
+    // overflow: hidden;
+    
+    .travel-card{
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr, 1fr;
+      background-color: transparent;
+      text-align: center;
+      width: 100%;
+
+    .info{
+      color: #a79978;
+      font-family: 'Montserrat', sans-serif;;
+      font-size: 1.4em;
+      text-shadow: 0 0 3px black;
+    }
+    
+      .dest-img {
+        
+        grid-area: 1/1/1/1;
+        width: 100%;
+        height: 325px;
+    }
+
+    .dest-img:hover{
+      // opacity: 0.8;
+
+    }
+
+    .single-card-container{
+      grid-area: 1/1/1/1;
+      display: grid;
+      grid-template-columns: 25%, 25%, 25%, 25%;
+      grid-template-rows: 25%, 25%, 25%, 25%;
+
+      .destination-name{
+        grid-area: 1/1/3/3;
+      }
+    }
+      
+  }
+}
+
+  .contact-information{
+    background-color: #fcdab7;
+    height: 30vh;
+    text-align: center;
+    margin: 0%;
+    font-family: montserrat;
+    width: 100%;
+
+    h3{
+      margin: 0% 0% 0% 0%;
+    }
+
+    h4{
+      font-size: 0.5em;
+    }
+    .media{
+      margin: 3% 0% 3% 0%;
+      .fab{
+        font-size: 1.4em;;
+        margin: 2%;
+        color: #133b5c;
+      }
+    }
+  }
+}
+
+// .top{
+//   display: flex;
+//   flex-direction: row;
+//   background-color: #133b5c;
+//   height: 10vh;
+// }
+
+.hidden{
+  display: none;
+}
+
+@media only screen and (max-width: 500px){
+  body{
+  width: 500px
+  }
 }

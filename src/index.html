@@ -1,13 +1,161 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;1,500;1,600;1,700&family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,500;1,600&family=Poppins:ital,wght@0,100;0,300;0,400;1,500;1,600;1,700&family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <title>Webpack Starter Kit</title>
   </head>
+  <!--  -->
+  <header class="top-menu">
+    <label for='' class='hidden'>Main menu button</label>
+    <div class="hamburger">
+      <span class="hamburger-line line-1"></span>
+      <span class="hamburger-line line-2"></span>
+      <span class="hamburger-line line-3"></span>
+    </div>
+    <label for='home-label' class='hidden'>Sign or<br> Log in button</label>
+    <button id='home-button' class='home navButton'></i><strong>Log-in</strong></button>
+    <label for='recipes-to-cook-label' class='hidden'>Home</label>
+    <button id='home' class=''><i class="fas fa-home"></i> Home</button>
+    <label for='world' class='hidden'>world icon</label>
+    <button id='world-globe' class=''><i class="fas fa-globe-americas"></i></i>hello!</button>
+  </header>
+<!--  -->
+    <nav class="nav-bar">
+      <div class="nav-buttons">
+        <label for='view-favorites-button' class='hidden'>View favorites</label>
+        <button id='view-favorites-button' class=' view-favorites navButton'><i class="fas fa-heart"></i> Favorites </button>
+        <label for='recipes-to-cook-label' class='hidden'>My-Cart </label>
+        <button id='recipes-to-cook-button' class=''><i class="fas fa-luggage-cart"></i> MyCart </button>
+      </div>
+    </nav>
+<!--  -->
   <body>
-    <h1>Webpack Starter Kit</h1>
+    <section class="salutation">
+      <h1 class="welcome">Hi Orlando!</h1>
+    </section>
+    <!--  -->
+    <main>
 
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
+      <section class="main-destination-container">
+        <!--  -->
+        <div class="main-info-container">
+          <div class="inner-box1 box">
+            <h1 class="title trip-name">Destination</h1>
+            <h2 class="constumer-info trip-name">Lima, Peru</h2>
+          </div>
+          <div class="inner-box2 box">
+            <h1 class="title  title-per-Day"> Cost per Day</h1>
+            <h2 class="constumer-info amount-per-Day">  $70.00</h2>
+          </div>
+          <div class="inner-box3 box">
+            <h1 class="title title-cost-per-Person"> Flight person</h1>
+            <h2 class="constumer-info amount-per-Person"> $400.00</h2>
+        </div>
+      </section>
+        <!--  -->
+      <section class="all-images-container">
+        <!--  -->
+        <h1 class="destinations-title">Destinations</h1>
 
-    <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
+        <div class= "travel-card">
+          <img class="dest-img"src=" https://images.unsplash.com/photo-1489171084589-9b5031ebcf9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80" alt="overview of city buildings with a clear sky">
+          <div class="single-card-container">
+
+            <div class="destination-name">
+              <h1 class="info destination-name">"Stockholm, Sweden"</h1>
+            </div>
+
+            <div class="cost-per-day">
+              <h2 class="info title-per-Day"> Cost per Day</h2>
+              <h2 class="info amount-per-Day">  $70.00</h2>
+            </div>
+            
+            <div class="flight-per-person">
+              <h2 class="info title-cost-per-Person"> Flight person</h2>
+              <h2 class="info amount-per-Person"> $400.00</h2>
+            </div>
+
+        </div>
+        <!--  -->
+        <div class= "travel-card">
+          <img class="dest-img"src="https://images.unsplash.com/photo-1560089168-6516081f5bf1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="overview of city buildings with a clear sky">
+          <div class="single-card-container">
+
+            <div class="destination-name">
+              <h1 class="info destination-name">"Stockholm, Sweden"</h1>
+            </div>
+
+            <div class="cost-per-day">
+              <h2 class="info title-per-Day"> Cost per Day</h2>
+              <h2 class="info amount-per-Day">  $70.00</h2>
+            </div>
+            
+            <div class="flight-per-person">
+              <h2 class="info title-cost-per-Person"> Flight person</h2>
+              <h2 class="info amount-per-Person"> $400.00</h2>
+            </div>
+
+        </div>
+
+        <div class= "travel-card">
+          <img class="dest-img"src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="overview of city buildings with a clear sky">
+          <div class="single-card-container">
+
+            <div class="destination-name">
+              <h1 class="info destination-name">"Stockholm, Sweden"</h1>
+            </div>
+
+            <div class="cost-per-day">
+              <h2 class="info title-per-Day"> Cost per Day</h2>
+              <h2 class="info amount-per-Day">  $70.00</h2>
+            </div>
+            
+            <div class="flight-per-person">
+              <h2 class="info title-cost-per-Person"> Flight person</h2>
+              <h2 class="info amount-per-Person"> $400.00</h2>
+            </div>
+
+        </div>
+
+        <div class= "travel-card">
+          <img class="dest-img"src="https://images.unsplash.com/photo-1558029697-a7ed1a4b94c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="overview of city buildings with a clear sky">
+          <div class="single-card-container">
+
+            <div class="destination-name">
+              <h1 class="info destination-name">"Stockholm, Sweden"</h1>
+            </div>
+
+            <div class="cost-per-day">
+              <h2 class="info title-per-Day"> Cost per Day</h2>
+              <h2 class="info amount-per-Day">  $70.00</h2>
+            </div>
+            
+            <div class="flight-per-person">
+              <h2 class="info title-cost-per-Person"> Flight person</h2>
+              <h2 class="info amount-per-Person"> $400.00</h2>
+            </div>
+
+        </div>
+
+      </section>
+    </main>
+    <!--  -->
   </body>
+  <footer class="contact-information">
+    <h3>STAY CONNECTED</h3>
+    <div class="media">
+      <i class="fab fa-instagram-square"></i>
+      <i class="fab fa-facebook"></i>
+      <i class="fab fa-google-plus-g"></i>
+      <i class="fab fa-twitter"></i>
+    </div>
+    <h4>SIGN-UP FOR NEWS, EVENTS, AND OFFERS</h4>
+    <h4 class="copy-right">© 2020 | Travaler-tracker- ALL RIGHTS RESERVED</h4>
+  </footer>
+  <script src="https://kit.fontawesome.com/6aa953ce7f.js" crossorigin="anonymous"></script>
 </html>
+

@@ -1,0 +1,36 @@
+
+@import 'menu-bar';
+
+@mixin buttonStyle {
+    background-color: transparent;
+    display: inline-block;
+    padding: 0.3em  1.2em 0.3em 1.2em;
+    margin : 0 2em 0em 3em;
+    border: 0.16em solid rgba(184, 14, 14, 0);
+    text-decoration :none;
+    font-family: monospace;
+    font-weight: 400;
+    font-size: 1.5em;
+    color: #fcdab7;
+    text-align: center;
+  }
+
+.nav-bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    justify-content: center;
+    background-color: #133b5c;
+    height: 13vh;
+
+      .nav-buttons{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+
+          button{
+              @include buttonStyle;
+          }
+
+      }
+  }

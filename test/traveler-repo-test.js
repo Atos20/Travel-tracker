@@ -5,7 +5,7 @@ const expect = chai.expect;
 import Traveler from '../src/traveler.js';
 import testData from '../test-data/sample-data.js'
 import TripsRepo from '../src/tripsRepo.js';
-import TravelerRepo from '../src/travelerRepo.js';
+import TravelersRepo from '../src/travelerRepo.js';
 
 let tripsData, tripRepo, traveler, travelerData, tripsDataSample, travelerRepo;
 //intantiate the destinations repo that contains all the information about destinations, inside

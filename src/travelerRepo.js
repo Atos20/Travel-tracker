@@ -1,7 +1,7 @@
-class TravelerRepo {
+class TravelersRepo {
     constructor(tripHistory) {
       this.userTripHistory = tripHistory;
     }
   }
   
-  export default TravelerRepo;
+  export default TravelersRepo;

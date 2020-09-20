@@ -6,6 +6,7 @@ import './css/base.scss';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
+import animations from './animations.js';
 
 import Agent from '../src/agent.js';
 import Traveler from '../src/traveler.js';
@@ -17,6 +18,7 @@ import DomUpdates from '../src/DomUpdates.js';
 
 let tripsRepo, destinationsRepo, travelersRepo, traveler, agent;
 
+const mainMenu = document.querySelector('.hamburger');
 
 const onStart = () => {
   let userId = (Math.floor(Math.random() * 49) + 1)
@@ -35,7 +37,7 @@ const onStart = () => {
   })
 }
 
-
+mainMenu.addEventListener('click', animations.animateBurgerMenu);
 
 
 window.onload = onStart()

@@ -1,0 +1,69 @@
+$gradient: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+$light: #fff;
+$dark: #95a5a6;
+
+@mixin transform($translate, $rotate) {
+  transform: translateY($translate) rotateZ($rotate);
+}
+.top-menu{
+  background-color: #132743;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .log-in{
+    margin-right: 3%;
+  }
+  
+  .hamburger {
+      text-decoration: none;
+      border: none;
+      height: 8vh;
+      width: 5vw;
+      background-color: transparent;
+      margin: 2%;
+
+      &:hover {
+        cursor: pointer;
+        
+        .hamburger-line {
+          background-color: $dark;
+        }
+      }  
+    }
+
+    button{
+        // @include buttonStyle;
+        color: #f8bd7f;
+        background-color: transparent;
+        font-size: 1.4em;
+        margin: 0%;
+        padding: 1em 0em 1em 0em;
+        // margin : 0 2em 0em 0em;
+        border: 0.16em solid rgba(184, 14, 14, 0);
+        text-decoration :none;
+
+    }
+    
+    .hide {
+      opacity: 0; 
+    }
+    
+    .hamburger-line {
+      display: block;
+      height: 3px;
+      width: 35px;
+      background-color: #f8bd7f;
+      border-radius: 5px;
+      margin: 11.5px auto;
+      transition: all ease 300ms;
+    }
+    
+    .rotate1 {
+      @include transform(15px, 45deg);
+    }
+    
+    .rotate2 {
+      @include transform(-15px, -45deg);
+    }
+}

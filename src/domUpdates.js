@@ -1,6 +1,15 @@
 import moment from 'moment';
 
 const domUpdates = {
+  displayNewTripFeedBack(){
+    const newTripForm = document.querySelector('.new-trip-form');
+    const message = 'hola'
+    // newTripForm.innerHTML = '';
+    newTripForm.innerHTML = `
+    <h3 class="feedback">${message}</h3>
+    `;
+    
+  },
 
   toggleNewTripForm(){
     const newTripForm = document.querySelector('.form');

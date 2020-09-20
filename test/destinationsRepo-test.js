@@ -20,8 +20,8 @@ describe('DestinationsRepo', () => {
     expect(newDestinationsRepo).to.be.an.instanceOf(DestinationsRepo);
   });
 
-  it.skip('Should be able to get destinations by', () => {
-    const destination = newDestinationsRepo.getDestinationById(1)
+  it.only('Should be able to get destinations by id or name', () => {
+    const destination = newDestinationsRepo.getDestinationBy('id', 1)
     expect(destination).to.eql(
       {
         "id": 1,

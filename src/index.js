@@ -13,24 +13,29 @@ import FecthHandler from '../src/fetchHandler.js'
 import domUpdates from '../src/DomUpdates.js';
 import Trip from './trip';
 
-let api, tripsRepo, destinationsRepo, travelersRepo, traveler, agent, newTrip;
+let api, tripsRepo, destinationsRepo, travelersRepo, traveler, agent;
 
 const mainMenu = document.querySelector('.hamburger');
 const newTripButton = document.querySelector('#world-globe');
 const submitNewTripButton  = document.querySelector('.submit');
 
+// const returnCostPlusFees = (tripRequested) => {
+//   const trip = destinationsRepo.getDestinationBy('id', tripRequested.destinationID);
+//   const estimated = destinationsRepo.getDestinationCost(trip.id, tripRequested.travelers, tripRequested.duration)
+//   // console.log(estimated)
+// }
 
-const resolveTripRequest = (desiredTrip) => {
-  const tripRequested = api.addNewTrip(desiredTrip)
-  tripRequested.then(response => response)
+const resolveTripRequest = (tripRequested) => {
+  const trip = destinationsRepo.getDestinationBy('id', tripRequested.destinationID);
+  const estimated = destinationsRepo.getDestinationCost(trip.id, tripRequested.travelers, tripRequested.duration)
+  api.addNewTrip(tripRequested)
+  .then(response => response)
   .then(data => data)
-  // .then(message => console.log(message))
-  .then(message => domUpdates.displayNewTripFeedBack(message))
+  .then(message => domUpdates.displayNewTripFeedBack(message, estimated))
 }
 
 const submitNewTrip = (event) => {
   event.preventDefault();
-  // const pickedDestination = document.querySelector('.destination-chosen');
   const amountOfPeople = document.querySelector('.input1');
   const tripDate = document.querySelector('.input2');
   const triplLength = document.querySelector('.input3');
@@ -41,8 +46,9 @@ const submitNewTrip = (event) => {
   const duration = +triplLength.value;
   const destinationInfo = destinationsRepo.getDestinationBy('destination', tripName);
   const destinationID = destinationInfo.id;
-  const desiredTrip = new Trip({userID, destinationID, travelers, date , duration});
-  resolveTripRequest(desiredTrip)
+  const tripRequested = new Trip({userID, destinationID, travelers, date , duration});
+  resolveTripRequest(tripRequested)
+  // returnCostPlusFees(tripRequested)
 }
 
 const onStart = () => {

@@ -13,36 +13,45 @@ import FecthHandler from '../src/fetchHandler.js'
 import domUpdates from '../src/DomUpdates.js';
 import Trip from './trip';
 
-let tripsRepo, destinationsRepo, travelersRepo, traveler, agent, newTrip;
+let api, tripsRepo, destinationsRepo, travelersRepo, traveler, agent, newTrip;
 
 const mainMenu = document.querySelector('.hamburger');
 const newTripButton = document.querySelector('#world-globe');
 const submitNewTripButton  = document.querySelector('.submit');
 
+
+const resolveTripRequest = (desiredTrip) => {
+  const tripRequested = api.addNewTrip(desiredTrip)
+  tripRequested.then(response => response)
+  .then(data => data)
+  // .then(message => console.log(message))
+  .then(message => domUpdates.displayNewTripFeedBack(message))
+}
+
 const submitNewTrip = (event) => {
-  const pickedDestination = document.querySelector('.destination-chosen');
-  const amountOfPeople = document.querySelector('.input1');
-  const date = document.querySelector('.input2');
-  const duration = document.querySelector('.input3');
   event.preventDefault();
+  // const pickedDestination = document.querySelector('.destination-chosen');
+  const amountOfPeople = document.querySelector('.input1');
+  const tripDate = document.querySelector('.input2');
+  const triplLength = document.querySelector('.input3');
   const userID = traveler.id;
-  const tripName = pickedDestination.value;
-  const travelers = amountOfPeople.value;
-  const tripDate = moment(date.value).format('YYYY/MM/DD');
-  const tripDuration = duration.value;
+  const tripName = document.querySelector('.destination-chosen').value;
+  const travelers = +amountOfPeople.value;
+  const date = moment(tripDate.value).format('YYYY/MM/DD');
+  const duration = +triplLength.value;
   const destinationInfo = destinationsRepo.getDestinationBy('destination', tripName);
   const destinationID = destinationInfo.id;
-  const desiredTrip = new Trip({userID, destinationID, travelers, tripDate , tripDuration});
-  //call for the function that will remove the form and display a message
-  //invoke the function that will POST the fetch request
+  const desiredTrip = new Trip({userID, destinationID, travelers, date , duration});
+  resolveTripRequest(desiredTrip)
 }
 
 const onStart = () => {
+  api = new FecthHandler()
   let userId = (Math.floor(Math.random() * 49) + 1)
-  const allTripsData = FecthHandler.getAllTripsData();
-  const allDestinationsData = FecthHandler.getAllDestinationsData();
-  const allTravelersData = FecthHandler.getAllTravelersData();
-  const travelerData = FecthHandler.getSingleTravelerData(userId);
+  const allTripsData = api.getAllTripsData();
+  const allDestinationsData = api.getAllDestinationsData();
+  const allTravelersData = api.getAllTravelersData();
+  const travelerData = api.getSingleTravelerData(userId);
 
   Promise.all([allTripsData, allDestinationsData, allTravelersData, travelerData])
   .then(values => {

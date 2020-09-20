@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <title>Webpack Starter Kit</title>
   </head>
-  <!--  -->
+
   <header class="top-menu">
     <label for='' class='hidden'>Main menu button</label>
     <div class="hamburger">
@@ -39,17 +39,18 @@
       <h2 class="total-spent"></h2>
     </section>
 
-    <form class="form ">
+    <form class="form">
       <div class="new-trip-form">
         <!-- <img clas="from-img" src="https://images.unsplash.com/photo-1491331568367-82b3c8018969?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="" class="form-img"> -->
         <h3 class="start">Where do you want to go?</h3>
         <!-- <input class="destination-chosen" type="text"> -->
          <label class="hidden "for="All-Destinations">Select a Destination:</label>
         <select class="destination-chosen" name="Destination" id="destination">
+          <option value="none">~choose destination~</option>
           <option value="Lima, Peru">Lima, Peru</option>
           <option value="Stockhom, Sweden">Stockhom, Sweden</option>
           <option value="Sydney, Australia">Sydney, Australia</option>
-          <option value="Cartenega, Colombia">Cartenega, Colombia</option>
+          <option value="Cartagena, Colombia">Cartagena, Colombia</option>
           <option value="Madrid, Spain">Madrid, Spain</option>
           <option value="Jakarta, Indonesia">Jakarta, Indonesia</option>
           <option value="Paris, France">Paris, France</option>
@@ -64,10 +65,10 @@
           <option value="Bangkok, Thailand">Bangkok, Thailand</option>
           <option value="Jaipur, India">Jaipur, India</option>
           <option value="Cartenega, Colombi">Cartenega, Colombia</option>
-          <option value="CCape Town, South Africa">Cape Town, South Africa</option>
+          <option value="Cape Town, South Africa">Cape Town, South Africa</option>
           <option value="Quito, Ecuador">Quito, Ecuador</option>
           <option value="Miami, Florida">Miami, Florida</option>
-          <option value=">Tulum, Mexico">Tulum, Mexico</option>
+          <option value="Tulum, Mexico">Tulum, Mexico</option>
           <option value="Rome, Italy">Rome, Italy</option>
           <option value="Copenhagen, Denmark">Copenhagen, Denmark</option>
           <option value="Vilnius, Lithuania">Vilnius, Lithuania</option>
@@ -103,6 +104,7 @@
         <label class="hidden" for="quantity">Quantity (between 1 and 25):</label>
         <input class="input input1" type="number" id="quantity" name="quantity" min="1" max="25">
         
+        <h3 class="initial-date">Date</h3>
         <input class="input input2" type="date">
         <h3 class="durations">How many days do you want to travel for?</h3>
         <label class="hidden" for="quantity">Amount of days:</label>

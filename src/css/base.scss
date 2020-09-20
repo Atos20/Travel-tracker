@@ -20,7 +20,7 @@ body {
     justify-content: space-between;
     width: 100%;
     // margin: 5%;
-    .welcome{
+    .welcome, .total-spent{
       font-family: 'Poppins', sans-serif;
       font-size: 2em;
       height: 15vh;
@@ -172,8 +172,6 @@ body {
   }
 }
 
-
-
 @media only screen and (min-width: 650px){
 
   // body{
@@ -186,7 +184,7 @@ body {
       height: 100vh;
     }
 
-    .welcome{
+    .welcome, .total-spent{
       height: 15vh;
     }
     
@@ -253,7 +251,7 @@ body {
     }
 
     .salutation{
-      .welcome{
+      .welcome, .total-spent{
         height: 14vh;
       }
     }
@@ -269,8 +267,8 @@ body {
       }
     }
   } 
-}
 
+}
 
   @media only screen and (max-width: 500px){
     body{

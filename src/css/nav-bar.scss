@@ -32,5 +32,8 @@
               @include buttonStyle;
           }
 
+          button:hover{
+            background-color: darkgoldenrod;
+          }
       }
   }

@@ -14,13 +14,7 @@ import TripsRepo from '../src/tripsRepo.js';
 import TravelerRepo from '../src/travelerRepo.js';
 import DestinationsRepo from '../src/destinationsRepo.js';
 
-console.log('This is the JavaScript entry file - your code begins here.');
-
 const mainMenu = document.querySelector('.hamburger');
-// const lineOne = document.querySelector('.line-1')
-// const lineTwo = document.querySelector('.line-2')
-// const lineThree = document.querySelector('.line-3')
-
 mainMenu.addEventListener('click', animations.animateBurgerMenu);
 
 

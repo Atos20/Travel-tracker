@@ -8,8 +8,6 @@ class TripsRepo {
     return filteredTrips
   }
 
-
-
 }
 
 export default TripsRepo;

@@ -1,5 +1,3 @@
-import moment from 'moment';
-
 const domUpdates = {
 
   displayAllDestinations(destinations){
@@ -55,7 +53,7 @@ const domUpdates = {
 
   toggleNewTripForm(){
     const newTripForm = document.querySelector('.form');
-    newTripForm.classList.remove('hidden');
+    newTripForm.classList.toggle('hidden');
   },
 
   displayMenuOptions() {

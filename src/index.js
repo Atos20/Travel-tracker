@@ -15,6 +15,7 @@ let tripsRepo, destinationsRepo, travelersRepo, traveler, agent;
 
 const mainMenu = document.querySelector('.hamburger');
 const newTripButton = document.querySelector('#world-globe');
+const submitNewTripButton  = document.querySelector('.submit');
 
 const onStart = () => {
   let userId = (Math.floor(Math.random() * 49) + 1)
@@ -34,8 +35,9 @@ const onStart = () => {
   })
 }
 
+submitNewTripButton.addEventListener('click', domUpdates.submitNewTrip)
+newTripButton.addEventListener('click', domUpdates.toggleNewTripForm);
 mainMenu.addEventListener('click', animations.animateBurgerMenu);
 mainMenu.addEventListener('click', domUpdates.displayMenuOptions);
-newTripButton.addEventListener('click', domUpdates.toggleNewTripForm);
 
 window.onload = onStart()

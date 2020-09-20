@@ -10,8 +10,6 @@ class DestinationsRepo {
       return destination
     }
 
-    
-
     // get destination cost by id, days and people count
     getDestinationCost(tripId, amountDays, amountPeople){
       const trip = new Array(this.getDestinationBy('id', tripId));

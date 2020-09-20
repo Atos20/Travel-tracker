@@ -1,14 +1,14 @@
 //should be able to create trips
 class Trip {
   constructor(tripObj) {
-    this.tripId = Date.now();
     this.userID = tripObj.userID;
     this.destinationID = tripObj.destinationID;
     this.travelers = tripObj.travelers || 1;
-    this.tripDate = tripObj.tripDate ;
-    this.tripDuration = tripObj.tripDuration; 
-    this.status = tripObj.status || 'pending';
-    this.suggestedActivities = tripObj.suggestedActivities || [];
+    this.duration = tripObj.duration; 
+    this.date = tripObj.date;
+    this.status = 'pending';
+    this.suggestedActivities = [];
+    this.id = Date.now();
   }
 
   suggestActivities(activity) {
@@ -17,3 +17,14 @@ class Trip {
 }
   
   export default Trip; 
+
+  /*
+{id: <number>, 
+userID: <number>, 
+destinationID: <number>, 
+travelers: <number>, 
+date: <string 'YYYY/MM/DD'>, 
+duration: <number>, 
+status: <string 'approved' or 'pending'>, 
+suggestedActivities: <array of strings>}
+</array>*/

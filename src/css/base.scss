@@ -13,13 +13,19 @@ html {
 body {
 
   .salutation{
+    background-color:  #fcdab7;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    // margin: 5%;
     .welcome{
       font-family: 'Poppins', sans-serif;
       font-size: 2em;
-      background-color:  #fcdab7;
-      height: 10vh;
+      // background-color:  #fcdab7;
+      height: 15vh;
       margin: 0;
-      padding: 5% 0% 0% 5%;
+      padding: 2% 3% 2% 3%;
     }
   }
 
@@ -181,7 +187,7 @@ body {
     }
 
     .welcome{
-      height: 11vh;
+      height: 15vh;
     }
     
     .contact-information{
@@ -248,8 +254,7 @@ body {
 
     .salutation{
       .welcome{
-        height: 17vh;
-        padding: 3% 0% 0% 3%;
+        height: 14vh;
       }
     }
   } 

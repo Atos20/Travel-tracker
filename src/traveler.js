@@ -92,7 +92,7 @@ class Traveler extends User {
 
   spentOverTheYear() {
     const destinationsClass = new DestinationsRepo(this.destinationsData);
-    console.log(destinationsClass)
+    // console.log(destinationsClass)
     const totalSpentOnCurrentYear = this.tripsThisYear.reduce((total, trip) => {
       total += destinationsClass.getDestinationCost(trip.destinationID, trip.duration, trip.travelers)
       return total

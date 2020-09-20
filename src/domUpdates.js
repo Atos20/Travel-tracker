@@ -5,8 +5,6 @@ const domUpdates = {
   toggleNewTripForm(){
     const newTripForm = document.querySelector('.form');
     newTripForm.classList.remove('hidden');
-    console.log('form')
-
   },
 
   displayMenuOptions() {

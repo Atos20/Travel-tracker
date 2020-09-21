@@ -1,6 +1,8 @@
 import DestinationsRepo from '../src/destinationsRepo.js';
 
 const domUpdates = {
+
+
   displayBurgerMenu(burger){
     burger.innerHTML =`
       <span class="hamburger-line line-1"></span>
@@ -86,7 +88,6 @@ const domUpdates = {
   },
 
   displayNewTripFeedBack(value, estimate){
-    console.log(estimate)
     const newTripForm = document.querySelector('.new-trip-form');
     const feedback = value.message
     const id = feedback .split(' ')[3];
@@ -101,6 +102,15 @@ const domUpdates = {
       <h3 class="feedback2">pending...</h3>
     `;
     
+  },
+
+  toggleAllTripsSection(){
+    const statusSection = document.querySelector('.trip-status');
+    const tripsButtons = document.querySelector('.trip-buttons');
+    const allTripsContainer = document.querySelector('.trips-of-trips');
+    statusSection.classList.toggle('hidden')
+    tripsButtons.classList.toggle('hidden')
+    allTripsContainer.innerHTML = '';
   },
 
   toggleNewTripForm(){

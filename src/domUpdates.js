@@ -1,32 +1,18 @@
 import DestinationsRepo from '../src/destinationsRepo.js';
 
 const domUpdates = {
+  
 
   displayTravelesHistory(tripsList, tripHistory, status){
     const repo = new DestinationsRepo({destinations : tripsList})
     const mergedData = tripHistory.map(trip => {
       const cost = repo.getDestinationCost(trip.destinationID, trip.duration, trip.travelers)
-      const data = {
-        destinationName: '',
-        date : trip.date, 
-        travelerCount: trip.travelers, 
-        duration: trip.duration, 
-        destinationID: trip. destinationID, 
-        status : trip.status, 
-        amount: cost 
-      }
-      tripsList.forEach(entry => {
-        if(data.destinationID === entry.id){
-          data.destinationName = entry.destination;
-        }
-      })
+      const data = {destinationName: '',date : trip.date, travelerCount: trip.travelers, duration: trip.duration, destinationID: trip. destinationID, status : trip.status, amount: cost }
+      tripsList.forEach(entry =>  data.destinationID === entry.id ? data.destinationName = entry.destination : false);
       return data
     })
-    
-    console.log(mergedData)
     const tripStatus = document.querySelector('.trip-status')
     const allTripsByUser = document.querySelector('.trips-of-trips')
-    // allTripsByUser.classList.toggle('hidden')
     if(tripsList.length === 0){
       tripStatus.innerText = status
       allTripsByUser.innerHTML = `
@@ -64,25 +50,19 @@ const domUpdates = {
       allDestinationsContainer.innerHTML +=`
       <div class= "travel-card">
         <img class="dest-img"src=" ${destination.image}" alt="${destination.alt}">
-
         <div class="single-card-container">
-
           <div class="destination-name">
             <h1 class="destination-title">${destination.destination}</h1>
           </div>
-
           <div class="cost-per-day">
             <h2 class="info title-per-Day"> Cost per Day</h2>
             <h2 class="info amount-per-Day">${destination.estimatedLodgingCostPerDay}</h2>
           </div>
-          
           <div class="flight-per-person">
             <h2 class="info title-cost-per-Person"> Flight person</h2>
             <h2 class="info amount-per-Person">${destination.estimatedFlightCostPerPerson}</h2>
           </div>
-
         </div>
-
       </div>
       `
     })

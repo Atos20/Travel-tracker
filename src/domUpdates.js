@@ -1,7 +1,24 @@
 import DestinationsRepo from '../src/destinationsRepo.js';
 
 const domUpdates = {
-  
+  displayBurgerMenu(burger){
+    burger.innerHTML =`
+      <span class="hamburger-line line-1"></span>
+      <span class="hamburger-line line-2"></span>
+      <span class="hamburger-line line-3"></span>
+    `
+  },
+
+  displaySalutation() {
+    const welcome = document.querySelector('.salutation')
+    welcome.innerHTML = `
+    <section class="salutation">
+      <h1 class="welcome"></h1>
+      <h2 class="total-spent"></h2>
+    </section>
+
+    `
+  },
 
   displayTravelesHistory(tripsList, tripHistory, status){
     const repo = new DestinationsRepo({destinations : tripsList})

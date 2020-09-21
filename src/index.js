@@ -91,9 +91,13 @@ const veryfyCredentails = () => {
   const password = document.querySelector('.password')
   const entry = userName.value
   const userId = entry[entry.length-2] + entry[entry.length-1]
-  if(password.value === 'travel2020' && password.value.length === 10 && userName.value.includes('traveler')){
+  if(password.value === 'travel2020' && password.value.length === 10 && userName.value.includes('traveler') && userId > 0 && userId <= 50){
     onStart(userId);
-    
+    domUpdates.displaySalutation()
+    domUpdates.displayBurgerMenu(mainMenu)
+
+    //display burger menu
+    //inject travel history
   } else {
     //method that shows error
   }

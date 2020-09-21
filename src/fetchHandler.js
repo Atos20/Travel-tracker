@@ -1,10 +1,7 @@
 class FecthHandler {
   constructor() {
     this.root = 'https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/'
-    this.requestOptions = {
-      method: 'GET',
-      redirect: 'follow'
-    }
+    this.requestOptions = { method: 'GET', redirect: 'follow' }
   }
   
   getAllTravelersData() {
@@ -52,26 +49,6 @@ class FecthHandler {
     .catch(error => alert('error', error));
   return promise
   }
-
-  //Add new trip
-  //https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/trips/trips
-  //POST
-  /*
-  //require properties
-  {id: <number>,
-     userID: <number>, 
-     destinationID: <number>, 
-     travelers: <number>, 
-     date: <string 'YYYY/MM/DD'>, 
-     duration: <number>, 
-     status: <string 'approved' or 'pending'>, 
-     suggestedActivities: <array of strings>
-    }
-    //Sample Successful Response👇🏽
-    {message: 'Resource with id <id> successfully posted', 
-    newResource: <Object with trip info just posted>
-   }
-  */
 
   //Add new destination
   //https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/destinations/destinations

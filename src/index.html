@@ -16,9 +16,16 @@
       <span class="hamburger-line line-2"></span>
       <span class="hamburger-line line-3"></span>
     </div>
-    <label for='home-label' class='hidden'>Sign or<br> Log in button</label>
-    <button id='home-button' class='log-in'></i>Log-in</button>
+    <div class="log-in-info">
+      <label for='home-label' class='hidden'>Sign or<br> Log in button</label>
+      <label class="hidden" for="user-name">Input field for username</label>
+      <input class="user-name" type="text" id="user-name" name="user-user-name" >
+      <label class="hidden" for="user-password">Input field for user password/label></label>
+      <input class="password" type="text" id="user-name" name="user-input-password" >
+      <button id='home-button' class='log-in'></i>Log-in <i class="fas fa-sign-in-alt"></i></button>
+    </div>
   </header>
+
 
   <nav class="nav-bar hidden">
     <div class="nav-buttons">
@@ -106,10 +113,12 @@
         <input class="input input1" type="number" id="quantity" name="quantity" min="1" max="25">
         
         <h3 class="initial-date">Date</h3>
+        <label class="hidden" for="chose date">select date</label>
         <input class="input input2" type="date">
         <h3 class="durations">How many days do you want to travel for?</h3>
         <label class="hidden" for="quantity">Amount of days:</label>
         <input class="input input3" type="number" id="quantity" name="quantity" min="1">
+        <label class="hidden" for="click to submit for">submit button</label>
         <button class="submit" id="submit">Submit</button>
 
 
@@ -142,7 +151,7 @@
         </div>
       </section>
       <section class="all-images-container">
-        <h1 class="destinations-title">Destinations</h1>
+        <h1 class="destinations-title">destinations</h1>
         <div class="card-container"></div>
       </section>
     </main>

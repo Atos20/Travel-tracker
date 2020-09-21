@@ -10,10 +10,6 @@ $dark: #95a5a6;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
-  .log-in{
-    margin-right: 3%;
-  }
   
   .hamburger {
       text-decoration: none;
@@ -32,13 +28,37 @@ $dark: #95a5a6;
       }  
     }
 
+    .log-in-info{
+      display: inline-flex;
+      height: 4vh;
+      align-self: center;
+      margin-right: 2%;
+      width: 55vh;
+      align-content: center;
+      font-size: 1.3em;
+      // padding-left: 1%;
+
+      .user-name, .password{
+        color: #132743;
+        background-color: $dark;
+        border: 0.16em solid rgba(184, 14, 14, 0);
+        margin: 1%;
+        font-size: .8em;
+      }
+
+      .log-in{
+        
+        // width: 50vh;
+      }
+    }
+
     button{
         // @include buttonStyle;
         color: #f8bd7f;
         background-color: transparent;
         font-size: 1.4em;
         margin: 0%;
-        padding: 1em 0em 1em 0em;
+        // padding: 1em 0em 1em 0em;
         // margin : 0 2em 0em 0em;
         border: 0.16em solid rgba(184, 14, 14, 0);
         text-decoration :none;

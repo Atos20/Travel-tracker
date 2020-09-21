@@ -1,21 +1,27 @@
 import chai from 'chai';
-import spies from 'chai-spies';
+// import spies from 'chai-spies';
 import { expect } from 'chai';
-chai.use(spies)
-
+// chai.use(spies)
 import FecthHandler from '../src/fetchHandler.js'
+
 let newFetch, query
 
-describe('fetchHandler', () => {
+describe.only('fetchHandler', () => {
   beforeEach(() => {
 
-    global.fetch = {}
-    chai.spy.on(fetch, '', () => {})
+    global.fetch = () => {
+      return Promise.resolve({
+        json: () => Promise.resolve({ travelers: [ {} ]}),
+      })
+    }
+
+    // chai.spy.on(fetch, '', () => {})
     newFetch = new FecthHandler()
     query = 'https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/'
   });
+
   afterEach(() => {
-    chai.spy.restore(newFetch);
+    // chai.spy.restore(newFetch);
   });
 
   it.skip('Should be a function', () => {
@@ -27,10 +33,10 @@ describe('fetchHandler', () => {
       expect(newFetch.URL).to.equal(query)
   });
 
-  it.skip('Should be able to Get all travelers data', () => {
+  it('Should be able to Get all travelers data', () => {
     newFetch.getAllTravelersData()
     expect(newFetch.getAllTravelersData).to.have.been.called(1);
-    expect(newFetch.getAllTravelersData).to.have.been.called.with();
+    // expect(newFetch.getAllTravelersData).to.have.been.called.with();
   });
   
   it.skip('Should be able to Get a single traveler data', () => {

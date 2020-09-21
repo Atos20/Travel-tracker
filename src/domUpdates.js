@@ -13,7 +13,7 @@ const domUpdates = {
         <div class="single-card-container">
 
           <div class="destination-name">
-            <h1 class="info ${destination.destination}">"Stockholm, Sweden"</h1>
+            <h1 class="destination-title">${destination.destination}</h1>
           </div>
 
           <div class="cost-per-day">

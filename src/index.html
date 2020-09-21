@@ -17,15 +17,14 @@
       <span class="hamburger-line line-3"></span>
     </div>
     <div class="log-in-info">
-      <input class="user-name" type="text" id="account" name="user-user-name" placeholder="user name">
-      <label class="hidden" for="account">Input field for username</label>
+      <input id="account" type="text" class="user-name" name="user-name" placeholder="user name">
+      <label for="account" class= "hidden">Input field for username</label>
       <input class="password" type="text" id="password" name="user-input-password" placeholder="password">
-      <label class="hidden" for="password">Input field for user password/label></label>
+      <label class="hidden" for="password">Input field for user password</label>
       <button id='home-button' class='log-in'></i>Log-in <i class="fas fa-sign-in-alt"></i></button>
-      <label for='home-button' class='hidden'>Sign or<br> Log in button</label>
+      <label for='home-button' class='hidden'>Log in button</label>
     </div>
   </header>
-
 
   <nav class="nav-bar ">
     <!-- hidden -->
@@ -111,17 +110,17 @@
         </select>
         <br><br>
         <h3 class="how-many">How many people are joining you?</h3>
-        <input class="input input1" type="number" id="people-quantity" name="quantity" min="1" max="25">
+        <input class="people-quantity" type="number" id="people-quantity" name="quantity" min="1" max="25">
         <label class="hidden" for="people-quantity">Quantity (between 1 and 25):</label>
         
         <h3 class="initial-date">Date</h3>
-        <input class="input input2" type="date">
-        <label class="hidden" for="input input2">select date</label>
+        <input id="select-date"class="select-date" type="date">
+        <label class="hidden" for="select-date">A user can pick the date for a new trip</label>
         <h3 class="durations">How many days do you want to travel for?</h3>
-        <input class="input input3" type="number" id="day-quantity" name="quantity" min="1">
-        <label class="hidden" for="day-quantity">Amount of days:</label>
+        <input id="day-quantity" class="day-quantity" type="number" name="quantity" min="1">
+        <label class="hidden" for="day-quantity">Amount of days for the new trip</label>
         <button class="submit" id="submit-button">Submit</button>
-        <label class="hidden" for="submit-button">submit button</label>
+        <label class="hidden" for="submit-button">click on the submit button once the form has been filled out</label>
 
 
       </div>

@@ -19,12 +19,6 @@ const mainMenu = document.querySelector('.hamburger');
 const newTripButton = document.querySelector('#world-globe');
 const submitNewTripButton  = document.querySelector('.submit');
 
-// const returnCostPlusFees = (tripRequested) => {
-//   const trip = destinationsRepo.getDestinationBy('id', tripRequested.destinationID);
-//   const estimated = destinationsRepo.getDestinationCost(trip.id, tripRequested.travelers, tripRequested.duration)
-//   // console.log(estimated)
-// }
-
 const resolveTripRequest = (tripRequested) => {
   const trip = destinationsRepo.getDestinationBy('id', tripRequested.destinationID);
   const estimated = destinationsRepo.getDestinationCost(trip.id, tripRequested.travelers, tripRequested.duration)
@@ -48,7 +42,6 @@ const submitNewTrip = (event) => {
   const destinationID = destinationInfo.id;
   const tripRequested = new Trip({userID, destinationID, travelers, date , duration});
   resolveTripRequest(tripRequested)
-  // returnCostPlusFees(tripRequested)
 }
 
 const onStart = () => {
@@ -66,7 +59,7 @@ const onStart = () => {
     travelersRepo = new TravelersRepo(tripsRepo.historyByUserId(values[3].id));
     traveler = new Traveler(values[3], travelersRepo, destinationsRepo.destinationsData);
     domUpdates.greetTraveler(traveler)
-    // domUpdates.displayDestinations(destinationsRepo);
+    domUpdates.displayAllDestinations(destinationsRepo);
   })
 }
 

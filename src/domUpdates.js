@@ -1,10 +1,37 @@
-import moment from 'moment';
-
 const domUpdates = {
-  // displayEstimatedCost(estimate){
-  //   const newTripForm = document.querySelector('.new-trip-form');
-  //   console.log(estimate)
-  // },
+
+  displayAllDestinations(destinations){
+    const allDestinationsContainer = document.querySelector('.card-container');
+    const allDestinations = destinations.destinationsData.destinations;
+    console.log(allDestinations)
+    allDestinationsContainer.innerHTML = ''
+    allDestinations.forEach(destination => {
+      allDestinationsContainer.innerHTML +=`
+      <div class= "travel-card">
+        <img class="dest-img"src=" ${destination.image}" alt="${destination.alt}">
+
+        <div class="single-card-container">
+
+          <div class="destination-name">
+            <h1 class="destination-title">${destination.destination}</h1>
+          </div>
+
+          <div class="cost-per-day">
+            <h2 class="info title-per-Day"> Cost per Day</h2>
+            <h2 class="info amount-per-Day">${destination.estimatedLodgingCostPerDay}</h2>
+          </div>
+          
+          <div class="flight-per-person">
+            <h2 class="info title-cost-per-Person"> Flight person</h2>
+            <h2 class="info amount-per-Person">${destination.estimatedFlightCostPerPerson}</h2>
+          </div>
+
+        </div>
+
+      </div>
+      `
+    })
+  },
 
   displayNewTripFeedBack(value, estimate){
     console.log(estimate)
@@ -26,7 +53,7 @@ const domUpdates = {
 
   toggleNewTripForm(){
     const newTripForm = document.querySelector('.form');
-    newTripForm.classList.remove('hidden');
+    newTripForm.classList.toggle('hidden');
   },
 
   displayMenuOptions() {

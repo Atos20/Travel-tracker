@@ -22,6 +22,7 @@ const domUpdates = {
       })
       return data
     })
+    
     console.log(mergedData)
     const tripStatus = document.querySelector('.trip-status')
     const allTripsByUser = document.querySelector('.trips-of-trips')

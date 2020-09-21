@@ -4,20 +4,26 @@ const domUpdates = {
 
   displayTravelesHistory(tripsList, tripHistory, status){
     const repo = new DestinationsRepo({destinations : tripsList})
-    // console.log('tripList',tripsList)//name 
-    // console.log('tripHistory',tripHistory)//date&travelerCount & id
     const mergedData = tripHistory.map(trip => {
       const cost = repo.getDestinationCost(trip.destinationID, trip.duration, trip.travelers)
-      const data = {date : trip.date, travelerCount: trip.travelers, duration: trip.duration, destinationID: trip. destinationID, status : trip.status, amount: cost }
+      const data = {
+        destinationName: '',
+        date : trip.date, 
+        travelerCount: trip.travelers, 
+        duration: trip.duration, 
+        destinationID: trip. destinationID, 
+        status : trip.status, 
+        amount: cost 
+      }
       tripsList.forEach(entry => {
-        data.destinationName = entry.destination
-        // data.destinationID = trip.destination
+        if(data.destinationID === entry.id){
+          data.destinationName = entry.destination;
+        }
       })
       return data
     })
-    // console.log(mergedData1)
+    
     console.log(mergedData)
- 
     const tripStatus = document.querySelector('.trip-status')
     const allTripsByUser = document.querySelector('.trips-of-trips')
     // allTripsByUser.classList.toggle('hidden')

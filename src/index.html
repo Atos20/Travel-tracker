@@ -17,17 +17,18 @@
       <span class="hamburger-line line-3"></span>
     </div>
     <div class="log-in-info">
-      <label for='home-label' class='hidden'>Sign or<br> Log in button</label>
-      <label class="hidden" for="user-name">Input field for username</label>
-      <input class="user-name" type="text" id="user-name" name="user-user-name" placeholder="user name">
-      <label class="hidden" for="user-password">Input field for user password/label></label>
-      <input class="password" type="text" id="user-name" name="user-input-password" placeholder="password">
+      <input class="user-name" type="text" id="account" name="user-user-name" placeholder="user name">
+      <label class="hidden" for="account">Input field for username</label>
+      <input class="password" type="text" id="password" name="user-input-password" placeholder="password">
+      <label class="hidden" for="password">Input field for user password/label></label>
       <button id='home-button' class='log-in'></i>Log-in <i class="fas fa-sign-in-alt"></i></button>
+      <label for='home-button' class='hidden'>Sign or<br> Log in button</label>
     </div>
   </header>
 
 
-  <nav class="nav-bar hidden">
+  <nav class="nav-bar ">
+    <!-- hidden -->
     <div class="nav-buttons">
         <label for='recipes-to-cook-label' class='hidden'> Home</label>
         <button id='home' class=''><i class="fas fa-home"></i> Home</button>
@@ -40,14 +41,15 @@
       </div>
     </nav>
 
-  <body>
+  <body >
     
     <section class="salutation">
       <h1 class="welcome"></h1>
       <h2 class="total-spent"></h2>
     </section>
     
-    <form class="form hidden">
+    <form class="form">
+      <!-- hidden -->
       <div class="new-trip-form">
 
         <h3 class="start">Where do you want to go?</h3>
@@ -109,17 +111,17 @@
         </select>
         <br><br>
         <h3 class="how-many">How many people are joining you?</h3>
-        <label class="hidden" for="quantity">Quantity (between 1 and 25):</label>
-        <input class="input input1" type="number" id="quantity" name="quantity" min="1" max="25">
+        <input class="input input1" type="number" id="people-quantity" name="quantity" min="1" max="25">
+        <label class="hidden" for="people-quantity">Quantity (between 1 and 25):</label>
         
         <h3 class="initial-date">Date</h3>
-        <label class="hidden" for="chose date">select date</label>
         <input class="input input2" type="date">
+        <label class="hidden" for="input input2">select date</label>
         <h3 class="durations">How many days do you want to travel for?</h3>
-        <label class="hidden" for="quantity">Amount of days:</label>
-        <input class="input input3" type="number" id="quantity" name="quantity" min="1">
-        <label class="hidden" for="click to submit for">submit button</label>
-        <button class="submit" id="submit">Submit</button>
+        <input class="input input3" type="number" id="day-quantity" name="quantity" min="1">
+        <label class="hidden" for="day-quantity">Amount of days:</label>
+        <button class="submit" id="submit-button">Submit</button>
+        <label class="hidden" for="submit-button">submit button</label>
 
 
       </div>

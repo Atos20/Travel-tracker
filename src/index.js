@@ -18,6 +18,30 @@ let api, tripsRepo, destinationsRepo, travelersRepo, traveler, agent;
 const mainMenu = document.querySelector('.hamburger');
 const newTripButton = document.querySelector('#world-globe');
 const submitNewTripButton  = document.querySelector('.submit');
+const travelHistory = document.querySelector('.trip-buttons')
+
+const retrieveTravalersTrips = (event) => {
+  if (event.target.classList.contains('all-trips') || event.target.classList.contains('fa-suitcase')){
+    const tripsList = traveler.travelHistory.map(trip =>destinationsRepo.getDestinationBy('id', trip.destinationID));
+    domUpdates.displayTravelesHistory(tripsList, traveler.travelHistory, 'all trips');
+  }
+  if (event.target.classList.contains('past-trips') || event.target.classList.contains('fa-plane-arrival')){
+    const tripsList = traveler.tripsHistory.map(trip =>destinationsRepo.getDestinationBy('id', trip.destinationID));
+    domUpdates.displayTravelesHistory(tripsList, traveler.tripsHistory, 'past trips');
+  }
+  if (event.target.classList.contains('current-trips')|| event.target.classList.contains('fa-plane')){
+    const tripsList = traveler.currentTrip.map(trip =>destinationsRepo.getDestinationBy('id', trip.destinationID));
+    domUpdates.displayTravelesHistory(tripsList, traveler.currentTrip, 'current trips');
+  }
+  if (event.target.classList.contains('future-trips')|| event.target.classList.contains('fa-plane-departure')){
+    const tripsList = traveler.upcomingTrips.map(trip =>destinationsRepo.getDestinationBy('id', trip.destinationID));
+    domUpdates.displayTravelesHistory(tripsList, traveler.upcomingTrips, 'upcoming trips');
+  }
+  if (event.target.classList.contains('pending')|| event.target.classList.contains('fa-spinner')){
+    const tripsList = traveler.pendingTrips.map(trip => destinationsRepo.getDestinationBy('id', trip.destinationID));
+    domUpdates.displayTravelesHistory(tripsList, traveler.pendingTrips, 'pending trips');
+  }
+}
 
 const resolveTripRequest = (tripRequested) => {
   const trip = destinationsRepo.getDestinationBy('id', tripRequested.destinationID);
@@ -63,6 +87,8 @@ const onStart = () => {
   })
 }
 
+
+travelHistory.addEventListener('click', retrieveTravalersTrips)
 submitNewTripButton.addEventListener('click', submitNewTrip)
 newTripButton.addEventListener('click', domUpdates.toggleNewTripForm);
 mainMenu.addEventListener('click', animations.animateBurgerMenu);

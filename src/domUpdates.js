@@ -1,9 +1,58 @@
+import DestinationsRepo from '../src/destinationsRepo.js';
+
 const domUpdates = {
+
+  displayTravelesHistory(tripsList, tripHistory, status){
+    const repo = new DestinationsRepo({destinations : tripsList})
+    // console.log('tripList',tripsList)//name 
+    // console.log('tripHistory',tripHistory)//date&travelerCount & id
+    const mergedData = tripHistory.map(trip => {
+      const cost = repo.getDestinationCost(trip.destinationID, trip.duration, trip.travelers)
+      const data = {date : trip.date, travelerCount: trip.travelers, duration: trip.duration, destinationID: trip. destinationID, status : trip.status, amount: cost }
+      tripsList.forEach(entry => {
+        data.destinationName = entry.destination
+        // data.destinationID = trip.destination
+      })
+      return data
+    })
+    // console.log(mergedData1)
+    console.log(mergedData)
+ 
+    const tripStatus = document.querySelector('.trip-status')
+    const allTripsByUser = document.querySelector('.trips-of-trips')
+    // allTripsByUser.classList.toggle('hidden')
+    if(tripsList.length === 0){
+      tripStatus.innerText = status
+      allTripsByUser.innerHTML = `
+          <div class="traveler-trip">
+            <h1 class="trip-name">no trips found</h1>
+            <h2 class="poop-icon"><i class="fas fa-poop"></i></h2>
+          </div>
+        `
+    } else {
+      allTripsByUser.innerHTML = '';
+      tripStatus.innerText = status
+      mergedData.forEach(trip => {
+          allTripsByUser.innerHTML += `
+          <div class="traveler-trip">
+          <h1 class="trip-name">${trip.destinationName} </h1>
+          <h2 class="trip-date">${trip.date}</h2>
+          <h3 class="trip-traveler-count">Travel count ${trip.travelerCount}</h3>
+          <h2 class="trip-duration1">duration</h2>
+          <h2 class="trip-duration2">${trip.duration} days</h2>
+          <h4 class="trip-status1">${trip.status}</h4>
+          <h2 class="trip-cost1">trip cost</h2>
+          <h3 class="trip-cost1">$${trip.amount}</h3>
+          </div>
+          `
+      })
+    }
+  },
+
 
   displayAllDestinations(destinations){
     const allDestinationsContainer = document.querySelector('.card-container');
     const allDestinations = destinations.destinationsData.destinations;
-    console.log(allDestinations)
     allDestinationsContainer.innerHTML = ''
     allDestinations.forEach(destination => {
       allDestinationsContainer.innerHTML +=`

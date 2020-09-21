@@ -24,9 +24,9 @@
     <div class="nav-buttons">
         <label for='recipes-to-cook-label' class='hidden'> Home</label>
         <button id='home' class=''><i class="fas fa-home"></i> Home</button>
-        <label for='world' class='hidden'> world icon</label>
+        <label for='world-icon-label' class='hidden'> world icon</label>
         <button id='world-globe' class=''><i class="fas fa-globe-americas"></i></i> New Trip!</button>
-        <label for='view-favorites-button' class='hidden'>View favorites</label>
+        <label for='view-favorites-label' class='hidden'>View favorites</label>
         <button id='view-favorites-button' class=' view-favorites navButton'><i class="fas fa-heart"></i> Favorites </button>
         <label for='recipes-to-cook-label' class='hidden'>My-Cart </label>
         <button id='recipes-to-cook-button' class=''><i class="fas fa-luggage-cart"></i> MyCart </button>
@@ -34,11 +34,12 @@
     </nav>
 
   <body>
+    
     <section class="salutation">
       <h1 class="welcome"></h1>
       <h2 class="total-spent"></h2>
     </section>
-
+    
     <form class="form hidden">
       <div class="new-trip-form">
 
@@ -114,6 +115,22 @@
 
       </div>
     </form>
+
+    <h1 class="trip-status">Trips</h1>
+
+    <section class="trip-buttons">
+      <ul class="trip-history">
+        <li class="plane all-trips"><i class="fas fa-suitcase"></i>all</li>
+        <li class="plane past-trips"><i class="fas fa-plane-arrival"></i>past</li>
+        <li class="plane current-trips"><i class="fas fa-plane"></i>current</li>
+        <li class="plane future-trips"><i class="fas fa-plane-departure"></i>future</li>
+        <li class="plane pending"><i class="fas fa-spinner"></i>pending</li>
+      </ul>
+    </section>
+
+    <section class="travelers-trips-container">
+      <div class="trips-of-trips"></div>
+    </section>
     
     <main>
       <section class="main-destination-container">

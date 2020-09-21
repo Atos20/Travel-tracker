@@ -11,8 +11,8 @@ const domUpdates = {
       tripsList.forEach(entry =>  data.destinationID === entry.id ? data.destinationName = entry.destination : false);
       return data
     })
-    const tripStatus = document.querySelector('.trip-status')
-    const allTripsByUser = document.querySelector('.trips-of-trips')
+    const tripStatus = document.querySelector('.trip-status');
+    const allTripsByUser = document.querySelector('.trips-of-trips');
     if(tripsList.length === 0){
       tripStatus.innerText = status
       allTripsByUser.innerHTML = `

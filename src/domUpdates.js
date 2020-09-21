@@ -1,9 +1,38 @@
 const domUpdates = {
 
+
+  displayTravelesHistory(tripsList, tripHistory, status){
+    const allTripsByUser = document.querySelector('.trips-of-trips')
+    const tripStatus = document.querySelector('.trip-status')
+    console.log(tripHistory) 
+    if(tripsList.length === 0){
+      tripStatus.innerText = status
+      allTripsByUser.innerHTML = `
+          <div class="traveler-trip">
+            <h1 class="trip-name">no trips found</h1>
+            <h2 class="poop-icon"><i class="fas fa-poop"></i></h2>
+          </div>
+        `
+    } else {
+      allTripsByUser.innerHTML = '';
+      tripStatus.innerText = status
+      tripsList.forEach(trip => {
+          allTripsByUser.innerHTML += `
+          <div class="traveler-trip">
+          <h1 class="trip-name">${trip.destination} </h1>
+          <h2 class="trip-date">2020/09/20</h2>
+          <h3 class="trip-traveler-count">5 people</h3>
+          <h4 class="trip-cost">$1345.50</h4>
+          </div>
+          `
+      })
+    }
+  },
+
+
   displayAllDestinations(destinations){
     const allDestinationsContainer = document.querySelector('.card-container');
     const allDestinations = destinations.destinationsData.destinations;
-    console.log(allDestinations)
     allDestinationsContainer.innerHTML = ''
     allDestinations.forEach(destination => {
       allDestinationsContainer.innerHTML +=`

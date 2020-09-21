@@ -19,7 +19,7 @@ const mainMenu = document.querySelector('.hamburger');
 const newTripButton = document.querySelector('#world-globe');
 const submitNewTripButton  = document.querySelector('.submit');
 const travelHistory = document.querySelector('.trip-buttons')
-
+const logButton = document.querySelector('.log-in')
 
 const retrieveTravalersTrips = (event) => {
   if (event.target.classList.contains('all-trips') || event.target.classList.contains('fa-suitcase')){
@@ -69,14 +69,12 @@ const submitNewTrip = (event) => {
   resolveTripRequest(tripRequested)
 }
 
-const onStart = () => {
+const onStart = (userId) => {
   api = new FecthHandler()
-  let userId = (Math.floor(Math.random() * 49) + 1)
   const allTripsData = api.getAllTripsData();
   const allDestinationsData = api.getAllDestinationsData();
   const allTravelersData = api.getAllTravelersData();
   const travelerData = api.getSingleTravelerData(userId);
-
   Promise.all([allTripsData, allDestinationsData, allTravelersData, travelerData])
   .then(values => {
     tripsRepo = new TripsRepo(values[0]);
@@ -88,11 +86,25 @@ const onStart = () => {
   })
 }
 
+const veryfyCredentails = () => {
+  const userName = document.querySelector('.account');
+  const password = document.querySelector('.password')
+  const entry = userName.value
+  const userId = entry[entry.length-2] + entry[entry.length-1]
+  if(password.value === 'travel2020' && password.value.length === 10 && userName.value.includes('traveler')){
+    onStart(userId);
+    
+  } else {
+    //method that shows error
+  }
+}
 
+
+logButton.addEventListener('click', veryfyCredentails)
 travelHistory.addEventListener('click', retrieveTravalersTrips)
 submitNewTripButton.addEventListener('click', submitNewTrip)
 newTripButton.addEventListener('click', domUpdates.toggleNewTripForm);
 mainMenu.addEventListener('click', animations.animateBurgerMenu);
 mainMenu.addEventListener('click', domUpdates.displayMenuOptions);
 
-window.onload = onStart()
+// window.onload = onStart()

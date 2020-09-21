@@ -20,6 +20,7 @@ const newTripButton = document.querySelector('#world-globe');
 const submitNewTripButton  = document.querySelector('.submit');
 const travelHistory = document.querySelector('.trip-buttons')
 
+
 const retrieveTravalersTrips = (event) => {
   if (event.target.classList.contains('all-trips') || event.target.classList.contains('fa-suitcase')){
     const tripsList = traveler.travelHistory.map(trip =>destinationsRepo.getDestinationBy('id', trip.destinationID));
@@ -54,9 +55,9 @@ const resolveTripRequest = (tripRequested) => {
 
 const submitNewTrip = (event) => {
   event.preventDefault();
-  const amountOfPeople = document.querySelector('.input1');
-  const tripDate = document.querySelector('.input2');
-  const triplLength = document.querySelector('.input3');
+  const amountOfPeople = document.querySelector('.people-quantity');
+  const tripDate = document.querySelector('.select-date');
+  const triplLength = document.querySelector('.day-quantity');
   const userID = traveler.id;
   const tripName = document.querySelector('.destination-chosen').value;
   const travelers = +amountOfPeople.value;

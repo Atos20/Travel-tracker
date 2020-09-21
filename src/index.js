@@ -20,8 +20,6 @@ const newTripButton = document.querySelector('#world-globe');
 const submitNewTripButton  = document.querySelector('.submit');
 const travelHistory = document.querySelector('.trip-buttons')
 
-
-
 const retrieveTravalersTrips = (event) => {
   if (event.target.classList.contains('all-trips') || event.target.classList.contains('fa-suitcase')){
     const tripsList = traveler.travelHistory.map(trip =>destinationsRepo.getDestinationBy('id', trip.destinationID));

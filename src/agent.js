@@ -45,7 +45,11 @@ class Agent extends User {
       return this.allDestinations.find(destination => destination.id === trip.destinationID)
     })
     return thisYearDestinations.map(destination => {
-      const obj = {duration: 0, costPerDay: destination.estimatedLodgingCostPerDay, flightCostPerPerson: destination.estimatedFlightCostPerPerson}
+      const obj = {
+        duration: 0, 
+        costPerDay: destination.estimatedLodgingCostPerDay, 
+        flightCostPerPerson: destination.estimatedFlightCostPerPerson
+      }
       currentYearTrips.forEach(trip => {
        if(destination.id === trip.destinationID){
          obj.duration = trip.duration
@@ -106,7 +110,6 @@ class Agent extends User {
     data.totalSpent = totalCost + ((10/ 100) *  totalCost)
     return data
   }, {destination:[], totalSpent: 0, timeTraveling: 0})
-  // console.log(travelerData)
   return travelerData
   }
 }

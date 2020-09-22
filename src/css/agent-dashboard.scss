@@ -43,6 +43,7 @@ main{
     }
 
     .pending-trips-agent {
+        background-color: #ffe9d2;
         grid-column: col / span 3;
         grid-row: row;
         
@@ -103,7 +104,7 @@ main{
         .found-trips-container{
         
             background-color:#132743;
-            height: 40vh;
+            height: 30vh;
             margin: 5%;
             text-align: center;
 

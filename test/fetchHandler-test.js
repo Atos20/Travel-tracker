@@ -56,26 +56,4 @@ describe('fetchHandler', () => {
     expect(newFetch.getAllDestinationsData).to.have.been.called(1);
     expect(newFetch.getAllDestinationsData).to.have.been.called.with();
   });
-
-  it.skip('Should be able to Add a new trip', () => {
-    expect(newFetch.addNewTrip()).to.equal([])
-  });
-
-  it.skip('Should be able to Add new destination', () => {
-    newFetch.addNewDestination()
-    expect(newFetch.addNewDestination).to.have.been.called(1);
-    expect(newFetch.addNewDestination).to.have.been.called.with();
-  });
-
-  it.skip('Should be able to Modify a single trip', () => {
-    newFetch.modifySingleTrip()
-    expect(newFetch.modifySingleTrip).to.have.been.called(1);
-    expect(newFetch.modifySingleTrip).to.have.been.called.with();
-  });
-
-  it.skip('Should be able to Delete a single trip', () => {
-    newFetch.deletTrip()
-    expect(newFetch.deletTrip).to.have.been.called(1);
-    // expect(newFetch.deletTrip).to.have.been.called.with();
-  });
 });

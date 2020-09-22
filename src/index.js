@@ -13,14 +13,22 @@ import FecthHandler from '../src/fetchHandler.js'
 import domUpdates from '../src/DomUpdates.js';
 import Trip from './trip';
 
-let api, tripsRepo, destinationsRepo, travelersRepo, traveler, agent, agentData, agentTravelersRepo;
+let api, tripsRepo, destinationsRepo, travelersRepo, traveler,  agentData, agentTravelersRepo, agent;
 
 const mainMenu = document.querySelector('.hamburger');
 const newTripButton = document.querySelector('#world-globe');
 const submitNewTripButton  = document.querySelector('.submit');
 const travelHistory = document.querySelector('.trip-buttons');
 const logButton = document.querySelector('.log-in');
-const allTrips = document.querySelector('.all-time-trips')
+const allTrips = document.querySelector('.all-time-trips');
+const searchByName =document.querySelector('#search-for-traveler');
+const searchByNameButton =document.querySelector('.search-by-name-button');
+
+const findTravelerByName = () => {
+  let desiredName = searchByName.value;
+  const data = agent.searchForUserByName(desiredName);
+  domUpdates.displayFoundTraveler(data);
+}
 
 
 const retrieveTravalersTrips = (event) => {
@@ -105,36 +113,38 @@ const onStart = (userId) => {
       // domUpdates.displayInjectAgentsboard();
     })
   }
-
 }
 
-const veryfyCredentails = (logButton) => {
+const veryfyCredentails = () => {
+  const logButton = document.querySelector('#home-button')
+  if(logButton.innerText === 'Log-out'){
+    window.location.reload();
+  }
   const userName = document.querySelector('.account');
-  const password = document.querySelector('.password')
-  const entry = userName.value
-  const userId = entry[entry.length-2] + entry[entry.length-1]
+  const password = document.querySelector('.password');
+  const entry = userName.value;
+  const userId = entry[entry.length-2] + entry[entry.length-1];
   if(password.value === 'travel2020' && password.value.length === 10 && userName.value.includes('traveler') && userId > 0 && userId <= 50){
     onStart(userId);
     domUpdates.displaySalutation();
     domUpdates.displayBurgerMenu(mainMenu);
     domUpdates.toggleDestinationsCards();
-    document.querySelector('#home-button').innerText = 'Log-out'
+    logButton.innerText = 'Log-out';
   } else if(password.value === 'travel2020' && password.value.length === 10 && userName.value === 'agency'){
     onStart();
     domUpdates.toggleAgentBoard();
-    document.querySelector('#home-button').innerText = 'Log-out'
-    
+    logButton.innerText = 'Log-out';
   }else {
-    return false
+    return false;
   }
 }
 
+searchByNameButton.addEventListener('click', findTravelerByName)
 allTrips.addEventListener('click', domUpdates.toggleAllTripsSection)
 logButton.addEventListener('click', veryfyCredentails)
 travelHistory.addEventListener('click', retrieveTravalersTrips)
 submitNewTripButton.addEventListener('click', submitNewTrip)
 newTripButton.addEventListener('click', domUpdates.toggleNewTripForm);
-
 mainMenu.addEventListener('click', domUpdates.displayMenuOptions);
 
 // window.onload = onStart()

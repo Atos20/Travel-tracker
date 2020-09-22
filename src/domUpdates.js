@@ -1,7 +1,33 @@
 import DestinationsRepo from '../src/destinationsRepo.js';
-
 const domUpdates = {
-  displayPendingTrips(pendingTrips){
+  displayFoundTraveler(data) {
+    const searchArea = document.querySelector('.found-trips-container');
+    searchArea.innerHTML ='';
+    searchArea.innerHTML = `
+    <div class="traveler-info">
+      <div class="info-container">
+        <h2 class="traveler-title">Traveler's Name</h2>
+        <h4 class="traveler-found-name">${data.name}</h4>
+      </div>
+      <div class="info-container">
+        <h2 class="traveler-type-title">Traveler Type</h2>
+        <h4 class="traveler-type-title">Data</h4>
+      </div>
+      <div class="info-container">
+        <h2 class="traveler-spent-title">Total spent this yeay</h2>
+        <h4 class="traveler-spent">${data.totalSpent}</h4>
+      </div>
+      <div class="info-container">
+        <h2 class="traveler-days-traveling-title">Days traveling this year</h2>
+        <h4 class="traveler-day-count">${data.timeTraveling}</h4>
+      </div>
+        <h2 class="traveler-all-destiantions">All destinations</h2>
+        <h4 class="traveler-destinations">${data.destination.join()}</h4>
+    </div>
+    `;
+  },
+
+  displayPendingTrips(pendingTrips) {
     console.log(pendingTrips)
     const penndings = document.querySelector('.pendientes')
     penndings.innerHTML ='';
@@ -19,14 +45,14 @@ const domUpdates = {
     })
   },
 
-  toggleAgentBoard(){
+  toggleAgentBoard() {
     const agentDashboard = document.querySelector('.agent-dashboard');
     const banner = document.querySelector('.main-destination-container');
     banner.classList.toggle('hidden');
     agentDashboard.classList.toggle('hidden');
   },
 
-  greetAgent(agent){
+  greetAgent(agent) {
     console.log(name)
     const agentName = document.querySelector('.agents-name');
     // agentName.innerText = `${agen.name}`
@@ -47,10 +73,9 @@ const domUpdates = {
         <h4 class="total-amount">$${agent.earnings}</h4>
       </div>
     `;
-
   },
 
-  displayBurgerMenu(burger){
+  displayBurgerMenu(burger) {
     burger.innerHTML =`
       <span class="hamburger-line line-1"></span>
       <span class="hamburger-line line-2"></span>
@@ -69,14 +94,14 @@ const domUpdates = {
     `
   },
 
-  displayTravelesHistory(tripsList, tripHistory, status){
+  displayTravelesHistory(tripsList, tripHistory, status) {
     const repo = new DestinationsRepo({destinations : tripsList})
     const mergedData = tripHistory.map(trip => {
       const cost = repo.getDestinationCost(trip.destinationID, trip.duration, trip.travelers)
       const data = {destinationName: '',date : trip.date, travelerCount: trip.travelers, duration: trip.duration, destinationID: trip. destinationID, status : trip.status, amount: cost }
       tripsList.forEach(entry =>  data.destinationID === entry.id ? data.destinationName = entry.destination : false);
       return data
-    })
+    });
     const tripStatus = document.querySelector('.trip-status');
     const allTripsByUser = document.querySelector('.trips-of-trips');
     if(tripsList.length === 0){
@@ -103,10 +128,9 @@ const domUpdates = {
           <h3 class="trip-cost1">$${trip.amount}</h3>
           </div>
           `
-      })
+      });
     }
   },
-
 
   displayAllDestinations(destinations){
     const allDestinationsContainer = document.querySelector('.card-container');
@@ -131,10 +155,10 @@ const domUpdates = {
         </div>
       </div>
       `
-    })
+    });
   },
 
-  displayNewTripFeedBack(value, estimate){
+  displayNewTripFeedBack(value, estimate) {
     const newTripForm = document.querySelector('.new-trip-form');
     const feedback = value.message
     const id = feedback .split(' ')[3];
@@ -148,24 +172,23 @@ const domUpdates = {
       <h3 class="feedback1">status</h3>
       <h3 class="feedback2">pending...</h3>
     `;
-    
   },
 
-  toggleDestinationsCards(){
+  toggleDestinationsCards() {
     const container = document.querySelector('.all-images-container');
     container.classList.toggle('hidden');
   },
 
-  toggleAllTripsSection(){
+  toggleAllTripsSection() {
     const statusSection = document.querySelector('.trip-status');
     const tripsButtons = document.querySelector('.trip-buttons');
     const allTripsContainer = document.querySelector('.trips-of-trips');
-    statusSection.classList.toggle('hidden')
-    tripsButtons.classList.toggle('hidden')
+    statusSection.classList.toggle('hidden');
+    tripsButtons.classList.toggle('hidden');
     allTripsContainer.innerHTML = '';
   },
 
-  toggleNewTripForm(){
+  toggleNewTripForm() {
     const newTripForm = document.querySelector('.form');
     newTripForm.classList.toggle('hidden');
   },
@@ -181,8 +204,6 @@ const domUpdates = {
     welcome.innerText = `Welcome ${traveler.name}!`;
     totalSpent.innerText = `You have spent $${traveler.spentOverYearPlusFees} this Year`;
   }
-
-
 }
 
 export default domUpdates;

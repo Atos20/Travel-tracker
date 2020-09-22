@@ -45,7 +45,7 @@ describe('Traveler', () => {
   it('Should be able to keep track of the all thre trips taken so far', () => {
     const restructureData = traveler.restructuredTripHistoryByDate();
     expect(traveler.travelHistory.length).to.equal(5);
-    expect(restructureData['2020/9/20'].date).to.eql('2020/9/20')
+    expect(restructureData['2020/09/20'].date).to.eql('2020/09/20')
   });
 
   it('Should be able to know what is the current trip if any', () => {
@@ -79,7 +79,7 @@ describe('Traveler', () => {
   });
   it('Should be able to know how much the traveler has spent over the year', () => {
     const spentOverYear = traveler.spentOverTheYear();
-    expect(spentOverYear).to.equal(10681)
+    expect(spentOverYear).to.equal(10681.00)
   });
 });
 

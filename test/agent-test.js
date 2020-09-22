@@ -104,29 +104,25 @@ describe('Agent', () => {
     )
   });
 
-  it.only('Should be able to get the current trips', () => {
-  expect(agent.currentTravelersOnTrips().length).to.equal(2)
+  it('Should be able to get the current trips', () => {
+    expect(agent.currentTravelersOnTrips().length).to.equal(2)
   });
 
-  it('Should be able to know how much the traveler has spent over the year', () => {
-
-  });
-
-  it('Should be able to find travelers by any given week date (EXTENSION)', () => {
-
-  });
-
+  it('Sohuld be able to Search a user by name', () => {
+    expect(agent.searchForUserByName('Rosalind Hite')).to.eql(
+      {
+        destination: [
+          'Lima, Peru',
+          'Stockholm, Sweden',
+          'Sydney, Austrailia',
+          'Cartagena, Colombia',
+          'Madrid, Spain'
+        ],
+        totalSpent: 24057,
+        timeTraveling: 231,
+        name: 'Rosalind Hite',
+        travelerType: 'relaxer'
+      }
+    )
+  })
 });
-
-/*
- {
-    id: 2,
-    userID: 1,
-    destinationID: 2,
-    travelers: 5,
-    date: '2019/09/17',
-    duration: 18,
-    status: 'pending',
-    suggestedActivities: []
-  },
-*/

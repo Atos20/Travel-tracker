@@ -3,12 +3,23 @@ const expect = chai.expect;
 
 import Agent from '../src/agent.js';
 import testData from '../test-data/sample-data.js'
-let agent, agentData;
+import TripsRepo from '../src/tripsRepo.js';
+import DestinationsRepo from '../src/destinationsRepo.js';
+import TravelersRepo from '../src/travelerRepo.js';
+
+let agent, agentData, tripsRepoData, destinationsRepoData, 
+tripRepo, destinationsRepo, travelersRepo, travelersData;
 
 describe('Agent', () => {
   beforeEach(() => {
-    agentData = testData.agentsSampleData.agents[0]
-    agent = new Agent(agentData);
+    travelersData = testData.travelersSampleData;
+    agentData = testData.agentsSampleData.agents;
+    tripsRepoData = testData.tripsSampleData;
+    destinationsRepoData = testData.destinationsSampleData;
+    travelersRepo = new TravelersRepo(travelersData);
+    tripRepo = new TripsRepo(tripsRepoData);
+    destinationsRepo = new DestinationsRepo(destinationsRepoData);
+    agent = new Agent(agentData, tripRepo, destinationsRepo, travelersRepo);
   });
 
   it('Should be able to be a function', () => {
@@ -35,28 +46,25 @@ describe('Agent', () => {
     expect(agent.pwd).to.equal("travel2020")
   });
 
-  it.skip('Should be able to keep trak of all pending trips', () => {
-
+  it('Should be able to keep trak of all pending trips', () => {
+    expect(agent.getAllPendingTrips()).to.eql([])
     });
 
-  it.skip('Should be able to calculate the total income genertated this year' +
+  it('Should be able to calculate the total income genertated this year' +
   'this should be 10% of the user trip cost', () => {
 
   });
 
-  it.skip('Should be able to keep track of travelers on trips for today’s date ', () => {
+  it('Should be able to keep track of travelers on trips for today’s date ', () => {
 
   });
 
-  it.skip('Should be able to know how much the traveler has spent over the year', () => {
+  it('Should be able to know how much the traveler has spent over the year', () => {
 
   });
 
-  it.skip('Should be able to find travelers by any given week date (EXTENSION)', () => {
+  it('Should be able to find travelers by any given week date (EXTENSION)', () => {
 
   });
 
-  it.skip('', () => {
-
-  });
 });

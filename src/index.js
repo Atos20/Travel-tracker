@@ -3,6 +3,7 @@ import './css/base.scss';
 import './images/turing-logo.png'
 import moment from 'moment';
 
+import testData from '../test-data/sample-data.js'
 import Agent from '../src/agent.js';
 import Traveler from '../src/traveler.js';
 import TripsRepo from '../src/tripsRepo.js';
@@ -12,7 +13,7 @@ import FecthHandler from '../src/fetchHandler.js'
 import domUpdates from '../src/DomUpdates.js';
 import Trip from './trip';
 
-let api, tripsRepo, destinationsRepo, travelersRepo, traveler, agent;
+let api, tripsRepo, destinationsRepo, travelersRepo, traveler, agent, agentData, agentTravelersRepo;
 
 const mainMenu = document.querySelector('.hamburger');
 const newTripButton = document.querySelector('#world-globe');
@@ -75,21 +76,40 @@ const onStart = (userId) => {
   const allTripsData = api.getAllTripsData();
   const allDestinationsData = api.getAllDestinationsData();
   const allTravelersData = api.getAllTravelersData();
-  const travelerData = api.getSingleTravelerData(userId);
-  Promise.all([allTripsData, allDestinationsData, allTravelersData, travelerData])
-  .then(values => {
-    tripsRepo = new TripsRepo(values[0]);
-    destinationsRepo = new DestinationsRepo(values[1]);
-    travelersRepo = new TravelersRepo(tripsRepo.historyByUserId(values[3].id));
-    traveler = new Traveler(values[3], travelersRepo, destinationsRepo.destinationsData);
-    domUpdates.greetTraveler(traveler)
-    domUpdates.displayAllDestinations(destinationsRepo);
-  })
+  if(userId && typeof userId === 'string'){
+    const travelerData = api.getSingleTravelerData(userId);
+    Promise.all([allTripsData, allDestinationsData, allTravelersData, travelerData])
+    .then(values => {
+      tripsRepo = new TripsRepo(values[0]);
+      destinationsRepo = new DestinationsRepo(values[1]);
+      agentTravelersRepo = new TravelersRepo(values[2])
+      travelersRepo = new TravelersRepo(tripsRepo.historyByUserId(values[3].id));
+      traveler = new Traveler(values[3], travelersRepo, destinationsRepo.destinationsData);
+      domUpdates.greetTraveler(traveler)
+      domUpdates.displayAllDestinations(destinationsRepo);
+      agentData = testData.agentsSampleData.agents[0];
+      agent = new Agent(agentData, tripsRepo, destinationsRepo, agentTravelersRepo)
+      console.log(agent)
+    })
+  } else {
+    Promise.all([allTripsData, allDestinationsData, allTravelersData])
+    .then(values => {
+      tripsRepo = new TripsRepo(values[0]);
+      destinationsRepo = new DestinationsRepo(values[1]);
+      agentTravelersRepo = new TravelersRepo(values[2])
+      domUpdates.toggleBanner();
+      // domUpdates.greetTraveler(traveler)//greet agent
+      // domUpdates.displayAllDestinations(destinationsRepo);
+      agentData = testData.agentsSampleData.agents[0];
+      agent = new Agent(agentData, tripsRepo, destinationsRepo, agentTravelersRepo)
+      console.log(agent)
+    })
+  }
+
 }
 
 const veryfyCredentails = () => {
   const userName = document.querySelector('.account');
-  // console.log(userName.vaue)
   const password = document.querySelector('.password')
   const entry = userName.value
   const userId = entry[entry.length-2] + entry[entry.length-1]
@@ -99,7 +119,7 @@ const veryfyCredentails = () => {
     domUpdates.displayBurgerMenu(mainMenu);
     domUpdates.toggleDestinationsCards();
   } else if(password.value === 'travel2020' && password.value.length === 10 && userName.value === 'agency'){
-    // domUpdates.displayAgentsDashboard()
+    onStart();
     //hide poster
   }else {
     return false

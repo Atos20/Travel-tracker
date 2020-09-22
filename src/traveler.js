@@ -5,7 +5,6 @@ import moment from 'moment';
 class Traveler extends User {
   constructor(userInfo, tripHistory, destinationsData) {
     super(userInfo);
-    // console.log(destinationsData)//object
     // this.id = userInfo.id;
     // this.name = userInfo.name;
     this.travelerType = userInfo.travelerType;
@@ -83,8 +82,9 @@ class Traveler extends User {
       total += destinationsClass.getDestinationCost(trip.destinationID, trip.duration, trip.travelers)
       return total
     }, 0);
-    const totalPlusFee = (10/ 100) * totalSpentOnCurrentYear + totalSpentOnCurrentYear 
-    return totalPlusFee.toFixed(2)
+    const totalPlusFee = ((10/ 100) * totalSpentOnCurrentYear + totalSpentOnCurrentYear).toFixed(2)
+    console.log(totalPlusFee)
+    return totalPlusFee
   } 
 }
 

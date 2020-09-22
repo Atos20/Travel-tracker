@@ -4,10 +4,10 @@ import TripsRepo from './tripsRepo';
 class Agent extends User {
   constructor(agentData, alltrips, allDestinations, allTravelers) {
     super(agentData)
-    this.agentId = agentData.agentId;
-    this.name = agentData.name;
-    this.userName = agentData.userName
-    this.pwd = agentData.pwd;
+    this.agentId = 1 || agentData.agentId;
+    this.name = 'Juan Perez' || agentData.name;
+    this.userName = 'agency' || agentData.userName
+    this.pwd = "travel2020" || agentData.pwd;
     this.today = moment().format('YYYY-MM-DD');
     this.allTrips = alltrips.tripsData.trips
     this.allDestinations = allDestinations.destinationsData.destinations
@@ -25,7 +25,7 @@ class Agent extends User {
     const modifiedTrip = new Array(pendingTrip).reduce((aprovedTrip, entry) => {
       aprovedTrip.id = entry.id;
       aprovedTrip.status = decision;
-      aprovedTrip.suggestedActivities = []//only status or sugg activities is required
+      aprovedTrip.suggestedActivities = []
       return aprovedTrip
     }, {});
     return modifiedTrip
@@ -101,10 +101,10 @@ class Agent extends User {
       total += (destination.estimatedLodgingCostPerDay* trip.duration) + (destination.estimatedFlightCostPerPerson* trip.duration)
       return total
     },0)
-    data.totalSpent = totalCost + ((10/ 100) *  totalCost)//plus fees
+    data.totalSpent = totalCost + ((10/ 100) *  totalCost)
     return data
   }, {destination:[], totalSpent: 0, timeTraveling: 0})
-  console.log(travelerData)
+  // console.log(travelerData)
   return travelerData
   }
 }

@@ -88,7 +88,20 @@ describe('Agent', () => {
   });
 
   it.only('Should be able to keep track of travelers on trips for today’s date ', () => {
-
+    expect(agent. getTavelersByDate('2020/09/22')).to.eql(
+      [
+        {
+          "date": "2020/09/22",
+          "destinationID": 5,
+          "duration": 6,
+          "id": 20,
+          "status": "approved",
+          "suggestedActivities": [],
+          "travelers": 4,
+          "userID": 4
+        }
+      ]
+    )
   });
 
   it('Should be able to know how much the traveler has spent over the year', () => {
@@ -102,8 +115,7 @@ describe('Agent', () => {
 });
 
 /*
-[
-  {
+ {
     id: 2,
     userID: 1,
     destinationID: 2,
@@ -113,35 +125,4 @@ describe('Agent', () => {
     status: 'pending',
     suggestedActivities: []
   },
-  {
-    id: 3,
-    userID: 1,
-    destinationID: 3,
-    travelers: 4,
-    date: '2020/05/22',
-    duration: 17,
-    status: 'pending',
-    suggestedActivities: []
-  },
-  {
-    id: 9,
-    userID: 2,
-    destinationID: 9,
-    travelers: 5,
-    date: '2019/12/19',
-    duration: 19,
-    status: 'pending',
-    suggestedActivities: []
-  },
-  {
-    id: 10,
-    userID: 2,
-    destinationID: 10,
-    travelers: 6,
-    date: '2020/07/23',
-    duration: 17,
-    status: 'pending',
-    suggestedActivities: []
-  }
-]
 */

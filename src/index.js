@@ -100,6 +100,7 @@ const veryfyCredentails = () => {
     domUpdates.toggleDestinationsCards();
   } else if(password.value === 'travel2020' && password.value.length === 10 && userName.value === 'agency'){
     // domUpdates.displayAgentsDashboard()
+    //hide poster
   }else {
     return false
   }

@@ -16,6 +16,7 @@
       <span class="hamburger-line line-2"></span>
       <span class="hamburger-line line-3"></span> -->
     </div>
+
     <div class="log-in-info">
       <input id="account" type="text" class="account" name="user-name" placeholder="user name">
       <label for="account" class= "hidden">Input field for username</label>
@@ -138,9 +139,9 @@
     <section class="travelers-trips-container">
       <div class="trips-of-trips"></div>
     </section>
-    
+
     <main>
-      <section class="main-destination-container">
+      <section class="main-destination-container hidden">
         <div class="main-info-container">
           <div class="inner-box1 box">
             <h1 class="title trip-name">Never let your memories be <br>greater than your dreams</h1>
@@ -148,6 +149,91 @@
           </div>
         </div>
       </section>
+      <section class="all-images-container hidden">
+        <h1 class="destinations-title">destinations</h1>
+        <div class="card-container"></div>
+      </section>
+
+      <section class="agent-dashboard">
+        <div class="agent-wrapper">
+
+          <div class="box pending-trips-agent">
+
+            <h1 class="pendings">pending trips agent</h1>
+
+            <div class="pendings-container">
+              
+              <div class="status-container">
+                <h2 class="pending pending-id-title">Dest.id</h2>
+                <h2 class="pending pending-status-title">status</h2>
+                <h2 class="pending pending-date-title">date</h2>
+                <h2 class="pending pending-travelers-title">travelers</h2>
+                <h2 class="pending pending-duration-title">duration</h2>
+                <h2 class="pending pending-approve-title">resolve</h2>
+              </div>
+
+              <div class="result-container">
+                <h2 class="result pending-id-result">2</h2>
+                <h2 class="result pending-status-result">pending...</h2>
+                <h2 class="result pending-date-result">2020/09/20</h2>
+                <h2 class="result pending-travelers-result">Orlando Martinez</h2>
+                <h2 class="result pending-duration-result">14day</h2>
+                <button class="result pending-approve-button">approve</button>
+              </div>
+
+            </div>
+          </div>
+          <div class="box trips-today">
+            <div class="today-trip-container">
+              
+            </div>
+          </div>
+
+          <div class="box search-traveler">
+            <h2 class="seach-traveler">Search traveler by name</h2>
+            <input id="search-for-traveler" class="find-traveler" type="text" name="bar" >
+            <label class="hidden" for="search-for-traveler">Search bar look for travaler by name:</label>
+            <div class="found-trips-container">
+              <div class="traveler-info">
+                <div class="info-container">
+                  <h2 class="traveler-title">Traveler's Name</h2>
+                  <h4 class="traveler-found-name">Orlando martinez</h4>
+                </div>
+                <div class="info-container">
+                  <h2 class="traveler-type-title">Traveler Type</h2>
+                  <h4 class="traveler-type-title">Relaxer</h4>
+                </div>
+                <div class="info-container">
+                  <h2 class="traveler-spent-title">Total spent this yeay</h2>
+                  <h4 class="traveler-spent">$1000,00</h4>
+                </div>
+                <div class="info-container">
+                  <h2 class="traveler-days-traveling-title">Days traveling this year</h2>
+                  <h4 class="traveler-day-count">34 days</h4>
+                </div>
+                  <h2 class="traveler-all-destiantions">All destinations</h2>
+                  <h4 class="traveler-destinations"> 'Lima, Peru', 'Stockholm, Sweden','Sydney, Austrailia','Cartagena, Colombia','Madrid, Spain'</h4>
+              </div>
+            </div>
+
+          </div>
+          <div class="box d">
+            <div class="box welcome-agent">
+              <h2 class="message">welcome</h2>
+              <h4 class="agents-name">Orlando, Murcio</h4>
+            </div>
+            <div class="box todays-date">
+              <h2 class="date-title">Date</h2>
+              <h4 class="current-date">2020/09/22</h4>
+            </div>
+            <div class="box total-icome">
+              <h2 class="total-earnings">To year earnigns</h2>
+              <h4 class="total-amount">$122,000,00</h4>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="all-images-container hidden">
         <h1 class="destinations-title">destinations</h1>
         <div class="card-container"></div>

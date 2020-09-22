@@ -89,6 +89,7 @@ const onStart = (userId) => {
 
 const veryfyCredentails = () => {
   const userName = document.querySelector('.account');
+  // console.log(userName.vaue)
   const password = document.querySelector('.password')
   const entry = userName.value
   const userId = entry[entry.length-2] + entry[entry.length-1]
@@ -97,14 +98,11 @@ const veryfyCredentails = () => {
     domUpdates.displaySalutation();
     domUpdates.displayBurgerMenu(mainMenu);
     domUpdates.toggleDestinationsCards();
-  } else {
-
-    userName.placeholder = ''
-    password.placeholder = 'wron password'
-    //dispay a visual Q to let know the user that ther is a mistake 
-    console.log(userName.placeholder)
-    // userName.placeholder = 'atos'
-    return false;
+  } else if(password.value === 'travel2020' && password.value.length === 10 && userName.value === 'agency'){
+    // domUpdates.displayAgentsDashboard()
+    //hide poster
+  }else {
+    return false
   }
 }
 

@@ -1,7 +1,9 @@
 import DestinationsRepo from '../src/destinationsRepo.js';
 
 const domUpdates = {
-
+  displayAgentsDashboard(){
+    
+  },
 
   displayBurgerMenu(burger){
     burger.innerHTML =`

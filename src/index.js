@@ -3,7 +3,6 @@ import './css/base.scss';
 import './images/turing-logo.png'
 import moment from 'moment';
 
-import animations from './animations.js';
 import Agent from '../src/agent.js';
 import Traveler from '../src/traveler.js';
 import TripsRepo from '../src/tripsRepo.js';
@@ -18,8 +17,10 @@ let api, tripsRepo, destinationsRepo, travelersRepo, traveler, agent;
 const mainMenu = document.querySelector('.hamburger');
 const newTripButton = document.querySelector('#world-globe');
 const submitNewTripButton  = document.querySelector('.submit');
-const travelHistory = document.querySelector('.trip-buttons')
-const logButton = document.querySelector('.log-in')
+const travelHistory = document.querySelector('.trip-buttons');
+const logButton = document.querySelector('.log-in');
+const allTrips = document.querySelector('.all-time-trips')
+
 
 const retrieveTravalersTrips = (event) => {
   if (event.target.classList.contains('all-trips') || event.target.classList.contains('fa-suitcase')){
@@ -95,20 +96,20 @@ const veryfyCredentails = () => {
     onStart(userId);
     domUpdates.displaySalutation()
     domUpdates.displayBurgerMenu(mainMenu)
+    // domUpdates.displayAllTripsMenu()
+    //displY TRIPS
 
-    //display burger menu
-    //inject travel history
   } else {
     //method that shows error
   }
 }
 
-
+allTrips.addEventListener('click', domUpdates.toggleAllTripsSection)
 logButton.addEventListener('click', veryfyCredentails)
 travelHistory.addEventListener('click', retrieveTravalersTrips)
 submitNewTripButton.addEventListener('click', submitNewTrip)
 newTripButton.addEventListener('click', domUpdates.toggleNewTripForm);
-mainMenu.addEventListener('click', animations.animateBurgerMenu);
+
 mainMenu.addEventListener('click', domUpdates.displayMenuOptions);
 
 // window.onload = onStart()

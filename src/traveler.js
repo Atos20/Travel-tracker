@@ -84,7 +84,7 @@ class Traveler extends User {
       return total
     }, 0);
     const totalPlusFee = (10/ 100) * totalSpentOnCurrentYear + totalSpentOnCurrentYear 
-    return totalPlusFee
+    return totalPlusFee.toFixed(2)
   } 
 }
 

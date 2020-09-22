@@ -60,13 +60,12 @@ describe('Agent', () => {
       })
   });
 
-  it.only('Should be able to find current year trips', () => {
+  it('Should be able to find current year trips', () => {
     expect(agent.allCurrentYearsTrip().length).to.equal(11)
   });
 
-  it.only('Should be able to calculate the total income genertated this year' +
-  'this should be 10% of the user trip cost', () => {
-    expect(agent.gatherDataToCalculateAnnualIncome().length).to.equal({
+  it('Should be able to gather the information needed to calculate annual income', () => {
+    expect(agent.gatherDataToCalculateAnnualIncome()).to.eql(
       [
         { duration: 5, costPerDay: 70, flightCostPerPerson: 400 },
         { duration: 17, costPerDay: 130, flightCostPerPerson: 950 },
@@ -80,9 +79,15 @@ describe('Agent', () => {
         { duration: 17, costPerDay: 130, flightCostPerPerson: 950 },
         { duration: 6, costPerDay: 150, flightCostPerPerson: 650 }
       ]
-    })
+    )
   });
-  it('Should be able to keep track of travelers on trips for today’s date ', () => {
+
+  it('Should be able to calculate the total income genertated this year' +
+  'this should be 10% of the user trip cost', () => {
+    expect(agent.calculateAnnualIncome()).to.equal(9314)
+  });
+
+  it.only('Should be able to keep track of travelers on trips for today’s date ', () => {
 
   });
 

@@ -8,6 +8,7 @@ class Agent extends User {
     this.name = agentData.name;
     this.userName = agentData.userName
     this.pwd = agentData.pwd;
+    this.today = moment().format('YYYY-MM-DD');
     this.allTrips = alltrips.tripsData.trips
     this.allDestinations = allDestinations.destinationsData.destinations
     this.allTravelers = allTravelers.userTripHistory.travelers
@@ -68,7 +69,7 @@ class Agent extends User {
   //Travelers on trips for today’s date 
   //(number, names, however you want to display this!)
   todaysTotalTravelers(){
-    //return an object with the number, names and trip status{}
+    
   }
 
   //get travelersby date

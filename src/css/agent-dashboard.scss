@@ -80,6 +80,7 @@ main{
                     margin: 0px;
                     padding: 0%;
                 }
+
                 .result{
                     padding: 2%;
                     font-size: .6em;
@@ -102,11 +103,11 @@ main{
         grid-row: row 2;
 
         .found-trips-container{
-        
             background-color:#132743;
             height: 30vh;
             margin: 5%;
             text-align: center;
+            padding-top: 5%;
 
             .traveler-info{
                 

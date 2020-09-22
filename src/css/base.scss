@@ -110,21 +110,21 @@ body {
       padding: 10%;
       clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
       background-color: #c9ad2f;
-      grid-area: 1/ 2/ 4/ 5;
+      grid-area: 5/ 2/ 6/ 5;
     }
 
     .new-cost{
       background-color: #c9ad2f;
-      grid-area: 5/ 2/ 6/ 5;;
+      grid-area: 7/ 2/ 8/ 5;
     }
     .feedback1{
       background-color: #c9ad2f;
-      grid-area: 8/ 3/ 7/ 4;
+      grid-area: 8/ 3/ 9/ 4;
     }
 
     .feedback2{
       background-color: #c9ad2f;
-      grid-area: 8/ 3/ 9/ 3;    
+      grid-area: 9/ 3/ 10/ 4;   
     }
 
     .destination-chosen{

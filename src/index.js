@@ -3,7 +3,6 @@ import './css/base.scss';
 import './images/turing-logo.png'
 import moment from 'moment';
 
-import animations from './animations.js';
 import Agent from '../src/agent.js';
 import Traveler from '../src/traveler.js';
 import TripsRepo from '../src/tripsRepo.js';
@@ -18,7 +17,10 @@ let api, tripsRepo, destinationsRepo, travelersRepo, traveler, agent;
 const mainMenu = document.querySelector('.hamburger');
 const newTripButton = document.querySelector('#world-globe');
 const submitNewTripButton  = document.querySelector('.submit');
-const travelHistory = document.querySelector('.trip-buttons')
+const travelHistory = document.querySelector('.trip-buttons');
+const logButton = document.querySelector('.log-in');
+const allTrips = document.querySelector('.all-time-trips')
+
 
 const retrieveTravalersTrips = (event) => {
   if (event.target.classList.contains('all-trips') || event.target.classList.contains('fa-suitcase')){
@@ -54,9 +56,9 @@ const resolveTripRequest = (tripRequested) => {
 
 const submitNewTrip = (event) => {
   event.preventDefault();
-  const amountOfPeople = document.querySelector('.input1');
-  const tripDate = document.querySelector('.input2');
-  const triplLength = document.querySelector('.input3');
+  const amountOfPeople = document.querySelector('.people-quantity');
+  const tripDate = document.querySelector('.select-date');
+  const triplLength = document.querySelector('.day-quantity');
   const userID = traveler.id;
   const tripName = document.querySelector('.destination-chosen').value;
   const travelers = +amountOfPeople.value;
@@ -68,14 +70,12 @@ const submitNewTrip = (event) => {
   resolveTripRequest(tripRequested)
 }
 
-const onStart = () => {
+const onStart = (userId) => {
   api = new FecthHandler()
-  let userId = (Math.floor(Math.random() * 49) + 1)
   const allTripsData = api.getAllTripsData();
   const allDestinationsData = api.getAllDestinationsData();
   const allTravelersData = api.getAllTravelersData();
   const travelerData = api.getSingleTravelerData(userId);
-
   Promise.all([allTripsData, allDestinationsData, allTravelersData, travelerData])
   .then(values => {
     tripsRepo = new TripsRepo(values[0]);
@@ -87,11 +87,33 @@ const onStart = () => {
   })
 }
 
+const veryfyCredentails = () => {
+  const userName = document.querySelector('.account');
+  const password = document.querySelector('.password')
+  const entry = userName.value
+  const userId = entry[entry.length-2] + entry[entry.length-1]
+  if(password.value === 'travel2020' && password.value.length === 10 && userName.value.includes('traveler') && userId > 0 && userId <= 50){
+    onStart(userId);
+    domUpdates.displaySalutation();
+    domUpdates.displayBurgerMenu(mainMenu);
+    domUpdates.toggleDestinationsCards();
+  } else {
 
+    userName.placeholder = ''
+    password.placeholder = 'wron password'
+    //dispay a visual Q to let know the user that ther is a mistake 
+    console.log(userName.placeholder)
+    // userName.placeholder = 'atos'
+    return false;
+  }
+}
+
+allTrips.addEventListener('click', domUpdates.toggleAllTripsSection)
+logButton.addEventListener('click', veryfyCredentails)
 travelHistory.addEventListener('click', retrieveTravalersTrips)
 submitNewTripButton.addEventListener('click', submitNewTrip)
 newTripButton.addEventListener('click', domUpdates.toggleNewTripForm);
-mainMenu.addEventListener('click', animations.animateBurgerMenu);
+
 mainMenu.addEventListener('click', domUpdates.displayMenuOptions);
 
-window.onload = onStart()
+// window.onload = onStart()

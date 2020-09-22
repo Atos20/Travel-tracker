@@ -12,12 +12,12 @@
   <header class="top-menu">
     <label for='' class='hidden'>Main menu button</label>
     <div class="hamburger">
-      <span class="hamburger-line line-1"></span>
+      <!-- <span class="hamburger-line line-1"></span>
       <span class="hamburger-line line-2"></span>
-      <span class="hamburger-line line-3"></span>
+      <span class="hamburger-line line-3"></span> -->
     </div>
     <div class="log-in-info">
-      <input id="account" type="text" class="user-name" name="user-name" placeholder="user name">
+      <input id="account" type="text" class="account" name="user-name" placeholder="user name">
       <label for="account" class= "hidden">Input field for username</label>
       <input class="password" type="text" id="password" name="user-input-password" placeholder="password">
       <label class="hidden" for="password">Input field for user password</label>
@@ -26,28 +26,24 @@
     </div>
   </header>
 
-  <nav class="nav-bar ">
+  <nav class="nav-bar hidden">
     <!-- hidden -->
     <div class="nav-buttons">
-        <label for='recipes-to-cook-label' class='hidden'> Home</label>
-        <button id='home' class=''><i class="fas fa-home"></i> Home</button>
-        <label for='world-icon-label' class='hidden'> world icon</label>
-        <button id='world-globe' class=''><i class="fas fa-globe-americas"></i></i> New Trip!</button>
-        <label for='view-favorites-label' class='hidden'>View favorites</label>
-        <button id='view-favorites-button' class=' view-favorites navButton'><i class="fas fa-heart"></i> Favorites </button>
-        <label for='recipes-to-cook-label' class='hidden'>My-Cart </label>
-        <button id='recipes-to-cook-button' class=''><i class="fas fa-luggage-cart"></i> MyCart </button>
-      </div>
-    </nav>
+      <button id='home' class=''><i class="fas fa-home"></i> Home</button>
+      <label for='recipes-to-cook-label' class='hidden'> Home</label>
+      <button id='world-globe' class=''><i class="fas fa-globe-americas"></i></i> New Trip!</button>
+      <label for='world-icon-label' class='hidden'> world icon</label>
+      <button id='view-favorites-button' class=' view-favorites navButton'><i class="fas fa-heart"></i> Favorites </button>
+      <label for='view-favorites-label' class='hidden'>View all destinations</label>
+      <button id='recipes-to-cook-button' class='all-time-trips'><i class="fas fa-luggage-cart"></i> All trips</button>
+      <label for='recipes-to-cook-label' class='hidden'>All trips</label>
+    </div>
+
+  </nav>
 
   <body >
-    
-    <section class="salutation">
-      <h1 class="welcome"></h1>
-      <h2 class="total-spent"></h2>
-    </section>
-    
-    <form class="form">
+    <section class="salutation"></section>
+    <form class="form hidden">
       <!-- hidden -->
       <div class="new-trip-form">
 
@@ -110,25 +106,26 @@
         </select>
         <br><br>
         <h3 class="how-many">How many people are joining you?</h3>
-        <input class="people-quantity" type="number" id="people-quantity" name="quantity" min="1" max="25">
         <label class="hidden" for="people-quantity">Quantity (between 1 and 25):</label>
+        <input class="people-quantity" type="number" id="people-quantity" name="quantity" min="1" max="25" 
+        aria-describedby="name-format">
         
         <h3 class="initial-date">Date</h3>
-        <input id="select-date"class="select-date" type="date">
-        <label class="hidden" for="select-date">A user can pick the date for a new trip</label>
+        <label class="hidden" for="select-date">A user can pick the date for a new trip:</label>
+        <input id="select-date"class="select-date" type="date" placeholder="yyyy/mm/dd" min="2020/09/22" max="2025/12/31"
+        arial0label="input" value="required">
         <h3 class="durations">How many days do you want to travel for?</h3>
+        <label class="hidden" for="day-quantity">Amount of days for the new trip:</label>
         <input id="day-quantity" class="day-quantity" type="number" name="quantity" min="1">
-        <label class="hidden" for="day-quantity">Amount of days for the new trip</label>
+        <label class="hidden" for="submit-button">click on the submit button once the form has been filled out:</label>
         <button class="submit" id="submit-button">Submit</button>
-        <label class="hidden" for="submit-button">click on the submit button once the form has been filled out</label>
-
 
       </div>
     </form>
+    
+    <h1 class="trip-status hidden">Trips</h1>
 
-    <h1 class="trip-status">Trips</h1>
-
-    <section class="trip-buttons">
+    <section class="trip-buttons hidden">
       <ul class="trip-history">
         <li class="plane all-trips"><i class="fas fa-suitcase"></i>all</li>
         <li class="plane past-trips"><i class="fas fa-plane-arrival"></i>past</li>
@@ -151,7 +148,7 @@
           </div>
         </div>
       </section>
-      <section class="all-images-container">
+      <section class="all-images-container hidden">
         <h1 class="destinations-title">destinations</h1>
         <div class="card-container"></div>
       </section>

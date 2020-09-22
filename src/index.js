@@ -97,12 +97,11 @@ const onStart = (userId) => {
       tripsRepo = new TripsRepo(values[0]);
       destinationsRepo = new DestinationsRepo(values[1]);
       agentTravelersRepo = new TravelersRepo(values[2])
-      domUpdates.toggleBanner();
-      // domUpdates.greetTraveler(traveler)//greet agent
-      // domUpdates.displayAllDestinations(destinationsRepo);
       agentData = testData.agentsSampleData.agents[0];
       agent = new Agent(agentData, tripsRepo, destinationsRepo, agentTravelersRepo)
+      domUpdates.greetAgent(agent)
       console.log(agent)
+      // domUpdates.displayInjectAgentsboard();
     })
   }
 
@@ -120,7 +119,7 @@ const veryfyCredentails = () => {
     domUpdates.toggleDestinationsCards();
   } else if(password.value === 'travel2020' && password.value.length === 10 && userName.value === 'agency'){
     onStart();
-    //hide poster
+    domUpdates.toggleAgentBoard();
   }else {
     return false
   }

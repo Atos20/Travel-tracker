@@ -12,6 +12,7 @@ class Agent extends User {
     this.allTrips = alltrips.tripsData.trips
     this.allDestinations = allDestinations.destinationsData.destinations
     this.allTravelers = allTravelers.userTripHistory.travelers
+    this.earnings = this.calculateAnnualIncome();
   }
   
   getAllPendingTrips(){

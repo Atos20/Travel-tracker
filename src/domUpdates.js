@@ -2,12 +2,34 @@ import DestinationsRepo from '../src/destinationsRepo.js';
 
 const domUpdates = {
 
-  toggleBanner(){
-    
+  toggleAgentBoard(){
+    const agentDashboard = document.querySelector('.agent-dashboard');
+    const banner = document.querySelector('.main-destination-container');
+    banner.classList.toggle('hidden');
+    agentDashboard.classList.toggle('hidden');
   },
-  
-  displayAgentsDashboard(){
-    
+
+  greetAgent(agent){
+    console.log(name)
+    const agentName = document.querySelector('.agents-name');
+    // agentName.innerText = `${agen.name}`
+    const welContainer = document.querySelector('.welcome-container');
+    welContainer.innerHTML = '';
+    welContainer.innerHTML = `
+      <div class="box welcome-agent">
+        <h2 class="message">welcome</h2>
+         <h4 class="agents-name">${agent.name}</h4>
+      </div>
+      <div class="box todays-date">
+        <h2 class="date-title">Date</h2>
+        <h4 class="current-date">${agent.today}</h4>
+      </div>
+      <div class="box total-icome">
+        <h2 class="total-earnings">To year earnigns</h2>
+        <h4 class="total-amount">$${agent.earnings}</h4>
+      </div>
+    `;
+
   },
 
   displayBurgerMenu(burger){

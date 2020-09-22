@@ -94,7 +94,35 @@ main{
         background-color: #ffe9d2;
         grid-column: col 4 / span 2;
         grid-row: row;
-   
+
+        .info-about-trips{
+            background-color: #f8bd7f;
+            height: 13vh;
+            border-radius: 2%;
+            border: 1px solid ;
+
+            .cont{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                margin: 0%;
+                width: 100%;
+                padding: 2%;
+
+                .title{
+                    font-size: .7em;
+                    margin: 0%;
+                }
+
+                .return{
+                    font-size: .6em;
+                    margin: 0%;
+                    background-color: #95a5a6;
+                    width: 50%;
+                }
+            }
+        }
+        
     }
 
     .search-traveler{

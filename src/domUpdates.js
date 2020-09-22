@@ -104,6 +104,11 @@ const domUpdates = {
     
   },
 
+  toggleDestinationsCards(){
+    const container = document.querySelector('.all-images-container');
+    container.classList.toggle('hidden');
+  },
+
   toggleAllTripsSection(){
     const statusSection = document.querySelector('.trip-status');
     const tripsButtons = document.querySelector('.trip-buttons');

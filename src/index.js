@@ -94,13 +94,17 @@ const veryfyCredentails = () => {
   const userId = entry[entry.length-2] + entry[entry.length-1]
   if(password.value === 'travel2020' && password.value.length === 10 && userName.value.includes('traveler') && userId > 0 && userId <= 50){
     onStart(userId);
-    domUpdates.displaySalutation()
-    domUpdates.displayBurgerMenu(mainMenu)
-    // domUpdates.displayAllTripsMenu()
-    //displY TRIPS
-
+    domUpdates.displaySalutation();
+    domUpdates.displayBurgerMenu(mainMenu);
+    domUpdates.toggleDestinationsCards();
   } else {
-    //method that shows error
+
+    userName.placeholder = ''
+    password.placeholder = 'wron password'
+    //dispay a visual Q to let know the user that ther is a mistake 
+    console.log(userName.placeholder)
+    // userName.placeholder = 'atos'
+    return false;
   }
 }
 

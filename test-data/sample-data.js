@@ -1,17 +1,11 @@
 const agentsSampleData = {
   "agents": [
     {
-      "id": 1,
+      "agentId": 1,
       "name": "Juan Perez",
       "userName": "agency",
       "pwd": "travel2020"
-      },
-      {
-      "id": 2,
-      "name": "Daniel Galindo",
-      "userName": "user2",
-      "pwd": "travel2020"
-      }
+    }
   ]
 }
 

@@ -1,17 +1,20 @@
 import User from './User'
 import moment from 'moment';
 class Agent extends User {
-  constructor(agentData) {
+  constructor(agentData, alltrips, allDestinations, allTravelers) {
     super(agentData)
-    // this.id = data.id;
-    // this.name = data.name;
+    this.id = agentData.agentId;
+    this.name = agentData.name;
     this.userName = agentData.userName
     this.pwd = agentData.pwd;
+    this.allTrips = alltrips.tripsData.trips
+    this.allDestinations = allDestinations.destinationsData.destinations
+    this.allTravelers = allTravelers.userTripHistory.travelers
   }
 
   //get userpending trips
   getAllPendingTrips(){
-
+    
   }
 
   //I should be able to see and approve / deny trip requests

@@ -1,5 +1,33 @@
 import DestinationsRepo from '../src/destinationsRepo.js';
 const domUpdates = {
+
+  displayTripCards(travelersData) {
+    const tripCardContainer = document.querySelector('.today-trip-container');
+    tripCardContainer.innerHTML = ''
+    travelersData.forEach(entry => {
+      tripCardContainer.innerHTML += `
+      <div class="info-about-trips">
+
+      <div class="cont id-container">
+        <h1 class="title trip-id">Trip id</h1>
+        <h2 class="return trip-id">${entry.id}</h2>
+      </div>
+
+      <div class="cont destin-container">
+        <h1 class="title trip-destination">Destination</h1>
+        <h2 class="return trip-destination">${entry.destination}</h2>
+      </div>
+
+      <div class="cont traveler-conatainer">
+        <h1 class="title trip-traveler">Traveler</h1>
+        <h2 class="return trip-traveler-name">${entry.name}</h2>
+      </div>
+      
+    </div>
+      `;
+    });
+  },
+
   displayFoundTraveler(data) {
     const searchArea = document.querySelector('.found-trips-container');
     searchArea.innerHTML ='';
@@ -11,24 +39,23 @@ const domUpdates = {
       </div>
       <div class="info-container">
         <h2 class="traveler-type-title">Traveler Type</h2>
-        <h4 class="traveler-type-title">Data</h4>
+        <h4 class="traveler-type-title">${data.travelerType}</h4>
       </div>
       <div class="info-container">
-        <h2 class="traveler-spent-title">Total spent this yeay</h2>
+        <h2 class="traveler-spent-title">Total spent this year</h2>
         <h4 class="traveler-spent">${data.totalSpent}</h4>
       </div>
       <div class="info-container">
-        <h2 class="traveler-days-traveling-title">Days traveling this year</h2>
+        <h2 class="traveler-days-traveling-title">Days traveled</h2>
         <h4 class="traveler-day-count">${data.timeTraveling}</h4>
       </div>
-        <h2 class="traveler-all-destiantions">All destinations</h2>
+        <h2 class="traveler-all-destiantions">Destinations</h2>
         <h4 class="traveler-destinations">${data.destination.join()}</h4>
     </div>
     `;
   },
 
   displayPendingTrips(pendingTrips) {
-    console.log(pendingTrips)
     const penndings = document.querySelector('.pendientes')
     penndings.innerHTML ='';
     pendingTrips.forEach(trip => {

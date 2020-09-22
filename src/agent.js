@@ -3,17 +3,18 @@ import moment from 'moment';
 import TripsRepo from './tripsRepo';
 class Agent extends User {
   constructor(agentData, alltrips, allDestinations, allTravelers) {
-    super(agentData)
+    super(agentData);
     this.agentId = 1 || agentData.agentId;
     this.name = 'Juan Perez' || agentData.name;
-    this.userName = 'agency' || agentData.userName
+    this.userName = 'agency' || agentData.userName;
     this.pwd = "travel2020" || agentData.pwd;
     this.today = moment().format('YYYY-MM-DD');
-    this.allTrips = alltrips.tripsData.trips
-    this.allDestinations = allDestinations.destinationsData.destinations
-    this.allTravelers = allTravelers.userTripHistory.travelers
+    this.allTrips = alltrips.tripsData.trips;
+    this.allDestinations = allDestinations.destinationsData.destinations;
+    this.allTravelers = allTravelers.userTripHistory.travelers;
     this.earnings = this.calculateAnnualIncome();
-    this.pendingTrips = this.getAllPendingTrips()
+    this.pendingTrips = this.getAllPendingTrips();
+    this.todaysTrips = this.getTavelersByDate( this.today);
   }
   
   getAllPendingTrips(){

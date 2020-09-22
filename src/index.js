@@ -24,6 +24,20 @@ const allTrips = document.querySelector('.all-time-trips');
 const searchByName =document.querySelector('#search-for-traveler');
 const searchByNameButton =document.querySelector('.search-by-name-button');
 
+
+const getTodaysInformation = (agent) => {
+  console.log(agent.allDestinations)
+  const newData = agent.todaysTrips.map( trip => {
+    const obj = {id : trip.destinationID}
+    const findDestinations = agent.allDestinations.filter(destination => destination.id === trip.destinationID);
+    const findTravelers = agent.allTravelers.filter(traveler => traveler.id === trip.destinationID);
+    findDestinations.forEach(destination => obj.destination = destination.destination);
+    findTravelers.forEach(traveler => obj.name = traveler.name);
+    return obj 
+   });
+   domUpdates.displayTripCards(newData)
+}
+
 const findTravelerByName = () => {
   let desiredName = searchByName.value;
   const data = agent.searchForUserByName(desiredName);
@@ -109,7 +123,8 @@ const onStart = (userId) => {
       agent = new Agent(agentData, tripsRepo, destinationsRepo, agentTravelersRepo)
       domUpdates.greetAgent(agent)
       domUpdates.displayPendingTrips(agent.pendingTrips)
-      console.log(agent)
+      getTodaysInformation(agent)
+      // console.log(agent)
       // domUpdates.displayInjectAgentsboard();
     })
   }
@@ -125,15 +140,15 @@ const veryfyCredentails = () => {
   const entry = userName.value;
   const userId = entry[entry.length-2] + entry[entry.length-1];
   if(password.value === 'travel2020' && password.value.length === 10 && userName.value.includes('traveler') && userId > 0 && userId <= 50){
+    logButton.innerText = 'Log-out';
     onStart(userId);
     domUpdates.displaySalutation();
     domUpdates.displayBurgerMenu(mainMenu);
     domUpdates.toggleDestinationsCards();
-    logButton.innerText = 'Log-out';
   } else if(password.value === 'travel2020' && password.value.length === 10 && userName.value === 'agency'){
     onStart();
-    domUpdates.toggleAgentBoard();
     logButton.innerText = 'Log-out';
+    domUpdates.toggleAgentBoard();
   }else {
     return false;
   }

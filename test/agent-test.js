@@ -87,7 +87,7 @@ describe('Agent', () => {
     expect(agent.calculateAnnualIncome()).to.equal(9314)
   });
 
-  it.only('Should be able to keep track of travelers on trips for today’s date ', () => {
+  it('Should be able to keep track of travelers on trips for today’s date ', () => {
     expect(agent. getTavelersByDate('2020/09/22')).to.eql(
       [
         {
@@ -102,6 +102,10 @@ describe('Agent', () => {
         }
       ]
     )
+  });
+
+  it.only('Should be able to get the current trips', () => {
+  expect(agent.currentTravelersOnTrips().length).to.equal(2)
   });
 
   it('Should be able to know how much the traveler has spent over the year', () => {

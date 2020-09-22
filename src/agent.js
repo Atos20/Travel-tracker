@@ -45,7 +45,7 @@ class Agent extends User {
     const thisYearDestinations = currentYearTrips.map(trip => {
       return this.allDestinations.find(destination => destination.id === trip.destinationID)
     })
-    const annualIncome = thisYearDestinations.map(destination => {
+    return thisYearDestinations.map(destination => {
       const obj = {duration: 0, costPerDay: destination.estimatedLodgingCostPerDay, flightCostPerPerson: destination.estimatedFlightCostPerPerson}
       currentYearTrips.forEach(trip => {
        if(destination.id === trip.destinationID){
@@ -54,18 +54,17 @@ class Agent extends User {
       });
       return obj
     })
-    console.log(annualIncome);
-    return annualIncome
-   
-    //   const totalPerDay = trip.estimatedLodgingCostPerDay * amountDays;
-    //   const totalTripFlight = trip.estimatedFlightCostPerPerson * amountPeople;
-    //   total = totalPerDay + totalTripFlight;
-    //   return total;
-    // }, 0)
-    // return  totalCost
   }
 
-
+  calculateAnnualIncome() {
+    const data = this.gatherDataToCalculateAnnualIncome()
+    const annualIncome = data.reduce((total, entry) => {
+      total += (entry.costPerDay* entry.duration) + (entry.flightCostPerPerson* entry.duration)
+      return total
+    }, 0)
+    // console.log((10/ 100) * annualIncome)
+    return (10/ 100) * annualIncome
+  }
   //Travelers on trips for today’s date 
   //(number, names, however you want to display this!)
   todaysTotalTravelers(){

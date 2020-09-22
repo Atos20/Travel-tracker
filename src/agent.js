@@ -66,15 +66,30 @@ class Agent extends User {
     // console.log((10/ 100) * annualIncome)
     return (10/ 100) * annualIncome
   }
+  
+  getTavelersByDate(date){
+    const todaysTrip = this.allTrips.filter(trip => {
+      const newDateFormatOne = moment(trip.date,'YYYY-MM-DD').format('YYYY-MM-DD');
+      const newDateFormatTwo = moment(date,'YYYY-MM-DD').format('YYYY-MM-DD');
+      return newDateFormatOne === newDateFormatTwo
+    })
+    console.log( todaysTrip)
+    return todaysTrip
+  }
+  
   //Travelers on trips for today’s date 
   //(number, names, however you want to display this!)
   todaysTotalTravelers(){
-    
-  }
-
-  //get travelersby date
-  getTavelersByDate(){
-  
+    //get tavleres on trips
+    const currentTrip = this.allTrips.reduce((theTrip, trip) => {
+      let startDate = moment(trip.date, 'YYYY-MM-DD').format('YYYY-MM-DD');
+      let endDate = moment(startDate, 'YYYY-MM-DD').add(trip.duration, 'days').format('YYYY-MM-DD');
+      if (moment(this.today, 'YYYY-MM-DD').isBetween(startDate, endDate)) {
+        theTrip.push(trip)
+      }
+      return theTrip
+     },[])
+      return currentTrip
   }
 
   searchForUserByName(){

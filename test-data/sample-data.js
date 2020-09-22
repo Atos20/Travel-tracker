@@ -1,17 +1,11 @@
 const agentsSampleData = {
   "agents": [
     {
-      "id": 1,
+      "agentId": 1,
       "name": "Juan Perez",
       "userName": "agency",
       "pwd": "travel2020"
-      },
-      {
-      "id": 2,
-      "name": "Daniel Galindo",
-      "userName": "user2",
-      "pwd": "travel2020"
-      }
+    }
   ]
 }
 
@@ -77,7 +71,7 @@ const tripsSampleData = {
     "userID": 1,
     "destinationID": 1,
     "travelers": 5,
-    "date": "2020/9/20",
+    "date": "2020/09/20",
     "duration": 5,
     "status": "approved",
     "suggestedActivities": []
@@ -159,7 +153,7 @@ const tripsSampleData = {
     "travelers": 5,
     "date": "2019/12/19",
     "duration": 19,
-    "status": "approved",
+    "status": "pending",
     "suggestedActivities": []
     },
     {
@@ -169,7 +163,7 @@ const tripsSampleData = {
     "travelers": 6,
     "date": "2020/07/23",
     "duration": 17,
-    "status": "approved",
+    "status": "pending",
     "suggestedActivities": []
     },
     {
@@ -267,7 +261,7 @@ const tripsSampleData = {
     "userID": 4,
     "destinationID": 5,
     "travelers": 4,
-    "date": "2020/10/05",
+    "date": "2020/09/22",
     "duration": 6,
     "status": "approved",
     "suggestedActivities": []

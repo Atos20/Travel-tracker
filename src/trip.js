@@ -8,7 +8,7 @@ class Trip {
     this.date = tripObj.date;
     this.status = 'pending';
     this.suggestedActivities = [];
-    this.id = Date.now();
+    this.id = tripObj.id || Date.now();
   }
 
   suggestActivities(activity) {
@@ -17,14 +17,3 @@ class Trip {
 }
   
   export default Trip; 
-
-  /*
-{id: <number>, 
-userID: <number>, 
-destinationID: <number>, 
-travelers: <number>, 
-date: <string 'YYYY/MM/DD'>, 
-duration: <number>, 
-status: <string 'approved' or 'pending'>, 
-suggestedActivities: <array of strings>}
-</array>*/

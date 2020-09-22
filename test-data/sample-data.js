@@ -71,7 +71,7 @@ const tripsSampleData = {
     "userID": 1,
     "destinationID": 1,
     "travelers": 5,
-    "date": "2020/9/20",
+    "date": "2020/09/20",
     "duration": 5,
     "status": "approved",
     "suggestedActivities": []

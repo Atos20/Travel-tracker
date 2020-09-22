@@ -33,11 +33,11 @@ main{
         padding: 5px;
         font-size: 150%;
         width: 100%;
-        background-color: #ffe9d2;;
+        // background-color: #ffe9d2;;
     }
     
     .box .box {
-        background-color: #ccc;
+        background-color: #ffe9d2;
         color: #444;
     }
 
@@ -48,7 +48,7 @@ main{
 
         .pendings-container{
            
-            background-color: darkgrey;
+            background-color: #ffe9d2;
             height: 40vh;
             width: 100%;
             overflow: scroll;
@@ -88,11 +88,14 @@ main{
     }
 
     .trips-today {
+        background-color: #ffe9d2;
         grid-column: col 4 / span 2;
         grid-row: row;
+   
     }
 
     .search-traveler{
+        background-color: #ffe9d2;
         grid-column: col / span 2;
         grid-row: row 2;
 
@@ -123,7 +126,7 @@ main{
         }
     }
 
-    .d{
+    .welcome-container{
         grid-column: col 3 / span 2;
         grid-row: row 2;
         display: grid;

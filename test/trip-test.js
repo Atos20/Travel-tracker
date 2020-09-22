@@ -42,7 +42,7 @@ describe('Trip', () => {
 
   it('Should be able to have a date as property', () => {
     expect(newTrip).to.have.a.property('date');
-    expect(newTrip.date).to.equal('2020/9/20');
+    expect(newTrip.date).to.equal('2020/09/20');
   });
 
   it('Should be able to have a duration as property', () => {

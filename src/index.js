@@ -100,6 +100,7 @@ const onStart = (userId) => {
       agentData = testData.agentsSampleData.agents[0];
       agent = new Agent(agentData, tripsRepo, destinationsRepo, agentTravelersRepo)
       domUpdates.greetAgent(agent)
+      domUpdates.displayPendingTrips(agent.pendingTrips)
       console.log(agent)
       // domUpdates.displayInjectAgentsboard();
     })

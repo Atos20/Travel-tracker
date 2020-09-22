@@ -1,6 +1,23 @@
 import DestinationsRepo from '../src/destinationsRepo.js';
 
 const domUpdates = {
+  displayPendingTrips(pendingTrips){
+    console.log(pendingTrips)
+    const penndings = document.querySelector('.pendientes')
+    penndings.innerHTML ='';
+    pendingTrips.forEach(trip => {
+      penndings.innerHTML += `
+      <div class="result-container">
+        <h2 class="result pending-id-result">${trip.id}</h2>
+        <h2 class="result pending-status-result">${trip.status}...</h2>
+        <h2 class="result pending-date-result">${trip.date}</h2>
+        <h2 class="result pending-travelers-result">${trip.travelers}</h2>
+        <h2 class="result pending-duration-result">${trip.duration}</h2>
+        <button class="result pending-approve-button">approve</button>
+      </div>
+      `;
+    })
+  },
 
   toggleAgentBoard(){
     const agentDashboard = document.querySelector('.agent-dashboard');

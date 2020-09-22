@@ -108,7 +108,7 @@ const onStart = (userId) => {
 
 }
 
-const veryfyCredentails = () => {
+const veryfyCredentails = (logButton) => {
   const userName = document.querySelector('.account');
   const password = document.querySelector('.password')
   const entry = userName.value
@@ -118,9 +118,12 @@ const veryfyCredentails = () => {
     domUpdates.displaySalutation();
     domUpdates.displayBurgerMenu(mainMenu);
     domUpdates.toggleDestinationsCards();
+    document.querySelector('#home-button').innerText = 'Log-out'
   } else if(password.value === 'travel2020' && password.value.length === 10 && userName.value === 'agency'){
     onStart();
     domUpdates.toggleAgentBoard();
+    document.querySelector('#home-button').innerText = 'Log-out'
+    
   }else {
     return false
   }

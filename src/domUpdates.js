@@ -34,7 +34,8 @@ const domUpdates = {
     welContainer.innerHTML = '';
     welContainer.innerHTML = `
       <div class="box welcome-agent">
-        <h2 class="message">welcome</h2>
+        <h2 class="message">Welcome</h2>
+        <h2 class="message">Agent</h2>
          <h4 class="agents-name">${agent.name}</h4>
       </div>
       <div class="box todays-date">

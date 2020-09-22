@@ -75,11 +75,11 @@ const domUpdates = {
           </div>
           <div class="cost-per-day">
             <h2 class="info title-per-Day"> Cost per Day</h2>
-            <h2 class="info amount-per-Day">${destination.estimatedLodgingCostPerDay}</h2>
+            <h2 class="info amount-per-Day">$${destination.estimatedLodgingCostPerDay}.00</h2>
           </div>
           <div class="flight-per-person">
             <h2 class="info title-cost-per-Person"> Flight person</h2>
-            <h2 class="info amount-per-Person">${destination.estimatedFlightCostPerPerson}</h2>
+            <h2 class="info amount-per-Person">$${destination.estimatedFlightCostPerPerson}.00</h2>
           </div>
         </div>
       </div>
@@ -132,7 +132,7 @@ const domUpdates = {
     const welcome = document.querySelector('.welcome');
     const totalSpent = document.querySelector('.total-spent');
     welcome.innerText = `Welcome ${traveler.name}!`;
-    totalSpent.innerText = `You have spent $${traveler.spentOverYearPlusFees}.00 this Year`;
+    totalSpent.innerText = `You have spent $${traveler.spentOverYearPlusFees} this Year`;
   }
 
 

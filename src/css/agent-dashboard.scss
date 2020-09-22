@@ -1,5 +1,5 @@
 main{
-    background-color: darkcyan;
+    // background-color: darkcyan;
     margin: 40px;
     
     .agent-wrapper {
@@ -28,14 +28,14 @@ main{
     }
 
     .box {
-        background-color: #ffe9d2;;
         color:#132743;
         border-radius: 5px;
         padding: 5px;
         font-size: 150%;
         width: 100%;
+        background-color: #ffe9d2;;
     }
-
+    
     .box .box {
         background-color: #ccc;
         color: #444;

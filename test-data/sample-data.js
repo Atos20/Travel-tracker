@@ -153,7 +153,7 @@ const tripsSampleData = {
     "travelers": 5,
     "date": "2019/12/19",
     "duration": 19,
-    "status": "approved",
+    "status": "pending",
     "suggestedActivities": []
     },
     {
@@ -163,7 +163,7 @@ const tripsSampleData = {
     "travelers": 6,
     "date": "2020/07/23",
     "duration": 17,
-    "status": "approved",
+    "status": "pending",
     "suggestedActivities": []
     },
     {

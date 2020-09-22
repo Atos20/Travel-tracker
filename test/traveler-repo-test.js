@@ -16,13 +16,13 @@ describe('TravelersRepo', () => {
     tripsDataSample = testData.tripsSampleData
     tripRepo = new TripsRepo(tripsDataSample)
     travelersRepo = new TravelersRepo(tripRepo.historyByUserId(1));
-    traveler = new Traveler(travelerData, travelersRepo)
+
   });
   it('Should be able to be a function', () => {
     expect(TravelersRepo).to.be.a('function');
   });
 
-  it('Should be able to be an instance of TravelerRepo class', () => {
-    expect(travelersRepo).to.be.an.instanceOf(TravelerRepo);
+  it('Should be able to be an instance of TravelersRepo class', () => {
+    expect(travelersRepo).to.be.an.instanceOf(TravelersRepo);
   });
 });  

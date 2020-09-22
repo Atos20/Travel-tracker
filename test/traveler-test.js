@@ -5,6 +5,7 @@ import Traveler from '../src/traveler.js';
 import testData from '../test-data/sample-data.js'
 import TripsRepo from '../src/tripsRepo.js';
 import TravelersRepo from '../src/travelerRepo.js';
+import DestinationsRepo from '../src/destinationsRepo.js';
 // import DestinationsRepo from '../src/travelerRepo.js';
 let traveler, travelerData, tripsRepo, travelersRepo, tripsDataSample, destinationsRepo, destinationsData;
 
@@ -14,7 +15,7 @@ describe('Traveler', () => {
     travelerData = testData.travelersSampleData.travelers[0];
     destinationsData = testData.destinationsSampleData;
     tripsDataSample = testData.tripsSampleData;
-    // destinationsRepo = new DestinationsRepo(destinationsData);
+    destinationsRepo = new DestinationsRepo(destinationsData);
     tripsRepo = new TripsRepo(tripsDataSample);//all the trips
     travelersRepo = new TravelersRepo(tripsRepo.historyByUserId(1));
     traveler = new Traveler(travelerData, travelersRepo, destinationsData);

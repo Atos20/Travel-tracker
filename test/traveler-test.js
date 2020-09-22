@@ -6,7 +6,7 @@ import testData from '../test-data/sample-data.js'
 import TripsRepo from '../src/tripsRepo.js';
 import TravelersRepo from '../src/travelerRepo.js';
 import DestinationsRepo from '../src/destinationsRepo.js';
-// import DestinationsRepo from '../src/travelerRepo.js';
+
 let traveler, travelerData, tripsRepo, travelersRepo, tripsDataSample, destinationsRepo, destinationsData;
 
 describe('Traveler', () => {

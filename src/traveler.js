@@ -12,15 +12,13 @@ class Traveler extends User {
     this.today = moment().format('YYYY-MM-DD');
     this.travelHistory = tripHistory.userTripHistory || [];
     this.destinationsData = destinationsData;
-    this.tripsHistory = this. getPastTrips(); //past trips
-    this.currentTrip  = this.getCurrentTrip() || []; // || [] probably it will be just an object
+    this.tripsHistory = this. getPastTrips();
+    this.currentTrip  = this.getCurrentTrip() || [];
     this.upcomingTrips = this.getFutureTrips() || [];
-    this.pendingTrips =  this.getTripsByStatus('pending');// i might not need this since the method is dynamic enough to get pending and approved trips
-    this.tripsThisYear = this.getTripByYears() || []; //for 2020
+    this.pendingTrips =  this.getTripsByStatus('pending');
+    this.tripsThisYear = this.getTripByYears() || [];
     this.spentOverYearPlusFees = this.spentOverTheYear();
   }
-   //what format makes more sense? //myabe having and array of 
-   /*data : { "2020/10/04":{data},  "2020/10/04":{data},  "2020/10/04":{data}, date:{data}}*/
 
   restructuredTripHistoryByDate() {
     const data = this.travelHistory.reduce((newData, entry) => {
@@ -30,16 +28,11 @@ class Traveler extends User {
 
     return data
   }
-  //get currentTrip
-  //currently not working as intended
+
   getCurrentTrip() {
    const currentTrip = this.travelHistory.reduce((theTrip, trip) => {
     let startDate = moment(trip.date, 'YYYY-MM-DD').format('YYYY-MM-DD');
     let endDate = moment(startDate, 'YYYY-MM-DD').add(trip.duration, 'days').format('YYYY-MM-DD');
-    // if (moment(this.today, 'YYYY-MM-DD').isAfter(startDate, 'YYYY-MM-DD') && moment(this.today, 'YYYY-MM-DD').isBefore(endDate, 'YYYY-MM-DD')) {
-    //   theTrip.push(trip)
-    // }
-    //this 👇🏽 is the same as th if statement above 🤦🏽‍♂️
     if (moment(this.today, 'YYYY-MM-DD').isBetween(startDate, endDate)) {
       theTrip.push(trip)
     }
@@ -48,10 +41,8 @@ class Traveler extends User {
     return currentTrip
   }
 
-   //get futureTrips
    getFutureTrips() {
      const trips = this.travelHistory.reduce((tripsList, trip) => {
-      //  let startDate = moment(trip.date, 'YYYY-MM-DD').format('YYYY-MM-DD');
        if (moment(trip.date, 'YYYY-MM-DD').isAfter(this.today, 'YYYY-MM-DD')) {
          tripsList.push(trip)
        }
@@ -61,7 +52,6 @@ class Traveler extends User {
        return trips
      }
    
-  //get pastTrips
   getPastTrips(){
     const trips = this.travelHistory.reduce((tripsList, trip) => {
       if (moment(trip.date, 'YYYY-MM-DD').isBefore(this.today, 'YYYY-MM-DD')) {
@@ -72,7 +62,6 @@ class Traveler extends User {
       return trips
   }
 
-  //Get pending trips/approved/
   getTripsByStatus(status) {
     const trips = this.travelHistory.filter(trip => {
       return trip.status === status
@@ -80,19 +69,16 @@ class Traveler extends User {
     return trips
   }
 
-  //get Trips By Year
   getTripByYears() {
     const currentYear = moment().year();
     const currentTrips = this.travelHistory.filter(trip => {
       return trip.date.split('/')[0] === currentYear.toString();
     }) 
-    // console.log(this.currentTrip)
     return currentTrips
   }
 
   spentOverTheYear() {
     const destinationsClass = new DestinationsRepo(this.destinationsData);
-    // console.log(destinationsClass)
     const totalSpentOnCurrentYear = this.tripsThisYear.reduce((total, trip) => {
       total += destinationsClass.getDestinationCost(trip.destinationID, trip.duration, trip.travelers)
       return total

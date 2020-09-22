@@ -1,13 +1,13 @@
 class DestinationsRepo {
     constructor(destinationsData) {
+      // console.log(destinationsData)
       this.destinationsData = destinationsData;
     }
-
+    
     // get destinations by id/name
     getDestinationBy(spec, entry) {
-      const destination = this.destinationsData.destinations.find(destination => destination[spec] === entry);
-      // console.log(destination)
-      return destination
+      // console.log('what ma i',this.destinationsData.destinations)
+      return this.destinationsData.destinations.find(destination => destination[spec] === entry);
     }
 
     // get destination cost by id, days and people count

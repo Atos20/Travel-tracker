@@ -6,7 +6,7 @@ import FecthHandler from '../src/fetchHandler.js'
 
 let newFetch, query
 
-describe.only('fetchHandler', () => {
+describe('fetchHandler', () => {
   beforeEach(() => {
 
     global.fetch = () => {
@@ -33,7 +33,7 @@ describe.only('fetchHandler', () => {
       expect(newFetch.URL).to.equal(query)
   });
 
-  it('Should be able to Get all travelers data', () => {
+  it.skip('Should be able to Get all travelers data', () => {
     newFetch.getAllTravelersData()
     expect(newFetch.getAllTravelersData).to.have.been.called(1);
     // expect(newFetch.getAllTravelersData).to.have.been.called.with();

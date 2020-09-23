@@ -5,7 +5,6 @@ import moment from 'moment';
 class Traveler extends User {
   constructor(userInfo, tripHistory, destinationsData) {
     super(userInfo);
-    // console.log(destinationsData)//object
     // this.id = userInfo.id;
     // this.name = userInfo.name;
     this.travelerType = userInfo.travelerType;
@@ -23,10 +22,10 @@ class Traveler extends User {
   restructuredTripHistoryByDate() {
     const data = this.travelHistory.reduce((newData, entry) => {
       newData[entry.date] = entry
-      return newData
-    }, {})
+      return newData;
+    }, {});
 
-    return data
+    return data;
   }
 
   getCurrentTrip() {
@@ -36,9 +35,9 @@ class Traveler extends User {
     if (moment(this.today, 'YYYY-MM-DD').isBetween(startDate, endDate)) {
       theTrip.push(trip)
     }
-    return theTrip
-   },[])
-    return currentTrip
+    return theTrip;
+   },[]);
+    return currentTrip;
   }
 
    getFutureTrips() {
@@ -46,10 +45,10 @@ class Traveler extends User {
        if (moment(trip.date, 'YYYY-MM-DD').isAfter(this.today, 'YYYY-MM-DD')) {
          tripsList.push(trip)
        }
-       return tripsList
-      },[])
+       return tripsList;
+      },[]);
 
-       return trips
+       return trips;
      }
    
   getPastTrips(){
@@ -57,34 +56,34 @@ class Traveler extends User {
       if (moment(trip.date, 'YYYY-MM-DD').isBefore(this.today, 'YYYY-MM-DD')) {
         tripsList.push(trip)
       }
-      return tripsList
-     },[])
-      return trips
+      return tripsList;
+     },[]);
+      return trips;
   }
 
   getTripsByStatus(status) {
     const trips = this.travelHistory.filter(trip => {
-      return trip.status === status
-    })
-    return trips
+      return trip.status === status;
+    });
+    return trips;
   }
 
   getTripByYears() {
     const currentYear = moment().year();
     const currentTrips = this.travelHistory.filter(trip => {
       return trip.date.split('/')[0] === currentYear.toString();
-    }) 
-    return currentTrips
+    });
+    return currentTrips;
   }
 
   spentOverTheYear() {
     const destinationsClass = new DestinationsRepo(this.destinationsData);
     const totalSpentOnCurrentYear = this.tripsThisYear.reduce((total, trip) => {
       total += destinationsClass.getDestinationCost(trip.destinationID, trip.duration, trip.travelers)
-      return total
+      return total;
     }, 0);
-    const totalPlusFee = (10/ 100) * totalSpentOnCurrentYear + totalSpentOnCurrentYear 
-    return totalPlusFee.toFixed(2)
+    const totalPlusFee = ((10/ 100) * totalSpentOnCurrentYear + totalSpentOnCurrentYear).toFixed(2);
+    return totalPlusFee;
   } 
 }
 

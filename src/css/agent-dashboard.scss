@@ -1,9 +1,9 @@
 main{
-    background-color: darkcyan;
+    // background-color: darkcyan;
     margin: 40px;
     
     .agent-wrapper {
-        height: 100vh;
+        // height: 100vh;
         display: grid;
         grid-gap: 10px;
         grid-template-columns: repeat(4, [col] 1fr) ;
@@ -18,7 +18,7 @@ main{
         h2{
             font-size: 1em;
             margin: 0%;
-            // width: 100%;
+            width: 100%;
         }
 
         h4{
@@ -28,27 +28,28 @@ main{
     }
 
     .box {
-        background-color: #ffe9d2;;
         color:#132743;
         border-radius: 5px;
         padding: 5px;
         font-size: 150%;
         width: 100%;
+        overflow: auto;
     }
-
+    
     .box .box {
-        background-color: #ccc;
+        background-color: #ffe9d2;
         color: #444;
     }
 
     .pending-trips-agent {
+        background-color: #ffe9d2;
         grid-column: col / span 3;
         grid-row: row;
         
 
         .pendings-container{
            
-            background-color: darkgrey;
+            background-color: #ffe9d2;
             height: 40vh;
             width: 100%;
             overflow: scroll;
@@ -78,6 +79,7 @@ main{
                     margin: 0px;
                     padding: 0%;
                 }
+
                 .result{
                     padding: 2%;
                     font-size: .6em;
@@ -88,27 +90,67 @@ main{
     }
 
     .trips-today {
+        background-color: #ffe9d2;
         grid-column: col 4 / span 2;
         grid-row: row;
+
+        h1{
+            margin: 1%;
+            font-size: 1.3em;
+        }
+
+        .today-trip-container{
+            padding: 2%;
+            margin: 3%;
+            height: 13vh;
+        }
+        .info-about-trips{
+            background-color: #f8bd7f;
+            height: 17vh;
+            border-radius: 2%;
+            border: 1px solid ;
+
+            .cont{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                margin: 0%;
+                width: 100%;
+                padding: 2%;
+
+                .title{
+                    font-size: .7em;
+                    margin: 0%;
+                }
+
+                .return{
+                    font-size: .6em;
+                    margin: 0%;
+                    background-color: #95a5a6;
+                    width: 50%;
+                }
+            }
+        }
+        
     }
 
     .search-traveler{
+        background-color: #ffe9d2;
         grid-column: col / span 2;
         grid-row: row 2;
 
         .found-trips-container{
-        
             background-color:#132743;
-            height: 40vh;
+            height: 45vh;
             margin: 5%;
             text-align: center;
+            padding-top: 5%;
 
             .traveler-info{
                 
-                height: 15vh;
+                height: 100%;
                 color: #f8bd7f;
                 margin: 0.5%;
-                margin: 5%;
 
                 .info-container{
                     display: flex;
@@ -116,6 +158,7 @@ main{
                     justify-content: center;
                     justify-content: space-between;
                     margin: 2%;
+                    text-align: justify;
                 }
                 
                 
@@ -123,7 +166,7 @@ main{
         }
     }
 
-    .d{
+    .welcome-container{
         grid-column: col 3 / span 2;
         grid-row: row 2;
         display: grid;

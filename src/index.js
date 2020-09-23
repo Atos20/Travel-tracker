@@ -3,6 +3,7 @@ import './css/base.scss';
 import './images/turing-logo.png'
 import moment from 'moment';
 
+import testData from '../test-data/sample-data.js'
 import Agent from '../src/agent.js';
 import Traveler from '../src/traveler.js';
 import TripsRepo from '../src/tripsRepo.js';
@@ -12,14 +13,36 @@ import FecthHandler from '../src/fetchHandler.js'
 import domUpdates from '../src/DomUpdates.js';
 import Trip from './trip';
 
-let api, tripsRepo, destinationsRepo, travelersRepo, traveler, agent;
+let api, tripsRepo, destinationsRepo, travelersRepo, traveler,  agentData, agentTravelersRepo, agent;
 
 const mainMenu = document.querySelector('.hamburger');
 const newTripButton = document.querySelector('#world-globe');
 const submitNewTripButton  = document.querySelector('.submit');
 const travelHistory = document.querySelector('.trip-buttons');
 const logButton = document.querySelector('.log-in');
-const allTrips = document.querySelector('.all-time-trips')
+const allTrips = document.querySelector('.all-time-trips');
+const searchByName =document.querySelector('#search-for-traveler');
+const searchByNameButton =document.querySelector('.search-by-name-button');
+
+
+const getTodaysInformation = (agent) => {
+  console.log(agent.allDestinations)
+  const newData = agent.todaysTrips.map( trip => {
+    const obj = {id : trip.destinationID}
+    const findDestinations = agent.allDestinations.filter(destination => destination.id === trip.destinationID);
+    const findTravelers = agent.allTravelers.filter(traveler => traveler.id === trip.destinationID);
+    findDestinations.forEach(destination => obj.destination = destination.destination);
+    findTravelers.forEach(traveler => obj.name = traveler.name);
+    return obj 
+   });
+   domUpdates.displayTripCards(newData)
+}
+
+const findTravelerByName = () => {
+  let desiredName = searchByName.value;
+  const data = agent.searchForUserByName(desiredName);
+  domUpdates.displayFoundTraveler(data);
+}
 
 
 const retrieveTravalersTrips = (event) => {
@@ -75,43 +98,68 @@ const onStart = (userId) => {
   const allTripsData = api.getAllTripsData();
   const allDestinationsData = api.getAllDestinationsData();
   const allTravelersData = api.getAllTravelersData();
-  const travelerData = api.getSingleTravelerData(userId);
-  Promise.all([allTripsData, allDestinationsData, allTravelersData, travelerData])
-  .then(values => {
-    tripsRepo = new TripsRepo(values[0]);
-    destinationsRepo = new DestinationsRepo(values[1]);
-    travelersRepo = new TravelersRepo(tripsRepo.historyByUserId(values[3].id));
-    traveler = new Traveler(values[3], travelersRepo, destinationsRepo.destinationsData);
-    domUpdates.greetTraveler(traveler)
-    domUpdates.displayAllDestinations(destinationsRepo);
-  })
+  if(userId && typeof userId === 'string'){
+    const travelerData = api.getSingleTravelerData(userId);
+    Promise.all([allTripsData, allDestinationsData, allTravelersData, travelerData])
+    .then(values => {
+      tripsRepo = new TripsRepo(values[0]);
+      destinationsRepo = new DestinationsRepo(values[1]);
+      agentTravelersRepo = new TravelersRepo(values[2])
+      travelersRepo = new TravelersRepo(tripsRepo.historyByUserId(values[3].id));
+      traveler = new Traveler(values[3], travelersRepo, destinationsRepo.destinationsData);
+      domUpdates.greetTraveler(traveler)
+      domUpdates.displayAllDestinations(destinationsRepo);
+      agentData = testData.agentsSampleData.agents[0];
+      agent = new Agent(agentData, tripsRepo, destinationsRepo, agentTravelersRepo)
+      console.log(agent)
+    })
+  } else {
+    Promise.all([allTripsData, allDestinationsData, allTravelersData])
+    .then(values => {
+      tripsRepo = new TripsRepo(values[0]);
+      destinationsRepo = new DestinationsRepo(values[1]);
+      agentTravelersRepo = new TravelersRepo(values[2])
+      agentData = testData.agentsSampleData.agents[0];
+      agent = new Agent(agentData, tripsRepo, destinationsRepo, agentTravelersRepo)
+      domUpdates.greetAgent(agent)
+      domUpdates.displayPendingTrips(agent.pendingTrips)
+      getTodaysInformation(agent)
+      // console.log(agent)
+      // domUpdates.displayInjectAgentsboard();
+    })
+  }
 }
 
 const veryfyCredentails = () => {
+  const logButton = document.querySelector('#home-button')
+  if(logButton.innerText === 'Log-out'){
+    window.location.reload();
+  }
   const userName = document.querySelector('.account');
-  // console.log(userName.vaue)
-  const password = document.querySelector('.password')
-  const entry = userName.value
-  const userId = entry[entry.length-2] + entry[entry.length-1]
+  const password = document.querySelector('.password');
+  const entry = userName.value;
+  const userId = entry[entry.length-2] + entry[entry.length-1];
   if(password.value === 'travel2020' && password.value.length === 10 && userName.value.includes('traveler') && userId > 0 && userId <= 50){
+    logButton.innerText = 'Log-out';
     onStart(userId);
     domUpdates.displaySalutation();
     domUpdates.displayBurgerMenu(mainMenu);
     domUpdates.toggleDestinationsCards();
   } else if(password.value === 'travel2020' && password.value.length === 10 && userName.value === 'agency'){
-    // domUpdates.displayAgentsDashboard()
-    //hide poster
+    onStart();
+    logButton.innerText = 'Log-out';
+    domUpdates.toggleAgentBoard();
   }else {
-    return false
+    return false;
   }
 }
 
+searchByNameButton.addEventListener('click', findTravelerByName)
 allTrips.addEventListener('click', domUpdates.toggleAllTripsSection)
 logButton.addEventListener('click', veryfyCredentails)
 travelHistory.addEventListener('click', retrieveTravalersTrips)
 submitNewTripButton.addEventListener('click', submitNewTrip)
 newTripButton.addEventListener('click', domUpdates.toggleNewTripForm);
-
 mainMenu.addEventListener('click', domUpdates.displayMenuOptions);
 
 // window.onload = onStart()

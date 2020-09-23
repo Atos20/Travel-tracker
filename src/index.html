@@ -12,15 +12,12 @@
   <header class="top-menu">
     <label for='' class='hidden'>Main menu button</label>
     <div class="hamburger">
-      <!-- <span class="hamburger-line line-1"></span>
-      <span class="hamburger-line line-2"></span>
-      <span class="hamburger-line line-3"></span> -->
     </div>
 
     <div class="log-in-info">
       <input id="account" type="text" class="account" name="user-name" placeholder="user name">
       <label for="account" class= "hidden">Input field for username</label>
-      <input class="password" type="text" id="password" name="user-input-password" placeholder="password">
+      <input class="password" type="password" id="password" name="user-input-password" placeholder="password">
       <label class="hidden" for="password">Input field for user password</label>
       <button id='home-button' class='log-in'></i>Log-in <i class="fas fa-sign-in-alt"></i></button>
       <label for='home-button' class='hidden'>Log in button</label>
@@ -28,14 +25,12 @@
   </header>
 
   <nav class="nav-bar hidden">
-    <!-- hidden -->
+
     <div class="nav-buttons">
-      <button id='home' class=''><i class="fas fa-home"></i> Home</button>
-      <label for='recipes-to-cook-label' class='hidden'> Home</label>
       <button id='world-globe' class=''><i class="fas fa-globe-americas"></i></i> New Trip!</button>
       <label for='world-icon-label' class='hidden'> world icon</label>
-      <button id='view-favorites-button' class=' view-favorites navButton'><i class="fas fa-heart"></i> Favorites </button>
-      <label for='view-favorites-label' class='hidden'>View all destinations</label>
+      <button id='view-destinations-button' class=' view-destinations navButton'><i class="fas fa-map-marker-alt"></i> Destinations</button>
+      <label for='view-destinations-label' class='hidden'>View all destinations</label>
       <button id='recipes-to-cook-button' class='all-time-trips'><i class="fas fa-luggage-cart"></i> All trips</button>
       <label for='recipes-to-cook-label' class='hidden'>All trips</label>
     </div>
@@ -45,7 +40,7 @@
   <body >
     <section class="salutation"></section>
     <form class="form hidden">
-      <!-- hidden -->
+
       <div class="new-trip-form">
 
         <h3 class="start">Where do you want to go?</h3>
@@ -141,7 +136,7 @@
     </section>
 
     <main>
-      <section class="main-destination-container hidden">
+      <section class="main-destination-container">
         <div class="main-info-container">
           <div class="inner-box1 box">
             <h1 class="title trip-name">Never let your memories be <br>greater than your dreams</h1>
@@ -154,86 +149,73 @@
         <div class="card-container"></div>
       </section>
 
-      <section class="agent-dashboard">
+      <section class="agent-dashboard hidden">
+       
         <div class="agent-wrapper">
 
           <div class="box pending-trips-agent">
 
-            <h1 class="pendings">pending trips agent</h1>
+            <h1 class="pendings">Pending trips agent</h1>
 
             <div class="pendings-container">
               
               <div class="status-container">
                 <h2 class="pending pending-id-title">Dest.id</h2>
-                <h2 class="pending pending-status-title">status</h2>
-                <h2 class="pending pending-date-title">date</h2>
-                <h2 class="pending pending-travelers-title">travelers</h2>
-                <h2 class="pending pending-duration-title">duration</h2>
+                <h2 class="pending pending-status-title">Trip status</h2>
+                <h2 class="pending pending-date-title">Departure</h2>
+                <h2 class="pending pending-travelers-title">Travelers #</h2>
+                <h2 class="pending pending-duration-title">Trip duration</h2>
                 <h2 class="pending pending-approve-title">resolve</h2>
               </div>
 
-              <div class="result-container">
-                <h2 class="result pending-id-result">2</h2>
-                <h2 class="result pending-status-result">pending...</h2>
-                <h2 class="result pending-date-result">2020/09/20</h2>
-                <h2 class="result pending-travelers-result">Orlando Martinez</h2>
-                <h2 class="result pending-duration-result">14day</h2>
-                <button class="result pending-approve-button">approve</button>
+              <div class="pendientes">
               </div>
 
             </div>
+
           </div>
+
           <div class="box trips-today">
-            <div class="today-trip-container">
-              
-            </div>
+            <h1 class="todays-title">todays trips</h1>
+            <div class="today-trip-container"></div> 
+
           </div>
 
           <div class="box search-traveler">
             <h2 class="seach-traveler">Search traveler by name</h2>
-            <input id="search-for-traveler" class="find-traveler" type="text" name="bar" >
             <label class="hidden" for="search-for-traveler">Search bar look for travaler by name:</label>
+            <input id="search-for-traveler" class="find-traveler" type="text" name="bar" >
+            <button class="search-by-name-button">search</button>
+
             <div class="found-trips-container">
               <div class="traveler-info">
                 <div class="info-container">
                   <h2 class="traveler-title">Traveler's Name</h2>
-                  <h4 class="traveler-found-name">Orlando martinez</h4>
+                  <h4 class="traveler-found-name">_____</h4>
                 </div>
                 <div class="info-container">
                   <h2 class="traveler-type-title">Traveler Type</h2>
-                  <h4 class="traveler-type-title">Relaxer</h4>
+                  <h4 class="traveler-type-title">_____</h4>
                 </div>
                 <div class="info-container">
-                  <h2 class="traveler-spent-title">Total spent this yeay</h2>
-                  <h4 class="traveler-spent">$1000,00</h4>
+                  <h2 class="traveler-spent-title">Total spent this year</h2>
+                  <h4 class="traveler-spent">_____</h4>
                 </div>
                 <div class="info-container">
                   <h2 class="traveler-days-traveling-title">Days traveling this year</h2>
-                  <h4 class="traveler-day-count">34 days</h4>
+                  <h4 class="traveler-day-count"></h4>
                 </div>
                   <h2 class="traveler-all-destiantions">All destinations</h2>
-                  <h4 class="traveler-destinations"> 'Lima, Peru', 'Stockholm, Sweden','Sydney, Austrailia','Cartagena, Colombia','Madrid, Spain'</h4>
+                  <h4 class="traveler-destinations"></h4>
               </div>
             </div>
 
           </div>
-          <div class="box d">
-            <div class="box welcome-agent">
-              <h2 class="message">welcome</h2>
-              <h4 class="agents-name">Orlando, Murcio</h4>
-            </div>
-            <div class="box todays-date">
-              <h2 class="date-title">Date</h2>
-              <h4 class="current-date">2020/09/22</h4>
-            </div>
-            <div class="box total-icome">
-              <h2 class="total-earnings">To year earnigns</h2>
-              <h4 class="total-amount">$122,000,00</h4>
-            </div>
+
+          <div class="box welcome-container ">
           </div>
         </div>
       </section>
-
       <section class="all-images-container hidden">
         <h1 class="destinations-title">destinations</h1>
         <div class="card-container"></div>

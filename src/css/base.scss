@@ -100,6 +100,7 @@ body {
     background-repeat: no-repeat;
     justify-content: center;
     width: 500px;
+    
 
     .start{
       background-color: #e69984;;
@@ -193,7 +194,7 @@ body {
       clip-path: polygon(50% 0, 100% 57%, 100% 100%, 0 100%, 0 0);
       height: 77vh;
       width: 100vw;
-      // z-index: -1;
+      z-index: -1;
 
       .box{
         text-align: center;

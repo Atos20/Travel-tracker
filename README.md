@@ -1,105 +1,131 @@
-# Travel Tracker
 
-## Clone This Repo
+[![Contributors][contributors-shield]](https://github.com/Atos20/Travel-tracker/graphs/contributors)
+[![Forks][forks-shield]](https://github.com/Atos20/Travel-tracker/network/members)
+[![Issues][issues-shield]](https://github.com/Atos20/Travel-tracker/issues)
 
-That's right, _clone_ not fork. You will use this repo multiple times, but you can only fork a repository once. So here is what you need to do to clone the repo and still be able to push changes to your repo:
+## Travel-Tracker __*solo project*_
 
-1. Clone down this repo. Since you don't want to name your project "webpack-starter-kit", you can use an optional argument when you run `git clone` (you replace the `[...]` with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Remove the default remote: `git remote rm origin` (notice that `git remote -v` not gives you back nothing)
-1. Create a new repo on GitHub with the name of `[what you want to name the repo]` to be consistent with naming
-1. Copy the address that you would use to clone down this repo - something like `git@github.com:...`
-1. Add this remote to your cloned down repo: `git remote add origin [address you copied in the previous step]` - do not include the brackets
+## Contributors
+  - [Orlando Murcio](https://www.github.com/atos20)
 
-Now try to commit something and push it up to your new repo. If everything is setup correctly, you should see the changes on GitHub.
+## Project Directions
+[Travel-tracker specifications](https://frontend.turing.io/projects/travel-tracker.html)
 
-## Setup
+## Context
+Travel-tracker is the last solo project of mod 2 of Turing, School of Software and Design and it is a project that requires the use of dev dependencies, `API` request, and the use of array iterator methods to manipulate data. This applications also focuses on  creating and testing classes as well as the use of `chai-spies` to test on other methods and functions that are not part of the classes.
 
-After one person has gone through the steps of cloning down this repo and editing the remote, everyone should clone down the repo. 
+#### Technologies used:
+  * JavaScript ES6
+  * Terminal
+  * GitHub
+  * HTML
+  * SCSS
+  * moment.js
+  * cha-spies
 
-Then install the library dependencies. Run:
+## Challenges
 
-```bash
-npm install
-```
+    - API's
+    - Manipulation of nested data types
+    - Use of chai-spies to spy on DOM related methods
+    - Spies
 
-To verify that it is setup correctly, run `npm start` in your terminal. Go to `http://localhost:8080/` and you should see a page with some `h1` text, Turing logo image and a beautiful gradient background. If that's the case, you're good to go. Enter `control + c` in your terminal to stop the server at any time.
+## Wins
 
-## Where to Add Your Code
+  * Use of chai-spies to test DOM related methods
+  * Resolving API promises and responses
+  * Project planning and organization
+  * Array prototype methods
+  * Practice OOP while creating the application
+  * Using the project board * issues, labels and tickets* to keep track of my progress
 
-### JavaScript
+## Future Goals
 
-You have to be very intentional with where you add your feature code. This repo uses a tool called [webpack](https://webpack.js.org/) to combine many JavaScript files into one big file. Webpack enables you to have many, separate JavaScript files to keep your code organized and readable. Webpack expects all of your code files to be in a specific place, or else it doesn't know how to combine them all behind the scenes.
+  * Better organiziation of `scss` file 
+  * Spie on Dom relate methos
+  * Run-through video of the project
+  * Implement an animation using CSS and SASS
+  * Add destinations
+  * Remove trips and destinations
+  * Add activities to each trip
 
-**Create all of your feature code files in the `src` directory.**
+## In Action
 
-Since code is separated into multiple files, you need to use the `import` and `export` syntax to share code across file.
+#### Take 1
 
-Here is a video that walks through some information about [import and export](https://www.youtube.com/watch?v=_3oSWwapPKQ). There are a lot of resources out there about `import` and `export`, and resources will sometimes call them `ES6 modules`. It's something you will see in React and beyond.
+- The agent needs tthe user-name `agency` and the password `travel2020`to log into the application.
+- Once the applications has succesfully verified the agents credentials the agent can clearly see the following information being displayed on the agent's dashboard:
+    - A welcoming message
+    - Today's Date
+    - Earnings made over the current year
+    - All pending trips
+    - All today's trips
 
-### HTML
+  <img src="https://media.giphy.com/media/LJY0V84lnCATDAcZBg/giphy.gif" height=auto width=75%/>
 
-Add the HTML you need in the `index.html` file in the `./src` directory. There is some boilerplate HTML that exists from the start that you can modify.
+#### Take 2
+- There are 50 travelers to choose from, when the traveler inputs  `traveler` followed by  any number between 01 and  50, it allows the travler to succesfully log into the account.
+- The script verifies the travelers credentials and the travaler's dashboard displays the following; 
 
-### CSS (SCSS/SASS)
+    - A `log-out` button
+    - Welcoming message
+    - Main `menu` button
+    - `New Trip` button
+    - `Destinations` button
+    - `All trips` button
 
-This project is setup to use SCSS/SASS files by default instead of your regular CSS files. Add your SCSS files in the `src/css` directory. There is a `base.scss` file already there, but you can change this file and add multiple SCSS files in this directory.
+  <img src="https://media.giphy.com/media/E32o0tcQFJIqi2WgML/giphy.gif" alt="" height=100% width=80%/>
+#### Take 3
 
-This might sound weird, but you need to `import` your SCSS files in the JavaScript entry file (`index.js`) for the styles to be applied to your HTML. The example `base.scss` file has already been imported in the JavaScript entry file as an example.
+- When the user clicks on `new Trip ` button the user is also presented with a form that can be filled out to request a new trip. This form requires a
 
-### Images
+<img src="https://media.giphy.com/media/k3IaypGKc6w2t3y58O/giphy.gif" height=auto width=75%/>
 
-Add your image files in the `src/images` directory. Similar to CSS files, you need to `import` image files in the JavaScript entry file (`index.js`). Then go into the HTML and add an `img` element with the `src` attribute pointing to the `images` directory. There is an example in the `index.html` file for you to see.
+#### Take 4
+- When the user clicks on the `allTrips button` the user is with the option to see;
 
-## How to View Your Code in Action
+    - All trips
+    - Past trips
+    - Present trips
+    - Future Trips
+    - Trips pending
 
-In the terminal, run:
 
-```bash
-npm start
-```
+  <img src="https://media.giphy.com/media/HhSgJue7wcCeqV5Syf/giphy.gif" alt="After verifying the travelers credentials, the user is presented with differnt buttons to interact with." height=auto width=75%/>
 
-You will see a bunch of lines output to your terminal. One of those lines will be something like:
+### Set up
+* On the top right corner of this page, click the **Fork** button.
+- Clone the repository to your computer `git clone <URL>`
+  - When you run git clone - git clone [remote-address] [what you want to name the repo]
+  replace the [...] with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
+- `cd` into the repository with the following command `cd <repo-name>`
+- Run `npm install`
+- Run `open src/index.html`
 
-```bash
-Project is running at http://localhost:8080/
-```
+### Contribute
 
-Go to `http://localhost:8080/` in your browser to view your code running in the browser.
+- Create a new branch with `git checkout -b <new branch name>`
+- Open your text editor and add or remove functionalities to the site.
+- `git add` and `git commit -m "<your commit meessage>"` to save the changes to your local repository
+- `git push` your changes
+- Create a new pull request!
 
----
 
-## Test Files Organization
+### Project Managers
+- [Bob Gu](https://github.com/BobGu)
 
-Similar to feature code, your test code needs to be put in a specific place for it to run successfully.
 
-**Put all of your test files in the `test` directory.** As a convention, all test filenames should end with `-test.js`. For instance: `box-test.js`.
-
-## Running Your Tests
-
-Run your test suite using the command:
-
-```bash
-npm test
-```
-
-The test results will output to the terminal.
-
----
-
-## Linting Your Code
-
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit - the linter is still running successfully.
-
-Your linter will look at the JavaScript files you have within the `src` directory and the `test` directory. 
-
-## Webpack?
-
-If you look in the `package.json` file, you'll see one of the library dependencies called `webpack`. If you're interested in learning more about what Webpack is and how it works behind the scenes, take a look through the [Webpack configuration documentation](https://webpack.js.org/concepts/).
-
-## Deploying to GitHub Pages
-
-_If you are finished with the functionality and testing of your project_, then you can consider deploying your project to the web! This way anyone can play it without cloning down your repo.
-
-[GitHub Pages](https://pages.github.com/) is a great way to deploy your project to the web. Don't worry about this until your project is free of bugs and well tested!
-
-If you _are_ done, you can follow [this procedure](./gh-pages-procedure.md) to get your project live on GitHub Pages.
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/jordy1611/whats-cookin-JS-JS-KS.svg?style=flat-square
+[contributors-url]: https://github.com/jordy1611/whats-cookin-JS-JS-KS/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/jordy1611/whats-cookin-JS-JS-KS.svg?style=flat-square
+[forks-url]: https://github.com/jordy1611/whats-cookin-JS-JS-KS/network/members
+[stars-shield]: https://img.shields.io/github/stars/jordy1611/whats-cookin-JS-JS-KS.svg?style=flat-square
+[stars-url]: https://github.com/jordy1611/whats-cookin-JS-JS-KS/stargazers
+[issues-shield]: https://img.shields.io/github/issues/jordy1611/whats-cookin-JS-JS-KS.svg?style=flat-square
+[issues-url]: https://github.com/jordy1611/whats-cookin-JS-JS-KS/issues
+[license-shield]: https://img.shields.io/github/license/jordy1611/whats-cookin-JS-JS-KS.svg?style=flat-square
+[license-url]: https://github.com/jordy1611/whats-cookin-JS-JS-KS/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/othneildrew
+[product-screenshot]: images/screenshot.png

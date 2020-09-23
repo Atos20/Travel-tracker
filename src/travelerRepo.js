@@ -1,8 +1,7 @@
 class TravelersRepo {
-    constructor(tripHistory) {
-      this.userTripHistory = tripHistory;
-      // console.log(this.userTripHistory)
-    }
+  constructor(tripHistory) {
+    this.userTripHistory = tripHistory;
   }
+}
   
-  export default TravelersRepo;
+export default TravelersRepo;

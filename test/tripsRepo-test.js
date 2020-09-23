@@ -3,15 +3,12 @@ const expect = chai.expect;
 
 import TripsRepo from '../src/TripsRepo.js';
 import testData from '../test-data/sample-data.js'
-import Traveler from '../src/traveler.js';
 
-let tripsData, newTripsRepo, newTraveler, travelerData;
+let tripsData, newTripsRepo;
 
 describe('TripsRepo', () => {
   beforeEach(() => {
-    travelerData = testData.travelersSampleData.travelers[0]
     tripsData = testData.tripsSampleData
-    // newTraveler = new Traveler(travelerData)
     newTripsRepo = new TripsRepo(tripsData);
   });
   it('Should be able to be a function', () => {
@@ -21,8 +18,4 @@ describe('TripsRepo', () => {
   it('Should be able to be an instance of TripsRepo class', () => {
     expect(newTripsRepo).to.be.an.instanceOf(TripsRepo);
   });
-
-  // it('Should be able to filter trips by id number', () =>{
-  //   expect(newTripsRepo.historyByUserId(newTraveler.id).length).to.eql(5)
-  // });
 });  

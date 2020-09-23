@@ -19,16 +19,16 @@ describe('DestinationsRepo', () => {
   });
 
   it('Should be able to be an instance of DestinationsRepo class', () => {
-   expect(newDestinationsRepo).to.be.an.instanceOf(DestinationsRepo);
+    expect(newDestinationsRepo).to.be.an.instanceOf(DestinationsRepo);
   });
 
   it('Should be able to hold onto all destinations data', () => {
-    expect(newDestinationsRepo).to.have.a.property('destinationsData')
-    expect(newDestinationsRepo.destinationsData.destinations.length).to.equal(15)
+    expect(newDestinationsRepo).to.have.a.property('destinationsData');
+    expect(newDestinationsRepo.destinationsData.destinations.length).to.equal(15);
   })
 
   it('Should be able to get destinations by id or name', () => {
-    const destination = newDestinationsRepo.getDestinationBy('id', 1)
+    const destination = newDestinationsRepo.getDestinationBy('id', 1);
     expect(destination).to.eql(
       {
         "id": 1,
@@ -37,7 +37,7 @@ describe('DestinationsRepo', () => {
         "estimatedFlightCostPerPerson": 400,
         "image": "https://images.unsplash.com/photo-1489171084589-9b5031ebcf9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80",
         "alt": "overview of city buildings with a clear sky"
-        }
+      }
     );
   });
 

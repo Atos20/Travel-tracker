@@ -30,7 +30,7 @@ const domUpdates = {
 
   displayFoundTraveler(data) {
     const searchArea = document.querySelector('.found-trips-container');
-    searchArea.innerHTML ='';
+    searchArea.innerHTML = '';
     searchArea.innerHTML = `
     <div class="traveler-info">
       <div class="info-container">
@@ -43,11 +43,11 @@ const domUpdates = {
       </div>
       <div class="info-container">
         <h2 class="traveler-spent-title">Total spent this year</h2>
-        <h4 class="traveler-spent">${data.totalSpent}</h4>
+        <h4 class="traveler-spent">$ ${data.totalSpent}.00</h4>
       </div>
       <div class="info-container">
         <h2 class="traveler-days-traveling-title">Days traveled</h2>
-        <h4 class="traveler-day-count">${data.timeTraveling}</h4>
+        <h4 class="traveler-day-count">${data.timeTraveling} days</h4>
       </div>
         <h2 class="traveler-all-destiantions">Destinations</h2>
         <h4 class="traveler-destinations">${data.destination.join()}</h4>
@@ -57,7 +57,7 @@ const domUpdates = {
 
   displayPendingTrips(pendingTrips) {
     const penndings = document.querySelector('.pendientes')
-    penndings.innerHTML ='';
+    penndings.innerHTML = '';
     pendingTrips.forEach(trip => {
       penndings.innerHTML += `
       <div class="result-container">
@@ -80,9 +80,6 @@ const domUpdates = {
   },
 
   greetAgent(agent) {
-    console.log(name)
-    const agentName = document.querySelector('.agents-name');
-    // agentName.innerText = `${agen.name}`
     const welContainer = document.querySelector('.welcome-container');
     welContainer.innerHTML = '';
     welContainer.innerHTML = `
@@ -103,7 +100,7 @@ const domUpdates = {
   },
 
   displayBurgerMenu(burger) {
-    burger.innerHTML =`
+    burger.innerHTML = `
       <span class="hamburger-line line-1"></span>
       <span class="hamburger-line line-2"></span>
       <span class="hamburger-line line-3"></span>
@@ -122,16 +119,16 @@ const domUpdates = {
   },
 
   displayTravelesHistory(tripsList, tripHistory, status) {
-    const repo = new DestinationsRepo({destinations : tripsList})
+    const repo = new DestinationsRepo({destinations: tripsList});
     const mergedData = tripHistory.map(trip => {
       const cost = repo.getDestinationCost(trip.destinationID, trip.duration, trip.travelers)
-      const data = {destinationName: '',date : trip.date, travelerCount: trip.travelers, duration: trip.duration, destinationID: trip. destinationID, status : trip.status, amount: cost }
+      const data = {destinationName: '', date: trip.date, travelerCount: trip.travelers, duration: trip.duration, destinationID: trip. destinationID, status: trip.status, amount: cost }
       tripsList.forEach(entry =>  data.destinationID === entry.id ? data.destinationName = entry.destination : false);
-      return data
+      return data;
     });
     const tripStatus = document.querySelector('.trip-status');
     const allTripsByUser = document.querySelector('.trips-of-trips');
-    if(tripsList.length === 0){
+    if (tripsList.length === 0) {
       tripStatus.innerText = status
       allTripsByUser.innerHTML = `
           <div class="traveler-trip">
@@ -143,7 +140,7 @@ const domUpdates = {
       allTripsByUser.innerHTML = '';
       tripStatus.innerText = status
       mergedData.forEach(trip => {
-          allTripsByUser.innerHTML += `
+        allTripsByUser.innerHTML += `
           <div class="traveler-trip">
           <h1 class="trip-name">${trip.destinationName} </h1>
           <h2 class="trip-date">${trip.date}</h2>
@@ -159,12 +156,12 @@ const domUpdates = {
     }
   },
 
-  displayAllDestinations(destinations){
+  displayAllDestinations(destinations) {
     const allDestinationsContainer = document.querySelector('.card-container');
     const allDestinations = destinations.destinationsData.destinations;
     allDestinationsContainer.innerHTML = ''
     allDestinations.forEach(destination => {
-      allDestinationsContainer.innerHTML +=`
+      allDestinationsContainer.innerHTML += `
       <div class= "travel-card">
         <img class="dest-img"src=" ${destination.image}" alt="${destination.alt}">
         <div class="single-card-container">

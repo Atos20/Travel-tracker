@@ -8,7 +8,7 @@ import DestinationsRepo from '../src/destinationsRepo.js';
 import TravelersRepo from '../src/travelerRepo.js';
 
 let agent, agentData, tripsRepoData, destinationsRepoData, 
-tripRepo, destinationsRepo, travelersRepo, travelersData;
+  tripRepo, destinationsRepo, travelersRepo, travelersData;
 
 describe('Agent', () => {
   beforeEach(() => {
@@ -23,7 +23,7 @@ describe('Agent', () => {
   });
 
   it('Should be able to be a function', () => {
-     expect(Agent).to.be.a('function');
+    expect(Agent).to.be.a('function');
   });
 
   it('Should be an instance of Agent', () => {

@@ -1,7 +1,7 @@
 import chai from 'chai';
-// import spies from 'chai-spies';
+import spies from 'chai-spies';
 import { expect } from 'chai';
-// chai.use(spies)
+chai.use(spies)
 import FecthHandler from '../src/fetchHandler.js'
 
 let newFetch, query
@@ -15,22 +15,22 @@ describe('fetchHandler', () => {
       })
     }
 
-    // chai.spy.on(fetch, '', () => {})
+    chai.spy.on(fetch, '', () => {})
     newFetch = new FecthHandler()
     query = 'https://fe-apps.herokuapp.com/api/v1/travel-tracker/data/'
   });
 
   afterEach(() => {
-    // chai.spy.restore(newFetch);
+    chai.spy.restore(newFetch);
   });
 
   it.skip('Should be a function', () => {
-      expect(FecthHandler).to.be.a('function')
+    expect(FecthHandler).to.be.a('function')
   });
 
   it.skip('Should be able to have a query string by default', () => {
-      expect(newFetch).to.have.a.property('URL');
-      expect(newFetch.URL).to.equal(query)
+    expect(newFetch).to.have.a.property('URL');
+    expect(newFetch.URL).to.equal(query)
   });
 
   it.skip('Should be able to Get all travelers data', () => {

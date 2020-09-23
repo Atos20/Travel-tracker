@@ -29,36 +29,35 @@ class Traveler extends User {
   }
 
   getCurrentTrip() {
-   const currentTrip = this.travelHistory.reduce((theTrip, trip) => {
-    let startDate = moment(trip.date, 'YYYY-MM-DD').format('YYYY-MM-DD');
-    let endDate = moment(startDate, 'YYYY-MM-DD').add(trip.duration, 'days').format('YYYY-MM-DD');
-    if (moment(this.today, 'YYYY-MM-DD').isBetween(startDate, endDate)) {
-      theTrip.push(trip)
-    }
-    return theTrip;
-   },[]);
+    const currentTrip = this.travelHistory.reduce((theTrip, trip) => {
+      let startDate = moment(trip.date, 'YYYY-MM-DD').format('YYYY-MM-DD');
+      let endDate = moment(startDate, 'YYYY-MM-DD').add(trip.duration, 'days').format('YYYY-MM-DD');
+      if (moment(this.today, 'YYYY-MM-DD').isBetween(startDate, endDate)) {
+        theTrip.push(trip)
+      }
+      return theTrip;
+    }, []);
     return currentTrip;
   }
 
-   getFutureTrips() {
-     const trips = this.travelHistory.reduce((tripsList, trip) => {
-       if (moment(trip.date, 'YYYY-MM-DD').isAfter(this.today, 'YYYY-MM-DD')) {
-         tripsList.push(trip)
-       }
-       return tripsList;
-      },[]);
-
-       return trips;
-     }
+  getFutureTrips() {
+    const trips = this.travelHistory.reduce((tripsList, trip) => {
+      if (moment(trip.date, 'YYYY-MM-DD').isAfter(this.today, 'YYYY-MM-DD')) {
+        tripsList.push(trip)
+      }
+      return tripsList;
+    }, []);
+    return trips;
+  }
    
-  getPastTrips(){
+  getPastTrips() {
     const trips = this.travelHistory.reduce((tripsList, trip) => {
       if (moment(trip.date, 'YYYY-MM-DD').isBefore(this.today, 'YYYY-MM-DD')) {
         tripsList.push(trip)
       }
       return tripsList;
-     },[]);
-      return trips;
+    }, []);
+    return trips;
   }
 
   getTripsByStatus(status) {
@@ -82,7 +81,7 @@ class Traveler extends User {
       total += destinationsClass.getDestinationCost(trip.destinationID, trip.duration, trip.travelers)
       return total;
     }, 0);
-    const totalPlusFee = ((10/ 100) * totalSpentOnCurrentYear + totalSpentOnCurrentYear).toFixed(2);
+    const totalPlusFee = ((10 / 100) * totalSpentOnCurrentYear + totalSpentOnCurrentYear).toFixed(2);
     return totalPlusFee;
   } 
 }

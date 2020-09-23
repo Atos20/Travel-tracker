@@ -21,21 +21,20 @@ const submitNewTripButton  = document.querySelector('.submit');
 const travelHistory = document.querySelector('.trip-buttons');
 const logButton = document.querySelector('.log-in');
 const allTrips = document.querySelector('.all-time-trips');
-const searchByName =document.querySelector('#search-for-traveler');
-const searchByNameButton =document.querySelector('.search-by-name-button');
+const searchByName = document.querySelector('#search-for-traveler');
+const searchByNameButton = document.querySelector('.search-by-name-button');
 
 
 const getTodaysInformation = (agent) => {
-  console.log(agent.allDestinations)
   const newData = agent.todaysTrips.map( trip => {
-    const obj = {id : trip.destinationID}
+    const obj = {id: trip.destinationID}
     const findDestinations = agent.allDestinations.filter(destination => destination.id === trip.destinationID);
     const findTravelers = agent.allTravelers.filter(traveler => traveler.id === trip.destinationID);
     findDestinations.forEach(destination => obj.destination = destination.destination);
     findTravelers.forEach(traveler => obj.name = traveler.name);
     return obj 
-   });
-   domUpdates.displayTripCards(newData)
+  });
+  domUpdates.displayTripCards(newData)
 }
 
 const findTravelerByName = () => {
@@ -46,23 +45,23 @@ const findTravelerByName = () => {
 
 
 const retrieveTravalersTrips = (event) => {
-  if (event.target.classList.contains('all-trips') || event.target.classList.contains('fa-suitcase')){
+  if (event.target.classList.contains('all-trips') || event.target.classList.contains('fa-suitcase')) {
     const tripsList = traveler.travelHistory.map(trip =>destinationsRepo.getDestinationBy('id', trip.destinationID));
     domUpdates.displayTravelesHistory(tripsList, traveler.travelHistory, 'all trips');
   }
-  if (event.target.classList.contains('past-trips') || event.target.classList.contains('fa-plane-arrival')){
+  if (event.target.classList.contains('past-trips') || event.target.classList.contains('fa-plane-arrival')) {
     const tripsList = traveler.tripsHistory.map(trip =>destinationsRepo.getDestinationBy('id', trip.destinationID));
     domUpdates.displayTravelesHistory(tripsList, traveler.tripsHistory, 'past trips');
   }
-  if (event.target.classList.contains('current-trips')|| event.target.classList.contains('fa-plane')){
+  if (event.target.classList.contains('current-trips') || event.target.classList.contains('fa-plane')) {
     const tripsList = traveler.currentTrip.map(trip =>destinationsRepo.getDestinationBy('id', trip.destinationID));
     domUpdates.displayTravelesHistory(tripsList, traveler.currentTrip, 'current trips');
   }
-  if (event.target.classList.contains('future-trips')|| event.target.classList.contains('fa-plane-departure')){
+  if (event.target.classList.contains('future-trips') || event.target.classList.contains('fa-plane-departure')) {
     const tripsList = traveler.upcomingTrips.map(trip =>destinationsRepo.getDestinationBy('id', trip.destinationID));
     domUpdates.displayTravelesHistory(tripsList, traveler.upcomingTrips, 'upcoming trips');
   }
-  if (event.target.classList.contains('pending')|| event.target.classList.contains('fa-spinner')){
+  if (event.target.classList.contains('pending') || event.target.classList.contains('fa-spinner')) {
     const tripsList = traveler.pendingTrips.map(trip => destinationsRepo.getDestinationBy('id', trip.destinationID));
     domUpdates.displayTravelesHistory(tripsList, traveler.pendingTrips, 'pending trips');
   }
@@ -72,9 +71,9 @@ const resolveTripRequest = (tripRequested) => {
   const trip = destinationsRepo.getDestinationBy('id', tripRequested.destinationID);
   const estimated = destinationsRepo.getDestinationCost(trip.id, tripRequested.travelers, tripRequested.duration)
   api.addNewTrip(tripRequested)
-  .then(response => response)
-  .then(data => data)
-  .then(message => domUpdates.displayNewTripFeedBack(message, estimated))
+    .then(response => response)
+    .then(data => data)
+    .then(message => domUpdates.displayNewTripFeedBack(message, estimated))
 }
 
 const submitNewTrip = (event) => {
@@ -89,7 +88,7 @@ const submitNewTrip = (event) => {
   const duration = +triplLength.value;
   const destinationInfo = destinationsRepo.getDestinationBy('destination', tripName);
   const destinationID = destinationInfo.id;
-  const tripRequested = new Trip({userID, destinationID, travelers, date , duration});
+  const tripRequested = new Trip({userID, destinationID, travelers, date, duration});
   resolveTripRequest(tripRequested)
 }
 
@@ -98,67 +97,64 @@ const onStart = (userId) => {
   const allTripsData = api.getAllTripsData();
   const allDestinationsData = api.getAllDestinationsData();
   const allTravelersData = api.getAllTravelersData();
-  if(userId && typeof userId === 'string'){
+  if (userId && typeof userId === 'string') {
     const travelerData = api.getSingleTravelerData(userId);
     Promise.all([allTripsData, allDestinationsData, allTravelersData, travelerData])
-    .then(values => {
-      tripsRepo = new TripsRepo(values[0]);
-      destinationsRepo = new DestinationsRepo(values[1]);
-      agentTravelersRepo = new TravelersRepo(values[2])
-      travelersRepo = new TravelersRepo(tripsRepo.historyByUserId(values[3].id));
-      traveler = new Traveler(values[3], travelersRepo, destinationsRepo.destinationsData);
-      domUpdates.greetTraveler(traveler)
-      domUpdates.displayAllDestinations(destinationsRepo);
-      agentData = testData.agentsSampleData.agents[0];
-      agent = new Agent(agentData, tripsRepo, destinationsRepo, agentTravelersRepo)
-      console.log(agent)
-    })
+      .then(values => {
+        tripsRepo = new TripsRepo(values[0]);
+        destinationsRepo = new DestinationsRepo(values[1]);
+        agentTravelersRepo = new TravelersRepo(values[2])
+        travelersRepo = new TravelersRepo(tripsRepo.historyByUserId(values[3].id));
+        traveler = new Traveler(values[3], travelersRepo, destinationsRepo.destinationsData);
+        domUpdates.greetTraveler(traveler)
+        domUpdates.displayAllDestinations(destinationsRepo);
+        agentData = testData.agentsSampleData.agents[0];
+        agent = new Agent(agentData, tripsRepo, destinationsRepo, agentTravelersRepo)
+      });
   } else {
     Promise.all([allTripsData, allDestinationsData, allTravelersData])
-    .then(values => {
-      tripsRepo = new TripsRepo(values[0]);
-      destinationsRepo = new DestinationsRepo(values[1]);
-      agentTravelersRepo = new TravelersRepo(values[2])
-      agentData = testData.agentsSampleData.agents[0];
-      agent = new Agent(agentData, tripsRepo, destinationsRepo, agentTravelersRepo)
-      domUpdates.greetAgent(agent)
-      domUpdates.displayPendingTrips(agent.pendingTrips)
-      getTodaysInformation(agent)
-      // console.log(agent)
-      // domUpdates.displayInjectAgentsboard();
-    })
+      .then(values => {
+        tripsRepo = new TripsRepo(values[0]);
+        destinationsRepo = new DestinationsRepo(values[1]);
+        agentTravelersRepo = new TravelersRepo(values[2])
+        agentData = testData.agentsSampleData.agents[0];
+        agent = new Agent(agentData, tripsRepo, destinationsRepo, agentTravelersRepo)
+        domUpdates.greetAgent(agent)
+        domUpdates.displayPendingTrips(agent.pendingTrips)
+        getTodaysInformation(agent)
+      });
   }
 }
 
 const veryfyCredentails = () => {
   const logButton = document.querySelector('#home-button')
-  if(logButton.innerText === 'Log-out'){
+  if (logButton.innerText === 'Log-out') {
     window.location.reload();
   }
   const userName = document.querySelector('.account');
   const password = document.querySelector('.password');
   const entry = userName.value;
-  const userId = entry[entry.length-2] + entry[entry.length-1];
-  if(password.value === 'travel2020' && password.value.length === 10 && userName.value.includes('traveler') && userId > 0 && userId <= 50){
+  const userId = entry[entry.length - 2] + entry[entry.length - 1];
+  if (password.value === 'travel2020' && password.value.length === 10 && userName.value.includes('traveler') && userId > 0 && userId <= 50) {
     logButton.innerText = 'Log-out';
     onStart(userId);
     domUpdates.displaySalutation();
     domUpdates.displayBurgerMenu(mainMenu);
     domUpdates.toggleDestinationsCards();
-  } else if(password.value === 'travel2020' && password.value.length === 10 && userName.value === 'agency'){
+  } else if (password.value === 'travel2020' && password.value.length === 10 && userName.value === 'agency') {
     onStart();
     logButton.innerText = 'Log-out';
     domUpdates.toggleAgentBoard();
-  }else {
+  } else {
     return false;
   }
 }
 
-searchByNameButton.addEventListener('click', findTravelerByName)
-allTrips.addEventListener('click', domUpdates.toggleAllTripsSection)
-logButton.addEventListener('click', veryfyCredentails)
-travelHistory.addEventListener('click', retrieveTravalersTrips)
-submitNewTripButton.addEventListener('click', submitNewTrip)
+searchByNameButton.addEventListener('click', findTravelerByName);
+allTrips.addEventListener('click', domUpdates.toggleAllTripsSection);
+logButton.addEventListener('click', veryfyCredentails);
+travelHistory.addEventListener('click', retrieveTravalersTrips);
+submitNewTripButton.addEventListener('click', submitNewTrip);
 newTripButton.addEventListener('click', domUpdates.toggleNewTripForm);
 mainMenu.addEventListener('click', domUpdates.displayMenuOptions);
 

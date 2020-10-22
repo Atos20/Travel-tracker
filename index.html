@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;1,500;1,600;1,700&family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,500;1,600&family=Poppins:ital,wght@0,100;0,300;0,400;1,500;1,600;1,700&family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>🧳Travaler-tracker-</title>
+  </head>
+
+  <header class="top-menu">
+    <label for='' class='hidden'>Main menu button</label>
+    <div class="hamburger">
+    </div>
+
+    <div class="log-in-info">
+      <input id="account" type="text" class="account" name="user-name" placeholder="user name">
+      <label for="account" class= "hidden">Input field for username</label>
+      <input class="password" type="password" id="password" name="user-input-password" placeholder="password">
+      <label class="hidden" for="password">Input field for user password</label>
+      <button id='home-button' class='log-in'></i>Log-in <i class="fas fa-sign-in-alt"></i></button>
+      <label for='home-button' class='hidden'>Log in button</label>
+    </div>
+  </header>
+
+  <nav class="nav-bar hidden">
+
+    <div class="nav-buttons">
+      <button id='world-globe' class=''><i class="fas fa-globe-americas"></i></i> New Trip!</button>
+      <label for='world-icon-label' class='hidden'> world icon</label>
+      <button id='view-destinations-button' class=' view-destinations navButton'><i class="fas fa-map-marker-alt"></i> Destinations</button>
+      <label for='view-destinations-label' class='hidden'>View all destinations</label>
+      <button id='recipes-to-cook-button' class='all-time-trips'><i class="fas fa-luggage-cart"></i> All trips</button>
+      <label for='recipes-to-cook-label' class='hidden'>All trips</label>
+    </div>
+
+  </nav>
+
+  <body >
+    <section class="salutation"></section>
+    <form class="form hidden">
+
+      <div class="new-trip-form">
+
+        <h3 class="start">Where do you want to go?</h3>
+
+         <label class="hidden "for="All-Destinations">Select a Destination:</label>
+        <select class="destination-chosen" name="Destination" id="destination">
+          <option value="none">~choose destination~</option>
+          <option value="Lima, Peru">Lima, Peru</option>
+          <option value="Stockhom, Sweden">Stockhom, Sweden</option>
+          <option value="Sydney, Australia">Sydney, Australia</option>
+          <option value="Cartagena, Colombia">Cartagena, Colombia</option>
+          <option value="Madrid, Spain">Madrid, Spain</option>
+          <option value="Jakarta, Indonesia">Jakarta, Indonesia</option>
+          <option value="Paris, France">Paris, France</option>
+          <option value="Tokyo, Japan">Tokyo, Japan</option>
+          <option value="Amsterdam, Netherlands">Amsterdam, Netherlands</option>
+          <option value="Toronto, Canada">Toronto, Canada</option>
+          <option value="Mikonos, Greece">Mikonos, Greece</option>
+          <option value="Wellington, New Zealand">Wellington, New Zealand</option>
+          <option value="St. Petersburg, Russia">St. Petersburg, Russia</option>
+          <option value="Marrakesh, Morocco">Marrakesh, Morocco</option>
+          <option value="Manila, Philippines">Manila, Philippines</option>
+          <option value="Bangkok, Thailand">Bangkok, Thailand</option>
+          <option value="Jaipur, India">Jaipur, India</option>
+          <option value="Cartanega, Colombia">Cartanega, Colombia</option>
+          <option value="Cape Town, South Africa">Cape Town, South Africa</option>
+          <option value="Quito, Ecuador">Quito, Ecuador</option>
+          <option value="Miami, Florida">Miami, Florida</option>
+          <option value="Tulum, Mexico">Tulum, Mexico</option>
+          <option value="Rome, Italy">Rome, Italy</option>
+          <option value="Copenhagen, Denmark">Copenhagen, Denmark</option>
+          <option value="Vilnius, Lithuania">Vilnius, Lithuania</option>
+          <option value="New York, New York">New York, New York</option>
+          <option value="London, England">London, England</option>
+          <option value="San Francisco, California">San Francisco, California</option>
+          <option value="San Juan, Puerto Rico">San Juan, Puerto Rico</option>
+          <option value="Willemstad, Curaçao">Willemstad, Curaçao</option>
+          <option value="Antananarivo, Madagascar">Antananarivo, Madagascar</option>
+          <option value="Colombo, Sri Lanka">Colombo, Sri Lanka</option>
+          <option value="Kathmandu, Nepal">Kathmandu, Nepal</option>
+          <option value="Brussels, Belgium">Brussels, Belgium</option>
+          <option value="Seoul, South Korea">Seoul, South Korea</option>
+          <option value="Anchorage, Alaska">Anchorage, Alaska</option>
+          <option value="Reykjavík, Iceland">Reykjavík, Iceland</option>
+          <option value="Frankfurt, Germany">Frankfurt, Germany</option>
+          <option value="Helsinki, Finland">Helsinki, Finland</option>
+          <option value="Porto, Portugal">Porto, Portugal</option>
+          <option value="La Isla Tortuga, Costa Rica">La Isla Tortuga, Costa Rica</option>
+          <option value="Montego Bay, Jamaica">Montego Bay, Jamaica</option>
+          <option value="Santo Domingo, Dominican Republic">Santo Domingo, Dominican Republic</option>
+          <option value="Nassau, The Bahamas">Nassau, The Bahamas</option>
+          <option value="Caye Caulker, Belize">Caye Caulker, Belize</option>
+          <option value="Calgary, Canada">Calgary, Canada</option>
+          <option value="Victoria, Seychelles">Victoria, Seychelles</option>
+          <option value="Zürich, Switzerland">Zürich, Switzerland</option>
+          <option value="Dar es Salaam, Tanzania">Dar es Salaam, Tanzania</option>
+          <option value="Castries, St Lucia">Castries, St Lucia</option>
+          <option value="Hobart, Tasmania">Hobart, Tasmania</option>
+        </select>
+        <br><br>
+        <h3 class="how-many">How many people are joining you?</h3>
+        <label class="hidden" for="people-quantity">Quantity (between 1 and 25):</label>
+        <input class="people-quantity" type="number" id="people-quantity" name="quantity" min="1" max="25" 
+        aria-describedby="name-format">
+        
+        <h3 class="initial-date">Date</h3>
+        <label class="hidden" for="select-date">A user can pick the date for a new trip:</label>
+        <input id="select-date"class="select-date" type="date" placeholder="yyyy/mm/dd" min="2020/09/22" max="2025/12/31"
+        arial0label="input" value="required">
+        <h3 class="durations">How many days do you want to travel for?</h3>
+        <label class="hidden" for="day-quantity">Amount of days for the new trip:</label>
+        <input id="day-quantity" class="day-quantity" type="number" name="quantity" min="1">
+        <label class="hidden" for="submit-button">click on the submit button once the form has been filled out:</label>
+        <button class="submit" id="submit-button">Submit</button>
+
+      </div>
+    </form>
+    
+    <h1 class="trip-status hidden">Trips</h1>
+
+    <section class="trip-buttons hidden">
+      <ul class="trip-history">
+        <li class="plane all-trips"><i class="fas fa-suitcase"></i>all</li>
+        <li class="plane past-trips"><i class="fas fa-plane-arrival"></i>past</li>
+        <li class="plane current-trips"><i class="fas fa-plane"></i>current</li>
+        <li class="plane future-trips"><i class="fas fa-plane-departure"></i>future</li>
+        <li class="plane pending"><i class="fas fa-spinner"></i>pending</li>
+      </ul>
+    </section>
+
+    <section class="travelers-trips-container">
+      <div class="trips-of-trips"></div>
+    </section>
+
+    <main>
+      <section class="main-destination-container">
+        <div class="main-info-container">
+          <div class="inner-box1 box">
+            <h1 class="title trip-name">Never let your memories be <br>greater than your dreams</h1>
+            <h2 class="constumer-info trip-name">Douglas Ivester</h2>
+          </div>
+        </div>
+      </section>
+      <section class="all-images-container hidden">
+        <h1 class="destinations-title">destinations</h1>
+        <div class="card-container"></div>
+      </section>
+
+      <section class="agent-dashboard hidden">
+       
+        <div class="agent-wrapper">
+
+          <div class="box pending-trips-agent">
+
+            <h1 class="pendings">Pending trips agent</h1>
+
+            <div class="pendings-container">
+              
+              <div class="status-container">
+                <h2 class="pending pending-id-title">Dest.id</h2>
+                <h2 class="pending pending-status-title">Trip status</h2>
+                <h2 class="pending pending-date-title">Departure</h2>
+                <h2 class="pending pending-travelers-title">Travelers #</h2>
+                <h2 class="pending pending-duration-title">Trip duration</h2>
+                <h2 class="pending pending-approve-title">resolve</h2>
+              </div>
+
+              <div class="pendientes">
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="box trips-today">
+            <h1 class="todays-title">todays trips</h1>
+            <div class="today-trip-container"></div> 
+
+          </div>
+
+          <div class="box search-traveler">
+            <h2 class="seach-traveler">Search traveler by name</h2>
+            <label class="hidden" for="search-for-traveler">Search bar look for travaler by name:</label>
+            <input id="search-for-traveler" class="find-traveler" type="text" name="bar" >
+            <button class="search-by-name-button">search</button>
+
+            <div class="found-trips-container">
+              <div class="traveler-info">
+                <div class="info-container">
+                  <h2 class="traveler-title">Traveler's Name</h2>
+                  <h4 class="traveler-found-name">_____</h4>
+                </div>
+                <div class="info-container">
+                  <h2 class="traveler-type-title">Traveler Type</h2>
+                  <h4 class="traveler-type-title">_____</h4>
+                </div>
+                <div class="info-container">
+                  <h2 class="traveler-spent-title">Total spent this year</h2>
+                  <h4 class="traveler-spent">_____</h4>
+                </div>
+                <div class="info-container">
+                  <h2 class="traveler-days-traveling-title">Days traveling this year</h2>
+                  <h4 class="traveler-day-count"></h4>
+                </div>
+                  <h2 class="traveler-all-destiantions">All destinations</h2>
+                  <h4 class="traveler-destinations"></h4>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="box welcome-container ">
+          </div>
+        </div>
+      </section>
+      <section class="all-images-container hidden">
+        <h1 class="destinations-title">destinations</h1>
+        <div class="card-container"></div>
+      </section>
+    </main>
+  <script type="text/javascript" src="main.bundle.js"></script></body>
+  <footer class="contact-information">
+    <h3 class="stay-conected">DON'T FORGET, STAY IN TOUCH</h3>
+    <div class="media">
+      <i class="fab fa-instagram-square"></i>
+      <i class="fab fa-facebook"></i>
+      <i class="fab fa-google-plus-g"></i>
+      <i class="fab fa-twitter"></i>
+    </div>
+    <h4>SIGN-UP FOR NEWS, EVENTS, AND OFFERS</h4>
+    <h4 class="copy-right">© 2020 | Travaler-tracker- ALL RIGHTS RESERVED</h4>
+  </footer>
+  <script src="https://kit.fontawesome.com/6aa953ce7f.js" crossorigin="anonymous"></script>
+</html>
+
